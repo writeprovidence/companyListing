@@ -16,8 +16,11 @@ class CreateLoginResetLogsTable extends Migration
         Schema::create('login_reset_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('email_link');
+            $table->string('email_link')->nullable();
             $table->string('requestor_ip');
+            $table->boolean('status')->nullable();
+            $table->string('confirmation_ip')->nullable();
+            $table->timestamp('confirmation_timestamp')->nullable();
             $table->boolean('link_clicked')->default(0);
             $table->timestamps();
         });
