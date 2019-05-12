@@ -29,8 +29,8 @@
                     </div>
                     <div class="entry-right">
                         <ul class="header-links">
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="{{route('login')}}">Login</a></li>
+                            <li><a href="{{route('register')}}">Register</a></li>
                             <li><a href="#">List Company</a></li>
                         </ul>
                         <ul class="social-networks">
