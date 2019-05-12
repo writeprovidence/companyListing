@@ -11,12 +11,11 @@
     </div>
 </div>
 @endif
-@if(session('resent'))
-{{dd(session())}}
+@if(session('success'))
 <div class="container-fluid enter-block">
     <div class="row">
         <div class="col-8 mx-auto text-center">
-            {{ __('A fresh verification link has been sent to your email address.') }}
+            {{session('success')}}
         </div>
     </div>
 </div>
