@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('auth.logout');
+    return view('welcome');
 });
 
 Auth::routes(['verify' => true]);
