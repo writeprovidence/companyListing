@@ -24,21 +24,38 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <input type="email" placeholder="Email *">
-                        </div>
-                        <div class="form-row">
-                            <input type="password" placeholder="Password*">
-                        </div>
-                        <div class="form-row restore-pass-mod">
-                            <div class="custom-checkbox">
-                                <input type="checkbox" id="terms">
-                                <label for="terms">Remember</label>
-                            </div>
-                            <div>
-                                <a href="{{route('password.request')}}">Fogot password?</a>
+                        <div class="form-group row">
+
+                            <div class="col-md-6 form-row">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                    name="password" placeholder="Password*" required>
+
+                                @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                                @endif
                             </div>
                         </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-6 form-row restore-pass-mod">
+                                <div class="form-check custom-checkbox">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="terms"
+                                        {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="terms">
+                                        {{ __('Remember') }}
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <a href="{{route('password.request')}}">Fogot password?</a>
+                                </div>
+                            </div>
+                        </div>
+
                         <div>
                             <button type="submit">Login</button>
                         </div>
@@ -49,7 +66,7 @@
                     <div class="singup-link-block">
                         <p>Don't have an account?</p>
                         <div class="btn-wrap">
-                            <a class="btn btn-outline" href="#">Sign Up</a>
+                            <a class="btn btn-outline" href="{{route('register')}}">Sign Up</a>
                         </div>
                         <div class="entry-confirm">
                             <p>By continuing you're confirming that you've read our <a href="#">Terms & Conditions</a> and <a href="#">Cookie Policy</a></p>
@@ -69,4 +86,4 @@
             </div>
         </div>
     </main>
-@endsection¬
+@endsection
