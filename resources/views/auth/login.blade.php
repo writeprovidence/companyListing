@@ -1,5 +1,27 @@
 @extends('layouts.auth')
 @section('content')
+
+@if(session('error'))
+<div class="container-fluid enter-block">
+    <div class="row">
+        <div class="col-8 mx-auto text-center">
+            <p class="mx-5 px-5" style="color:#333333">{{session('error')}} </p>
+            <a class="btn" href="{{ route('verification.resend') }}">{{ __('Send me Email Confirmation Link') }}</a>.
+        </div>
+    </div>
+</div>
+@endif
+@if(session('resent'))
+{{dd(session())}}
+<div class="container-fluid enter-block">
+    <div class="row">
+        <div class="col-8 mx-auto text-center">
+            {{ __('A fresh verification link has been sent to your email address.') }}
+        </div>
+    </div>
+</div>
+@endif
+
 <main id="main">
     <div class="enter-block">
         <div class="container">

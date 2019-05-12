@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
+    'failed' => "Your login details didn't match our records, if you have forgotten your password, please use Reset Password form",
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
