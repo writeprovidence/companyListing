@@ -1,47 +1,74 @@
-@extends('layouts.app')
-
+@extends('layouts.auth')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<main id="main">
+    <div class="enter-block">
+        <div class="container">
+            <div class="form-box">
+                <header class="entry-header">
+                    <h2>Password reset</h2>
+                </header>
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                <form method="POST" action="{{ route('password.email') }}" class="enter-form fogetpass-form">
+                    @csrf
+                    <span class="help-title">We'll send you instruction in email</span>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <div class="form-group row">
+
+                        <div class="col-md-6 form-row">
+                            <input id="email" type="email"
+                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                                value="{{ old('email') }}" placeholder="Email *" required>
+
+                            @if ($errors->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                            @endif
                         </div>
-                    @endif
+                    </div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+                    <div class="form-row">
+                        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Reset Password') }}
+                            </button>
                         </div>
+                    </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <div class="help-text">
+                        <span>* Required field</span>
+                    </div>
+                </form>
+                <div class="singup-link-block">
+                    <p>Don't have an account?</p>
+                    <div class="btn-wrap">
+                        <a class="btn btn-outline" href="{{route('register')}}">Sign Up</a>
+                    </div>
+                    <div class="entry-confirm">
+                        <p>By continuing you're confirming that you've read our <a href="#">Terms & Conditions</a> and
+                            <a href="#">Cookie Policy</a></p>
+                    </div>
                 </div>
             </div>
+            <aside class="enter-aside">
+                <h3><mark>Benefits</mark> of registering with us</h3>
+                <ul>
+                    <li>View and respond to customer reviews </li>
+                    <li>Update your company profile</li>
+                    <li>Generate bage for your website</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                </ul>
+            </aside>
         </div>
     </div>
-</div>
+</main>
 @endsection
