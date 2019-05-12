@@ -52,6 +52,9 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+        ], [
+            'email.unique' => 'Email already registered, you can Reset Password to login',
+            'password.confirmed' => "Password didn't match confirm password"
         ]);
     }
 
@@ -67,6 +70,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'registeration_ip' => request()->ip()
         ]);
     }
 }
