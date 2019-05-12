@@ -2,6 +2,17 @@
 
 @section('content')
 <div class="container">
+    @if(Session::has('registered'))
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Check your email to verify email, then login!
+                </div>
+            </div>
+        </div>
+
+        {{Session::forget('registered')}}
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
