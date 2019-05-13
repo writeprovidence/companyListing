@@ -14,7 +14,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('edit.user')}}">
                 <div class="icon-wrap">
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </div>

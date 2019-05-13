@@ -76,8 +76,8 @@
 
 								<div class="form-row">
 									<label for="address_line2">Address Line2:</label>
-                                        <input id="address_line2" type="text" class="form-control {{ $errors->has('address_line2') ? ' is-invalid' : '' }}" name="addressline2"
-                                            value="{{ old('address_line1') }}" placeholder="Address 2 *">
+                                        <input id="address_line2" type="text" class="form-control {{ $errors->has('address_line2') ? ' is-invalid' : '' }}" name="address_line2"
+                                            value="{{ old('address_line2') }}" placeholder="Address 2 *">
 
                                     @if ($errors->has('address_line2'))
                                     <span class="invalid-feedback" role="alert">

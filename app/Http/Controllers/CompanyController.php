@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware(['auth', 'verified']);
     }
 
@@ -63,8 +64,29 @@ class CompanyController extends Controller
         return view('dashboard.company.edit');
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        return $company = Auth::user()->company;
+         $rules = [
+            'email' => 'required | email',
+            'phone' => 'required | numeric',
+            'city' => 'string',
+            'state' => 'string',
+            'zip' => 'numeric',
+            'description' => 'required | string | max:500'
+        ];
+
+        $this->validate($request, $rules);
+        $company = Auth::user()->company;
+
+        if(! $company->update($request->except('_token'))){
+            $request->session()->flash('error', 'Cannot update company at the moment!');
+            return redirect()->back();
+        }
+
+        $message = 'Your company information has been saved and will require admin approval before this is made available to public';
+
+        $request->session()->flash('success', $message);
+        return redirect()->route('dashboard');
+
     }
 }
