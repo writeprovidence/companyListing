@@ -27,7 +27,7 @@ Route::get('dashboard/company-profile', 'CompanyController@show')->name('add.com
 Route::post('dashboard/company-profile', 'CompanyController@store')->name('store.company');
 Route::get('dashboard/company-profile/edit', 'CompanyController@edit')->name('edit.company');
 Route::post('dashboard/company-profile/edit', 'CompanyController@update')->name('update.company');
-Route::post('dashboard/company-profile/{$companySlug}', 'CompanyController@companyProfile')->name('profile.company');
+Route::get('dashboard/company-profile/{companySlug}', 'CompanyController@companyProfile')->name('profile.company');
 
 // User Route
 Route::get('dashboard/user-profile', 'UserController@edit')->name('edit.user');

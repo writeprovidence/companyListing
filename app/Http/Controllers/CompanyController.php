@@ -91,6 +91,9 @@ class CompanyController extends Controller
 
     public function companyProfile($companySlug)
     {
+        $data['company'] = Company::whereSlug($companySlug)->first();
 
+        return view('dashboard.company.show', $data);
     }
+
 }

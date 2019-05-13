@@ -22,4 +22,8 @@ class Company extends Model
     {
         return $this->is_public ? true : false;
     }
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
 }
