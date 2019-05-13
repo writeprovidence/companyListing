@@ -21,8 +21,13 @@ class CreateCompaniesTable extends Migration
             $table->string('phone');
             $table->string('website');
             $table->string('link_to_go');
-            $table->string('country');
             $table->text('description');
+            $table->string('zip')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country');
+            $table->string('address_line1')->nullable();
+            $table->string('address_line2')->nullable();
             $table->boolean('is_public')->default(0);
             $table->timestamps();
         });

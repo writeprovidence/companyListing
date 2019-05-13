@@ -19,6 +19,11 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('d', function(){
-    return var_dump(Auth::user()->hasCompany());
-});
+
+
+// Dashboard
+Route::get('dashboard', 'NavigationController@dashboard')->middleware(['auth','verified'])->name('dashboard');
+Route::get('dashboard/company-profile', 'CompanyController@edit')->name('add.company');
+Route::post('dashboard/company-profile', 'CompanyController@store')->name('store.company');
+Route::get('dashboard/company-profile/edit', 'CompanyController@show')->name('edit.company');
+Route::post('dashboard/company-profile/edit', 'CompanyController@update')->name('update.company');
