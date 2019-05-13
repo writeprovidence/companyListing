@@ -28,6 +28,7 @@ Route::post('dashboard/company-profile', 'CompanyController@store')->name('store
 Route::get('dashboard/company-profile/edit', 'CompanyController@edit')->name('edit.company');
 Route::post('dashboard/company-profile/edit', 'CompanyController@update')->name('update.company');
 Route::get('dashboard/company-profile/{companySlug}', 'CompanyController@companyProfile')->name('profile.company');
+Route::get('dashboard/go/{companySlug}', 'CompanyController@redirectToWebsite')->name('redirect.company');
 
 // User Route
 Route::get('dashboard/user-profile', 'UserController@edit')->name('edit.user');
@@ -36,3 +37,4 @@ Route::post('dashboard/user-profile', 'UserController@update')->name('update.use
 // Reviews Route
 Route::get('dashboard/review', 'ReviewController@index')->name('reviews');
 Route::get('dashboard/review/{companySlug}', 'ReviewController@addReview')->name('add.review');
+Route::get('dashboard/review/{likeOrDislike}/vote', 'ReviewController@vote');

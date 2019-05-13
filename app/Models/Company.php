@@ -10,7 +10,7 @@ class Company extends Model
         'user_id', 'name', 'email', 'phone','website',
         'link_to_go', 'country', 'zip', 'description',
         'is_public', 'address_line1', 'address_line2',
-        'state', 'city', 'slug'
+        'state', 'city', 'slug', 'clicks_sent', 'page_views'
     ];
 
     public function user()

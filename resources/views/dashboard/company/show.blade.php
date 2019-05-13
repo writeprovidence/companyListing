@@ -6,7 +6,7 @@
                     <div class="header-row">
                         <div class="col">
                             <h1>{{$company->name}}</h1>
-                            <span class="site-link"><a href="{{$company->website}}">{{$company->website}} <i class="fa fa-sign-out"></i></a></span>
+                            <span class="site-link"><a href="{{route('redirect.company', $company->slug)}}">{{$company->website}} <i class="fa fa-sign-out"></i></a></span>
 
                             <div class="text-open-close open-close">
                                 <div class="slide">
@@ -20,7 +20,7 @@
                                 </a>
                             </div>
                             <div class="btn-holder">
-                                <a class="btn btn-green" href="{{$company->website}}">Visit Website</a>
+                                <a class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
                                 <a class="btn btn-green" href="{{route('add.review' , $company->slug)}}">Submit Review</a>
                             </div>
                             <ul class="socialshare-list">
