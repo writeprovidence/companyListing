@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', 'NavigationController@index');
+Route::get('/', 'NavigationController@index')->name('index');
 
 Route::get('password/reset/{token}/{email}','Auth\ResetPasswordController@showResetForm')->name('password.reseter')->middleware(['web', 'guest']);
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('d', function(){
+    return var_dump(Auth::user()->hasCompany());
+});

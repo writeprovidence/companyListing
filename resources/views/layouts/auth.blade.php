@@ -89,14 +89,14 @@
             <div class="main-bar">
                 <div class="container">
                     <div class="logo">
-                        <a href="#">
+                        <a href="{{route('index')}}">
                             <img src="{{asset('images/whtips-logo.png')}}" alt="WH Tips" width="140" height="77">
                         </a>
                     </div>
                     <nav class="nav-holder">
                         <ul id="nav">
                             <li class="active">
-                                <a href="#">Home</a>
+                                <a href="{{route('index')}}">Home</a>
                             </li>
                             <li>
                                 <a href="#">Companies</a>

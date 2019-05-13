@@ -1,134 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Project Title</title>
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i|Open+Sans:400,700" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-	<link media="all" rel="stylesheet" href="css/main.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-	<link rel="manifest" href="site.webmanifest">
-	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="theme-color" content="#ffffff">
-	<script src="js/jquery-3.2.1.min.js" defer></script>
-	<script src="js/main.js" defer></script>
-</head>
-<body>
-	<div id="wrapper">
-		<header id="header">
-			<div class="top-bar">
-				<div class="container">
-					<div class="entry-slogan">
-						<p>Web Hosting Directory, Reviews & Rankings</p>
-					</div>
-					<div class="entry-right">
-						<ul class="header-links">
-							<li><a href="#">Login</a></li>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">List Company</a></li>
-						</ul>
-						<ul class="social-networks">
-							<li>
-								<a href="#" class="social-card-box">
-									<div class="social-card">
-										<div class="social-card-front">
-											<i class="fa fa-twitter"></i>
-										</div>
-										<div class="social-card-back twitter">
-											<i class="fa fa-twitter"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="social-card-box">
-									<div class="social-card">
-										<div class="social-card-front">
-											<i class="fa fa-google"></i>
-										</div>
-										<div class="social-card-back google">
-											<i class="fa fa-google"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="social-card-box">
-									<div class="social-card">
-										<div class="social-card-front">
-											<i  class="fa fa-facebook" ></i>
-										</div>
-										<div class="social-card-back facebook">
-											<i  class="fa fa-facebook" ></i>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="social-card-box">
-									<div class="social-card">
-										<div class="social-card-front">
-											<i class="fa fa-linkedin"></i>
-										</div>
-										<div class="social-card-back linkedin">
-											<i class="fa fa-linkedin"></i>
-										</div>
-									</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="main-bar">
-				<div class="container">
-					<div class="logo">
-						<a href="#">
-							<img src="images/whtips-logo.png" alt="WH Tips" width="140" height="77">
-						</a>
-					</div>
-					<nav class="nav-holder">
-						<ul id="nav">
-							<li class="active">
-								<a href="#">Home</a>
-							</li>
-							<li>
-								<a href="#">Companies</a>
-							</li>
-							<li>
-								<a href="#">Reviews</a>
-							</li>
-							<li>
-								<a href="#">Rankings</a>
-							</li>
-							<li>
-								<a href="#">Discounts</a>
-							</li>
-						</ul>
-					</nav>
-					<div class="popup-holder search-popup">
-						<a href="#" class="open">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</a>
-						<div class="popup">
-							<form action="#" class="search-form">
-								<input type="search" placeholder="Hosting Company">
-								<button type="submit">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
-						</div>
-					</div>
-					<div class="burger-wrap">
-						<a href="#" class="nav-opener"><span></span></a>
-					</div>
-				</div>
-			</div>
-		</header>
+@extends('layouts.auth')
+@section('content')
 		<main id="main">
 			<section class="hero-section" style="background-image: url('images/bg2.jpg');">
 				<div class="container">
@@ -265,7 +136,7 @@
 												<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fafafa"/>
 												<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fafafa"/>
 												<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fafafa"/>
-											</svg>	
+											</svg>
 										</div>
 										<span class="value">5.00</span>
 									</div>
@@ -279,7 +150,7 @@
 									<h3><a href="#">Worst Company</a></h3>
 									<p>As of February 2019, this hosting provider is totally unreliable. Their claim of 24/7 tech support is fraudulent. I have submitted numerous tickets over the course of a week without any resolution or even a response.</p>
 									<div class="links">
-										<a href="#">Visit Site</a> | 
+										<a href="#">Visit Site</a> |
 										<a href="#">Read Reviews</a>
 									</div>
 								</div>
@@ -312,7 +183,7 @@
 												<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fafafa"/>
 												<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fafafa"/>
 												<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fafafa"/>
-											</svg>	
+											</svg>
 										</div>
 										<span class="value">5.00</span>
 									</div>
@@ -326,7 +197,7 @@
 									<h3><a href="#">Worst Company</a></h3>
 									<p>As of February 2019, this hosting provider is totally unreliable. Their claim of 24/7 tech support is fraudulent. I have submitted numerous tickets over the course of a week without any resolution or even a response.</p>
 									<div class="links">
-										<a href="#">Visit Site</a> | 
+										<a href="#">Visit Site</a> |
 										<a href="#">Read Reviews</a>
 									</div>
 								</div>
@@ -359,7 +230,7 @@
 												<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fafafa"/>
 												<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fafafa"/>
 												<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fafafa"/>
-											</svg>	
+											</svg>
 										</div>
 										<span class="value">5.00</span>
 									</div>
@@ -373,7 +244,7 @@
 									<h3><a href="#">Worst Company</a></h3>
 									<p>As of February 2019, this hosting provider is totally unreliable. Their claim of 24/7 tech support is fraudulent. I have submitted numerous tickets over the course of a week without any resolution or even a response.</p>
 									<div class="links">
-										<a href="#">Visit Site</a> | 
+										<a href="#">Visit Site</a> |
 										<a href="#">Read Reviews</a>
 									</div>
 								</div>
@@ -422,58 +293,4 @@
 				</div>
 			</section>
 		</main>
-		<footer id="footer">
-			<div class="footer-top">
-				<div class="container">
-					<div class="row">
-						<section class="col">
-							<h3>Company</h3>
-							<ul class="footer-links">
-								<li><a href="#">ABC Link</a></li>
-								<li><a href="#">ABC Link</a></li>
-								<li><a href="#">ABC Link</a></li>
-								<li><a href="#">ABC Link</a></li>
-								<li><a href="#">ABC Link</a></li>
-							</ul>
-						</section>
-						<section class="col">
-							<h3>Top Web Hosting</h3>
-							<ul class="footer-links">
-								<li><a href="#">Global Best Hosting Companies</a></li>
-								<li><a href="#">Global Best Hosting Companies</a></li>
-								<li><a href="#">Global Best Hosting Companies</a></li>
-								<li><a href="#">Global Best Hosting Companies</a></li>
-								<li><a href="#">Global Best Hosting Companies</a></li>
-							</ul>
-						</section>
-						<div class="col">
-							<div class="footer-terms">
-								<ul class="footer-links">
-									<li><a href="#">Privacy Policy</a></li>
-									<li><a href="#">Terms of Use</a></li>
-								</ul>
-							</div>
-						</div>
-						<section class="col">
-							<h3>Subscribe</h3>
-							<p>Receive hosting coupons, reviews and more</p>
-							<form action="#" class="subscribe-form">
-								<input type="text" placeholder="Full Name">
-								<input type="email" placeholder="Email">
-								<button type="submit">Sign up</button>
-							</form>
-						</section>
-					</div>
-				</div>
-			</div>
-			<div class="bottom-line">
-				<div class="container">
-					<div class="copyright-block">
-						<p>Copyright &copy; 2019 WH.TIPS | Hosted by <a href="#">ABCHOST.COM</a></p>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
-</body>
-</html>
+@endsection
