@@ -17,6 +17,7 @@
     <meta name="theme-color" content="#ffffff">
     <script src="{{asset('js/jquery-3.2.1.min.js')}}" defer></script>
     <script src="{{asset('js/main.js')}}" defer></script>
+    <script src="{{asset('js/custom.js')}}" defer></script>
 </head>
 
 <body>

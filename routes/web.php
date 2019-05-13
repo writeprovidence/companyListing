@@ -35,3 +35,4 @@ Route::post('dashboard/user-profile', 'UserController@update')->name('update.use
 
 // Reviews Route
 Route::get('dashboard/review', 'ReviewController@index')->name('reviews');
+Route::get('dashboard/review/{companySlug}', 'ReviewController@addReview')->name('add.review');

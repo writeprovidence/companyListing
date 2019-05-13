@@ -21,7 +21,7 @@
                             </div>
                             <div class="btn-holder">
                                 <a class="btn btn-green" href="{{$company->website}}">Visit Website</a>
-                                <a class="btn btn-green" href="#">Submit Review</a>
+                                <a class="btn btn-green" href="{{route('add.review' , $company->slug)}}">Submit Review</a>
                             </div>
                             <ul class="socialshare-list">
                                 <li>
@@ -342,7 +342,7 @@
                                             </ul>
                                         </div>
                                         <div class="entry-response">
-                                            <h6>Easyhost Pakistan's Response</h6>
+                                            <h6>{{$company->name}}'s Response</h6>
                                             <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market.</p>
                                         </div>
                                         <div class="entry-footer">
@@ -375,228 +375,13 @@
                                             </div>
                                             <div>
                                                 <span class="entry-text">Is this review helpful to you?</span>
-                                                <a class="rewiew-btn" href="#"><i class="fa fa-thumbs-up"></i> yes</a>
-                                                <a class="rewiew-btn" href="#"><i class="fa fa-thumbs-down"></i> no</a>
+                                                <a class="rewiew-btn" data-value="yes" href="#"><i class="fa fa-thumbs-up"></i> yes</a>
+                                                <a class="rewiew-btn" data-value="no" href="#"><i class="fa fa-thumbs-down"></i> no</a>
                                             </div>
                                         </div>
                                     </div>
 								</li>
-								<li>
-                                    <div class="review-card">
-                                        <div class="entry-header">
-                                            <span>Review by</span>
-                                            <strong>Junaid Ahmed Shah <i>(abcsdsdd.com)</i></strong>
-                                            <div class="score">Overall Score: 9.2</div>
-                                        </div>
-                                        <div class="entry-body">
-                                            <div class="date-wrap">
-                                                <time datetime="2019-12-04">April 12, 2019</time>
-                                            </div>
-                                            <div class="text">
-                                                <h3><a href="#">Best Web Hosting Company</a></h3>
-                                                <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market. We have collected the information from different Web Hosting companies to provide you informationasdasda.</p>
-                                            </div>
-                                            <ul class="value-list">
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="entry-response">
-                                            <h6>Easyhost Pakistan's Response</h6>
-                                            <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market.</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <div class="share-popup popup-holder">
-                                                <a class="open rewiew-btn grey-mod" href="#"><i class="fa fa-share-alt"></i>
-                                                    <span>Share</span>
-                                                    <div class="popup">
-                                                        <ul>
-                                                            <li>
-                                                                <button class="share-btn " type="button">
-                                                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                                                    <span>Copy Link</span>
-                                                                </button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="share-btn twitter" type="button">
-                                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                                    <span>Twitter</span>
-                                                                </button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="share-btn facebook" type="button">
-                                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                                                    <span>Facebook</span>
-                                                                </button>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <span class="entry-text">Is this review helpful to you?</span>
-                                                <a class="rewiew-btn" href="#"><i class="fa fa-thumbs-up"></i> yes</a>
-                                                <a class="rewiew-btn" href="#"><i class="fa fa-thumbs-down"></i> no</a>
-                                            </div>
-                                        </div>
-                                    </div>
-								</li>
-								<li>
-                                    <div class="review-card">
-                                        <div class="entry-header">
-                                            <span>Review by</span>
-                                            <strong>Junaid Ahmed Shah <i>(abcsdsdd.com)</i></strong>
-                                            <div class="score">Overall Score: 9.2</div>
-                                        </div>
-                                        <div class="entry-body">
-                                            <div class="date-wrap">
-                                                <time datetime="2019-12-04">April 12, 2019</time>
-                                            </div>
-                                            <div class="text">
-                                                <h3><a href="#">Best Web Hosting Company</a></h3>
-                                                <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market. We have collected the information from different Web Hosting companies to provide you informationasdasda.</p>
-                                            </div>
-                                            <ul class="value-list">
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span>User-friendliness</span>
-                                                    <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="entry-response">
-                                            <h6>Easyhost Pakistan's Response</h6>
-                                            <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market.</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <div class="share-popup popup-holder">
-                                                <a class="open rewiew-btn grey-mod" href="#"><i class="fa fa-share-alt"></i>
-                                                    <span>Share</span>
-                                                    <div class="popup">
-                                                        <ul>
-                                                            <li>
-                                                                <button class="share-btn " type="button">
-                                                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                                                    <span>Copy Link</span>
-                                                                </button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="share-btn twitter" type="button">
-                                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                                    <span>Twitter</span>
-                                                                </button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="share-btn facebook" type="button">
-                                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                                                    <span>Facebook</span>
-                                                                </button>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <span class="entry-text">Is this review helpful to you?</span>
-                                                <a class="rewiew-btn" href="#"><i class="fa fa-thumbs-up"></i> yes</a>
-                                                <a class="rewiew-btn" href="#"><i class="fa fa-thumbs-down"></i> no</a>
-                                            </div>
-                                        </div>
-                                    </div>
-								</li>
+
 							</ul>
 							<nav class="pagination-block">
 								<ul class="pagination">
@@ -641,11 +426,13 @@
             <section class="about-section section bg-grey text-center">
                 <div class="container">
                     <header class="section-header">
-                        <h1>About Easyhost.PK</h1>
+                        <h1>About {{$company->name}}</h1>
                     </header>
-                    <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market. We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market. We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market. We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market. We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market.</p>
+                    <p>
+                        {{$company->description}}
+                    </p>
                     <div>
-                        <a class="btn btn-green" href="#">Visit Website</a>
+                        <a class="btn btn-green" href="{{$company->website}}">Visit Website</a>
                     </div>
                 </div>
             </section>
@@ -659,7 +446,7 @@
                             <div class="hosting-card">
                                 <span class="cnt"></span>
                                 <div class="entry-image">
-                                    <img src="images/bluehost.jpg" alt="bluehost">
+                                    <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
                                 </div>
                                 <ul class="entry-links">
                                     <li><a href="#">Visit Site</a></li>
@@ -671,7 +458,7 @@
                             <div class="hosting-card">
                                 <span class="cnt"></span>
                                 <div class="entry-image">
-                                    <img src="images/bluehost.jpg" alt="bluehost">
+                                    <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
                                 </div>
                                 <ul class="entry-links">
                                     <li><a href="#">Visit Site</a></li>
@@ -683,7 +470,7 @@
                             <div class="hosting-card">
                                 <span class="cnt"></span>
                                 <div class="entry-image">
-                                    <img src="images/bluehost.jpg" alt="bluehost">
+                                    <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
                                 </div>
                                 <ul class="entry-links">
                                     <li><a href="#">Visit Site</a></li>
@@ -695,7 +482,7 @@
                             <div class="hosting-card">
                                 <span class="cnt"></span>
                                 <div class="entry-image">
-                                    <img src="images/bluehost.jpg" alt="bluehost">
+                                    <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
                                 </div>
                                 <ul class="entry-links">
                                     <li><a href="#">Visit Site</a></li>
@@ -703,6 +490,7 @@
                                 </ul>
                             </div>
                         </li>
+
                     </ul>
                 </div>
             </section>
