@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 @section('content')
 		<main id="main">
 			<section class="hero-section" style="background-image: url('images/bg2.jpg');">

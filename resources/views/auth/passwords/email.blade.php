@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 @section('content')
 <main id="main">
     <div class="enter-block">

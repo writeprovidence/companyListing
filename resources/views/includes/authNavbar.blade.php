@@ -1,0 +1,72 @@
+<div class="top-bar">
+    <div class="container">
+        <div class="entry-slogan">
+            <p>Web Hosting Directory, Reviews & Rankings</p>
+        </div>
+        <div class="entry-right">
+            <ul class="header-links">
+                <li><a href="#">Add Company</a></li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+            <ul class="social-networks">
+                <li>
+                    <a href="#" class="social-card-box">
+                        <div class="social-card">
+                            <div class="social-card-front">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <div class="social-card-back twitter">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="social-card-box">
+                        <div class="social-card">
+                            <div class="social-card-front">
+                                <i class="fa fa-google"></i>
+                            </div>
+                            <div class="social-card-back google">
+                                <i class="fa fa-google"></i>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="social-card-box">
+                        <div class="social-card">
+                            <div class="social-card-front">
+                                <i class="fa fa-facebook"></i>
+                            </div>
+                            <div class="social-card-back facebook">
+                                <i class="fa fa-facebook"></i>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="social-card-box">
+                        <div class="social-card">
+                            <div class="social-card-front">
+                                <i class="fa fa-linkedin"></i>
+                            </div>
+                            <div class="social-card-back linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
