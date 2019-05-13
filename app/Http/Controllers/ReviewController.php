@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -24,5 +25,14 @@ class ReviewController extends Controller
         $data['company'] = Company::whereSlug($companySlug)->first();
 
         return view('dashboard.review.add', $data);
+    }
+
+    public function upvote($companyId)
+    {
+        return Review::whereCompanyId($companyId)->increment('likes');
+    }
+    public function downvote($companyId)
+    {
+        return Review::whereCompanyId($companyId)->increment('dislikes');
     }
 }

@@ -92,7 +92,7 @@ class CompanyController extends Controller
     public function companyProfile($companySlug)
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
-        $data['company']->increment('page_views');
+        // $data['company']->increment('page_views');
 
         return view('dashboard.company.show', $data);
     }

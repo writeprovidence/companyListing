@@ -37,4 +37,5 @@ Route::post('dashboard/user-profile', 'UserController@update')->name('update.use
 // Reviews Route
 Route::get('dashboard/review', 'ReviewController@index')->name('reviews');
 Route::get('dashboard/review/{companySlug}', 'ReviewController@addReview')->name('add.review');
-Route::get('dashboard/review/{likeOrDislike}/vote', 'ReviewController@vote');
+Route::get('dashboard/review/{companySlug}/upvote', 'ReviewController@upvote');
+Route::get('dashboard/review/{companySlug}/downvote', 'ReviewController@downvote');
