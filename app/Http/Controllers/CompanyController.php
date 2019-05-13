@@ -13,7 +13,7 @@ class CompanyController extends Controller
         $this->middleware(['auth', 'verified']);
     }
 
-    public function edit()
+    public function show()
     {
         return view('dashboard.company.add');
     }
@@ -51,14 +51,14 @@ class CompanyController extends Controller
         $data = $requestObject->except('_token');
         $data['user_id'] = Auth::id();
         $data['link_to_go'] = $requestObject->website;
+        $data['slug'] = str_slug($requestObject->name) . '.com';
         return $data;
     }
 
-    public function show()
+    public function edit()
     {
         if(! Auth::user()->hasCompany()){
-            $request->session()->flash('error', 'You have not created a company yet!');
-            return redirect()->back();
+            return redirect()->route('add.company');
         }
 
         return view('dashboard.company.edit');
@@ -87,6 +87,10 @@ class CompanyController extends Controller
 
         $request->session()->flash('success', $message);
         return redirect()->route('dashboard');
+    }
+
+    public function companyProfile($companySlug)
+    {
 
     }
 }

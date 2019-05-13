@@ -23,11 +23,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Dashboard
 Route::get('dashboard', 'NavigationController@dashboard')->middleware(['auth','verified'])->name('dashboard');
-Route::get('dashboard/company-profile', 'CompanyController@edit')->name('add.company');
+Route::get('dashboard/company-profile', 'CompanyController@show')->name('add.company');
 Route::post('dashboard/company-profile', 'CompanyController@store')->name('store.company');
-Route::get('dashboard/company-profile/edit', 'CompanyController@show')->name('edit.company');
+Route::get('dashboard/company-profile/edit', 'CompanyController@edit')->name('edit.company');
 Route::post('dashboard/company-profile/edit', 'CompanyController@update')->name('update.company');
+Route::post('dashboard/company-profile/{$companySlug}', 'CompanyController@companyProfile')->name('profile.company');
 
 // User Route
 Route::get('dashboard/user-profile', 'UserController@edit')->name('edit.user');
 Route::post('dashboard/user-profile', 'UserController@update')->name('update.user');
+
+// Reviews Route
+Route::get('dashboard/review', 'ReviewController@index')->name('reviews');

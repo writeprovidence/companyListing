@@ -24,11 +24,17 @@
                         </div>
                         <div class="siteinfo-line">
                             <div class="sitemeta">
-                                <h1>Easyhost Pakistan</h1>
-                                <a href="#">https://wh.tips/asda/asdads/asdsadsa</a>
+                                <h1>{{Auth::user()->company->name}}</h1>
+                                <a href="{{Auth::user()->company->website}}" target="_blank">{{Auth::user()->company->website}}</a>
                             </div>
                             <div class="btn-wrap">
-                                <a class="btn btn-green" href="#">View Company Page</a>
+                                <a class="btn btn-green" href="
+                                @if(Auth::user()->company->companyApproved())
+                                    {{route('profile.company',Auth::user()->company->slug)}}
+                                @else
+                                #
+                                @endif
+                                ">View Company Page</a>
                             </div>
                         </div>
                     </header>

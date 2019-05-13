@@ -5,8 +5,8 @@
         </div>
     </header>
     <ul class="dashboard-nav">
-        <li class="active">
-            <a href="{{route('dashboard')}}">
+        <li>
+            <a href="#">
                 <div class="icon-wrap">
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
@@ -14,7 +14,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('edit.user')}}">
+            <a href="#">
                 <div class="icon-wrap">
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
@@ -22,7 +22,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('edit.company')}}">
+            <a href="#">
                 <div class="icon-wrap">
                     <i class="fa fa-cog" aria-hidden="true"></i>
                 </div>
@@ -37,8 +37,8 @@
                 <span>Nameservers</span>
             </a>
         </li>
-        <li>
-            <a href="{{route('reviews')}}">
+        <li class="active">
+            <a href="#">
                 <div class="icon-wrap">
                     <i class="fa fa-comments-o" aria-hidden="true"></i>
                 </div>
@@ -54,4 +54,39 @@
             </a>
         </li>
     </ul>
+    <div class="dashboard-nav-widget">
+        <h3>Review Rating</h3>
+        <ul>
+            <li>
+                <a href="#">
+                    <span>5 Star</span>
+                    <span>22 reviews</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>4 Star</span>
+                    <span>22 reviews</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>3 Star</span>
+                    <span>22 reviews</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>2 Star</span>
+                    <span>22 reviews</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>1 Star</span>
+                    <span>22 reviews</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </aside>
