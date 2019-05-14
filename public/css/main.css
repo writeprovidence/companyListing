@@ -5581,6 +5581,15 @@ select::-ms-expand
     margin: 0 0 1.5em;
 }
 
+.form-group.reset .form-row input, .reset-button button {
+    width: 17em !important;
+}
+
+ul.reviewbox-list.reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .review-form label,
 .review-form .label
 {

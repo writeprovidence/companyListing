@@ -37,4 +37,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->company ? true : false;
     }
+
+    public function isVerified()
+    {
+        return $this->is_verified ? true : false;
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review', 'logged_user_id');
+    }
 }

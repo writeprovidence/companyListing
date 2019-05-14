@@ -55,7 +55,9 @@ Route::get('search', 'SearchController@search')->name('search');
 //News Letter Subscription
 Route::post('newsletter/subscribe', 'MailSubscriptionController@subscribe')->name('subscribe.newsletter');
 
-
 // Admin Routes
 
 Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
+Route::get('admin/dashboard/resetpassword', 'AdminController@showResetForm')->name('admin.password.reset');
+Route::post('admin/dashboard/resetpassword', 'AdminController@resetPassword')->name('admin.resetpassword');
+Route::get('admin/dashboard/users', 'AdminController@users')->name('admin.users');
