@@ -35,9 +35,16 @@ Route::get('dashboard/user-profile', 'UserController@edit')->name('edit.user');
 Route::post('dashboard/user-profile', 'UserController@update')->name('update.user');
 
 // Reviews Route
+Route::get('/review', 'ReviewController@index')->name('all.reviews');
 Route::get('dashboard/review', 'ReviewController@index')->name('reviews');
+Route::get('/review/{companySlug}', 'ReviewController@filterReview')->name('reviews.company');
 Route::get('dashboard/review/{companySlug}', 'ReviewController@addReview')->name('add.review');
 Route::post('dashboard/review/{companySlug}', 'ReviewController@store')->name('store.review');
 Route::get('dashboard/review/{reviewId}/verify', 'ReviewController@verifyReview')->name('verify.review');
 Route::get('dashboard/review/{companySlug}/upvote', 'ReviewController@upvote');
 Route::get('dashboard/review/{companySlug}/downvote', 'ReviewController@downvote');
+
+// Search
+Route::get('companies', 'SearchController@search')->name('search');
+
+

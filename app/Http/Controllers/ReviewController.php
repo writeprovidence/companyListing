@@ -14,8 +14,8 @@ class ReviewController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['addReview']]);
-        $this->middleware('verified',['except' => ['addReview']] );
+        $this->middleware('auth', ['except' => ['addReview', 'filterReview']]);
+        $this->middleware('verified',['except' => ['addReview', 'filterReview']]);
         // $this->middleware('checkReview', ['only' => ['addReview']]);
     }
 
@@ -23,7 +23,7 @@ class ReviewController extends Controller
     {
         $data = [];
         // $data['reviews'] = Reviews::orderBy('created_at', 'desc)->paginate(5);
-        return view('dashboard.company.reviews', $data);
+        return view('dashboard.review.index', $data);
     }
 
     public function addReview($companySlug)
@@ -94,5 +94,11 @@ class ReviewController extends Controller
 
         $request->session()->flash('success', 'Review Confirmed!');
         return redirect()->route('dashboard');
+    }
+
+
+    public function filterReview($companySlug)
+    {
+        return $companySlug;
     }
 }

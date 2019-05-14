@@ -48,7 +48,7 @@
                                 <a href="#">Companies</a>
                             </li>
                             <li>
-                                <a href="#">Reviews</a>
+                                <a href="{{route('all.reviews')}}">Reviews</a>
                             </li>
                             <li>
                                 <a href="#">Rankings</a>
@@ -63,8 +63,8 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </a>
                         <div class="popup">
-                            <form action="#" class="search-form">
-                                <input type="search" placeholder="Hosting Company">
+                            <form action="{{route('search')}}" method="GET"class="search-form">
+                                <input type="search" name="search" placeholder="Hosting Company">
                                 <button type="submit">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
