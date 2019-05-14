@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Project Title</title>
+    <title>Web Hosting Companies Ranking, Reviews, Deals & Tips | WH.TIPS</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i|Open+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="canonical" href="url()->current()"/>
     <link media="all" rel="stylesheet" href="{{asset('css/main.css')}}">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -45,13 +46,13 @@
                                 <a href="{{route('index')}}">Home</a>
                             </li>
                             <li>
-                                <a href="#">Companies</a>
+                                <a href="{{route('companies')}}">Companies</a>
                             </li>
                             <li>
                                 <a href="{{route('all.reviews')}}">Reviews</a>
                             </li>
                             <li>
-                                <a href="#">Rankings</a>
+                                <a href="{{route('ranking')}}">Rankings</a>
                             </li>
                             <li>
                                 <a href="#">Discounts</a>
@@ -122,9 +123,10 @@
                         <section class="col">
                             <h3>Subscribe</h3>
                             <p>Receive hosting coupons, reviews and more</p>
-                            <form action="#" class="subscribe-form">
-                                <input type="text" placeholder="Full Name">
-                                <input type="email" placeholder="Email">
+                            <form action="{{route('subscribe.newsletter')}}" method="POST" class="subscribe-form">
+                                @csrf
+                                <input type="text" name="name" placeholder="Full Name">
+                                <input type="email" name="email" placeholder="Email">
                                 <button type="submit">Sign up</button>
                             </form>
                         </section>

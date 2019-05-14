@@ -14,6 +14,18 @@ class CompanyController extends Controller
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
+    public function index()
+    {
+        $data['companies'] = Company::orderBy('created_at', 'desc')->paginate(25);
+        return view('companies', $data);
+    }
+
+    public function ranking()
+    {
+        $data['companies'] = Company::orderBy('created_at', 'desc')->paginate(25);
+        return view('companies', $data);
+    }
+
     public function show()
     {
         return view('dashboard.company.add');
