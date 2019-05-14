@@ -30,7 +30,14 @@ class ReviewController extends Controller
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
 
-        return view('dashboard.review.add', $data);
+        return view('review.add', $data);
+    }
+
+    public function show($companySlug, $reviewSlug)
+    {
+        $data['company'] = Company::whereSlug($companySlug)->first();
+        $data['review'] = Review::whereSlug($reviewSlug)->whereCompanyId($data['company']->id)->first();
+        return view('review.show', $data);
     }
 
     public function upvote($companyId)
@@ -61,9 +68,22 @@ class ReviewController extends Controller
         }
 
         $this->sendReviewVerificationEmail($review->id);
+
+        $review->update([
+            'slug' => 'review-'.$review->id
+        ]);
+
         $request->session()->flash('success', 'successful');
         return redirect()->back();
 
+    }
+
+    protected function buildUpData($requestObject, $companyId){
+        $data = $requestObject->except('_token');
+        $data['company_id'] = $companyId;
+        $data['logged_user_id'] = Auth::id();
+        $data['review_ip'] = request()->ip();
+        return $data;
     }
 
     protected function sendReviewVerificationEmail($reviewId)
@@ -74,13 +94,6 @@ class ReviewController extends Controller
         }
     }
 
-    protected function buildUpData($requestObject, $companyId){
-        $data = $requestObject->except('_token');
-        $data['company_id'] = $companyId;
-        $data['logged_user_id'] = Auth::id();
-        $data['review_ip'] = request()->ip();
-        return $data;
-    }
 
     public function verifyReview(Request $request, $reviewId)
     {
@@ -96,9 +109,10 @@ class ReviewController extends Controller
         return redirect()->route('dashboard');
     }
 
-
     public function filterReview($companySlug)
     {
-        return $companySlug;
+        $data['company'] = Company::whereSlug($companySlug)->first();
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(1);
+        return view('review.index', $data);
     }
 }

@@ -10,7 +10,7 @@
                                         class="fa fa-sign-out"></i></a></span>
                             <div class="btn-holder">
                                 <a class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
-                                <a class="btn btn-green" href="#">Read Reviews</a>
+                                <a class="btn btn-green" href="{{route('reviews.company',$company->slug)}}">Read Reviews</a>
                             </div>
                         </div>
                         <div class="col">

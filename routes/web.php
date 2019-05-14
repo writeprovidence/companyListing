@@ -41,6 +41,9 @@ Route::get('/review/{companySlug}', 'ReviewController@filterReview')->name('revi
 Route::get('dashboard/review/{companySlug}', 'ReviewController@addReview')->name('add.review');
 Route::post('dashboard/review/{companySlug}', 'ReviewController@store')->name('store.review');
 Route::get('dashboard/review/{reviewId}/verify', 'ReviewController@verifyReview')->name('verify.review');
+Route::get('company/{companySlug}/{reviewSlug}', 'ReviewController@show')->name('show.review');
+
+// Upvote and down vote API
 Route::get('dashboard/review/{companySlug}/upvote', 'ReviewController@upvote');
 Route::get('dashboard/review/{companySlug}/downvote', 'ReviewController@downvote');
 

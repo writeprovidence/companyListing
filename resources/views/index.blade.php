@@ -109,150 +109,60 @@
 						<p>Real customer reviews, checked by our team before they are made public</p>
 					</header>
 					<ul class="reviewbox-list">
-						<li>
-							<div class="reviewbox-card">
-								<header class="entry-header">
-									<span>Review by</span>
-									<strong>Jawwad Kalia</strong>
-								</header>
-								<div class="entry-rating">
-									<div class="rating">
-										<div class="raiting-wrap">
-											<svg class="star-full" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<clipPath id="r1">
-													<path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="black"/>
-													<path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="black"/>
-													<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="black"/>
-													<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="black"/>
-													<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="black"/>
-												</clipPath>
-												<g clip-path="url('#r1')">
-													<rect fill="#fbaf40" class="r1" x="0" y="0" width="10%" height="100%"/>
-												</g>
-											</svg>
-											<svg class="star-empty" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="#fafafa"/>
-												<path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fafafa"/>
-											</svg>
-										</div>
-										<span class="value">5.00</span>
-									</div>
-									<time datetime="2019-02-11">Febuary 11, 2019</time>
-								</div>
-								<div class="entry-company">
-									<span>About Company</span>
-									<strong><a href="#">HostGator</a> <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></strong>
-								</div>
-								<div class="entry-body">
-									<h3><a href="#">Worst Company</a></h3>
-									<p>As of February 2019, this hosting provider is totally unreliable. Their claim of 24/7 tech support is fraudulent. I have submitted numerous tickets over the course of a week without any resolution or even a response.</p>
-									<div class="links">
-										<a href="#">Visit Site</a> |
-										<a href="#">Read Reviews</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="reviewbox-card">
-								<header class="entry-header">
-									<span>Review by</span>
-									<strong>Jawwad Kalia</strong>
-								</header>
-								<div class="entry-rating">
-									<div class="rating">
-										<div class="raiting-wrap">
-											<svg class="star-full" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<clipPath id="r2">
-													<path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="black"/>
-													<path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="black"/>
-													<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="black"/>
-													<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="black"/>
-													<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="black"/>
-												</clipPath>
-												<g clip-path="url('#r2')">
-													<rect fill="#fbaf40" class="r1" x="0" y="0" width="66%" height="100%"/>
-												</g>
-											</svg>
-											<svg class="star-empty" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="#fafafa"/>
-												<path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fafafa"/>
-											</svg>
-										</div>
-										<span class="value">5.00</span>
-									</div>
-									<time datetime="2019-02-11">Febuary 11, 2019</time>
-								</div>
-								<div class="entry-company">
-									<span>About Company</span>
-									<strong><a href="#">HostGator</a> <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></strong>
-								</div>
-								<div class="entry-body">
-									<h3><a href="#">Worst Company</a></h3>
-									<p>As of February 2019, this hosting provider is totally unreliable. Their claim of 24/7 tech support is fraudulent. I have submitted numerous tickets over the course of a week without any resolution or even a response.</p>
-									<div class="links">
-										<a href="#">Visit Site</a> |
-										<a href="#">Read Reviews</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="reviewbox-card">
-								<header class="entry-header">
-									<span>Review by</span>
-									<strong>Jawwad Kalia</strong>
-								</header>
-								<div class="entry-rating">
-									<div class="rating">
-										<div class="raiting-wrap">
-											<svg class="star-full" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<clipPath id="r3">
-													<path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="black"/>
-													<path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="black"/>
-													<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="black"/>
-													<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="black"/>
-													<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="black"/>
-												</clipPath>
-												<g clip-path="url('#r3')">
-													<rect fill="#fbaf40" class="r1" x="0" y="0" width="90%" height="100%"/>
-												</g>
-											</svg>
-											<svg class="star-empty" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="#fafafa"/>
-												<path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fafafa"/>
-												<path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fafafa"/>
-											</svg>
-										</div>
-										<span class="value">5.00</span>
-									</div>
-									<time datetime="2019-02-11">Febuary 11, 2019</time>
-								</div>
-								<div class="entry-company">
-									<span>About Company</span>
-									<strong><a href="#">HostGator</a> <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></strong>
-								</div>
-								<div class="entry-body">
-									<h3><a href="#">Worst Company</a></h3>
-									<p>As of February 2019, this hosting provider is totally unreliable. Their claim of 24/7 tech support is fraudulent. I have submitted numerous tickets over the course of a week without any resolution or even a response.</p>
-									<div class="links">
-										<a href="#">Visit Site</a> |
-										<a href="#">Read Reviews</a>
-									</div>
-								</div>
-							</div>
-						</li>
+                        @foreach($reviews as $review)
+                            <li>
+                                <div class="reviewbox-card">
+                                    <header class="entry-header">
+                                        <span>Review by</span>
+                                        <strong>{{$review->full_name}}</strong>
+                                    </header>
+                                    <div class="entry-rating">
+                                        <div class="rating">
+                                            <div class="raiting-wrap">
+                                                <svg class="star-full" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <clipPath id="r1">
+                                                        <path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="black"/>
+                                                        <path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="black"/>
+                                                        <path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="black"/>
+                                                        <path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="black"/>
+                                                        <path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="black"/>
+                                                    </clipPath>
+                                                    <g clip-path="url('#r1')">
+                                                        <rect fill="#fbaf40" class="r1" x="0" y="0" width="10%" height="100%"/>
+                                                    </g>
+                                                </svg>
+                                                <svg class="star-empty" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="#fafafa"/>
+                                                    <path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="#fafafa"/>
+                                                    <path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fafafa"/>
+                                                    <path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fafafa"/>
+                                                    <path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fafafa"/>
+                                                </svg>
+                                            </div>
+                                            <span class="value">5.00</span>
+                                        </div>
+                                        <time datetime="2019-02-11">{{$review->created_at->diffForHumans()}}</time>
+                                    </div>
+                                    <div class="entry-company">
+                                        <span>About Company</span>
+                                        <strong><a href="{{route('profile.company', $review->company->slug)}}">{{$review->company->name}}</a> <a href="{{route('profile.company', $review->company->slug)}}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></strong>
+                                    </div>
+                                    <div class="entry-body">
+                                        <h3><a>{{$review->title}}</a></h3>
+                                        <p>
+                                            {{$review->review}}
+                                        </p>
+                                        <div class="links">
+                                            <a href="{{route('redirect.company', $review->company->slug)}}">Visit Site</a> |
+                                            <a href="{{route('reviews.company', $review->company->slug)}}">Read Reviews</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
 					</ul>
 					<div class="entry-button">
-						<a class="btn btn-green" href="#" role="button">Browse All Reviews</a>
+						<a class="btn btn-green" href="{{route('all.reviews')}}" role="button">Browse All Reviews</a>
 					</div>
 				</div>
 			</section>

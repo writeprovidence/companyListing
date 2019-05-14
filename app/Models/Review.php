@@ -9,11 +9,11 @@ class Review extends Model
     protected $fillable = [
         'likes', 'dislikes', 'company_id', 'logged_user_id','full_name',
         'title', 'review_ip', 'verification_ip', 'verification_time',
-        'is_verified', 'review',
+        'is_verified', 'review', 'slug'
     ];
 
      public function company()
     {
-        return $this->belongsTo('App\Models\Review');
+        return $this->belongsTo('App\Models\Company');
     }
 }
