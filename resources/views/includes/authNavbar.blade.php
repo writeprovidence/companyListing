@@ -6,18 +6,14 @@
         <div class="entry-right">
             <ul class="header-links">
 
-                @if(Auth::user()->hasCompany())
-                    <li>
-                        <a href="{{route('edit.company')}}">Update Company</a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{route('add.company')}}">Add New Company</a>
-                    </li>
-                @endif
+                <li>
+                    <a href="{{route('edit.company')}}">Update Company</a>
+                </li>
 
+                <li>
+                    <a href="{{route('dashboard')}}">Dashboard</a>
+                </li>
 
-                <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

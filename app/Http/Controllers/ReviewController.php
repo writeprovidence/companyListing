@@ -21,6 +21,12 @@ class ReviewController extends Controller
 
     public function index()
     {
+        $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(10);
+        return view('review.index', $data);
+    }
+
+    public function myReviews()
+    {
         $data = [];
         // $data['reviews'] = Reviews::orderBy('created_at', 'desc)->paginate(5);
         return view('dashboard.review.index', $data);
