@@ -5,10 +5,11 @@
                 <div class="container">
                     <div class="header-row">
                         <div class="col">
-                            <h1>Easyhost Pakistan</h1>
-                            <span class="site-link"><a href="#">https://www.easyhost.pk <i class="fa fa-sign-out"></i></a></span>
+                            <h1>{{$company->name}}</h1>
+                            <span class="site-link"><a href="{{route('redirect.company', $company->slug)}}">{{$company->website}} <i
+                                        class="fa fa-sign-out"></i></a></span>
                             <div class="btn-holder">
-                                <a class="btn btn-green" href="#">Visit Website</a>
+                                <a class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
                                 <a class="btn btn-green" href="#">Read Reviews</a>
                             </div>
                         </div>
@@ -50,25 +51,45 @@
                 </div>
             </section>
 			<section class="review-form-section">
-                <p class="alert-success">
-                    Your review has been Submitted!<br> In order to publicly list your review, please confirm verification link sent you to your email inbox.
-                </p>
+                @if(session('success'))
+                    <p class="alert-success">
+                        Your review has been Submitted!<br> In order to publicly list your review, please confirm verification link sent you to your full_name inbox.
+                    </p>
+                @endif
 				<div class="container">
-					<form action="#" class="review-form">
-						<h2>Voice your opinion about <mark>HosterPK</mark></h2>
-						<div class="form-row">
-							<label for="title">
-								<span>Title (Minimum 2 words) *</span>
-								<span>0 out of 1200 characters</span>
-                            </label>
-                            <p class="alert-danger">The title field is required.</p>
-							<input id="title" type="text">
-						</div>
-						<div class="form-row">
-                            <label for="summary">Summary *</label>
-                            <p class="alert-danger">The title field is required.</p>
-							<textarea id="summary"></textarea>
-						</div>
+					<form action="{{route('store.review', $company->slug)}}" method="POST" class="review-form">
+                        @csrf
+						<h2>Voice your opinion about <mark>{{$company->name}}</mark></h2>
+
+                        <div class="form-row">
+                            <label for="title">Title:</label>
+                            <input id="title" type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" title="title" name="title"
+                                value="{{ old('title') }}" placeholder="Title *" required>
+
+                            @if ($errors->has('title'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('title') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+
+                        <div class="form-row">
+                            <label for="review">Summary:</label>
+                            <textarea id="review" name="review"> {{ old('review')}}</textarea>
+                        </div>
+
+                       <div class="form-row">
+                            <label for="full_name">Full Name:</label>
+                                <input id="full_name" type="text" class="form-control {{ $errors->has('full_name') ? ' is-invalid' : '' }}" name="full_name"
+                                    value="{{ old('full_name') }}" placeholder="Full Name *" required>
+
+                            @if ($errors->has('full_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('full_name') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+
 						<div class="form-row">
 							<div>
                                 <span class="label">Your Scores (click on the stars) *</span>
@@ -78,75 +99,75 @@
 									<div class="rate-row">
 										<span class="rate-label">Reliability</span>
 										<fieldset class="rate">
-											<input id="reliability-star5" type="radio" name="rate1" value="5" />
+											<input id="reliability-star5" type="radio" title="rate1" value="5" />
 											<label for="reliability-star5" title="Excellent">5</label>
-											<input id="reliability-star4" type="radio" name="rate1" value="4" />
+											<input id="reliability-star4" type="radio" title="rate1" value="4" />
 											<label for="reliability-star4" title="Good">4</label>
-											<input id="reliability-star3" type="radio" name="rate1" value="3" />
+											<input id="reliability-star3" type="radio" title="rate1" value="3" />
 											<label for="reliability-star3" title="Satisfactory">3</label>
-											<input id="reliability-star2" type="radio" name="rate1" value="2" />
+											<input id="reliability-star2" type="radio" title="rate1" value="2" />
 											<label for="reliability-star2" title="Bad">2</label>
-											<input id="reliability-star1" type="radio" name="rate1" value="1" />
+											<input id="reliability-star1" type="radio" title="rate1" value="1" />
 											<label for="reliability-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">Pricing</span>
 										<fieldset class="rate">
-											<input id="pricing-star5" type="radio" name="rate2" value="5" />
+											<input id="pricing-star5" type="radio" title="rate2" value="5" />
 											<label for="pricing-star5" title="Excellent">5</label>
-											<input id="pricing-star4" type="radio" name="rate2" value="4" />
+											<input id="pricing-star4" type="radio" title="rate2" value="4" />
 											<label for="pricing-star4" title="Good">4</label>
-											<input id="pricing-star3" type="radio" name="rate2" value="3" />
+											<input id="pricing-star3" type="radio" title="rate2" value="3" />
 											<label for="pricing-star3" title="Satisfactory">3</label>
-											<input id="pricing-star2" type="radio" name="rate2" value="2" />
+											<input id="pricing-star2" type="radio" title="rate2" value="2" />
 											<label for="pricing-star2" title="Bad">2</label>
-											<input id="pricing-star1" type="radio" name="rate2" value="1" />
+											<input id="pricing-star1" type="radio" title="rate2" value="1" />
 											<label for="pricing-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">User Friendly</span>
 										<fieldset class="rate">
-											<input id="user-friendly-star5" type="radio" name="rate3" value="5" />
+											<input id="user-friendly-star5" type="radio" title="rate3" value="5" />
 											<label for="user-friendly-star5" title="Excellent">5</label>
-											<input id="user-friendly-star4" type="radio" name="rate3" value="4" />
+											<input id="user-friendly-star4" type="radio" title="rate3" value="4" />
 											<label for="user-friendly-star4" title="Good">4</label>
-											<input id="user-friendly-star3" type="radio" name="rate3" value="3" />
+											<input id="user-friendly-star3" type="radio" title="rate3" value="3" />
 											<label for="user-friendly-star3" title="Satisfactory">3</label>
-											<input id="user-friendly-star2" type="radio" name="rate3" value="2" />
+											<input id="user-friendly-star2" type="radio" title="rate3" value="2" />
 											<label for="user-friendly-star2" title="Bad">2</label>
-											<input id="user-friendly-star1" type="radio" name="rate3" value="1" />
+											<input id="user-friendly-star1" type="radio" title="rate3" value="1" />
 											<label for="user-friendly-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">Support</span>
 										<fieldset class="rate">
-											<input id="support-star5" type="radio" name="rate4" value="5" />
+											<input id="support-star5" type="radio" title="rate4" value="5" />
 											<label for="support-star5" title="Excellent">5</label>
-											<input id="support-star4" type="radio" name="rate4" value="4" />
+											<input id="support-star4" type="radio" title="rate4" value="4" />
 											<label for="support-star4" title="Good">4</label>
-											<input id="support-star3" type="radio" name="rate4" value="3" />
+											<input id="support-star3" type="radio" title="rate4" value="3" />
 											<label for="support-star3" title="Satisfactory">3</label>
-											<input id="support-star2" type="radio" name="rate4" value="2" />
+											<input id="support-star2" type="radio" title="rate4" value="2" />
 											<label for="support-star2" title="Bad">2</label>
-											<input id="support-star1" type="radio" name="rate4" value="1" />
+											<input id="support-star1" type="radio" title="rate4" value="1" />
 											<label for="support-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">Features</span>
 										<fieldset class="rate">
-											<input id="features-star5" type="radio" name="rate5" value="5" />
+											<input id="features-star5" type="radio" title="rate5" value="5" />
 											<label for="features-star5" title="Excellent">5</label>
-											<input id="features-star4" type="radio" name="rate5" value="4" />
+											<input id="features-star4" type="radio" title="rate5" value="4" />
 											<label for="features-star4" title="Good">4</label>
-											<input id="features-star3" type="radio" name="rate5" value="3" />
+											<input id="features-star3" type="radio" title="rate5" value="3" />
 											<label for="features-star3" title="Satisfactory">3</label>
-											<input id="features-star2" type="radio" name="rate5" value="2" />
+											<input id="features-star2" type="radio" title="rate5" value="2" />
 											<label for="features-star2" title="Bad">2</label>
-											<input id="features-star1" type="radio" name="rate5" value="1" />
+											<input id="features-star1" type="radio" title="rate5" value="1" />
 											<label for="features-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
@@ -165,41 +186,14 @@
 						<div class="form-row">
                             <label for="service">Which service did you use with Easehost.pk?</label>
                             <p class="alert-danger">The title field is required.</p>
-							<select id="service">
+							<select id="service" name="service">
 								<option>- Choose service type -</option>
 								<option>option 1</option>
 								<option>option 2</option>
 								<option>option 3</option>
 							</select>
 						</div>
-						<div class="two-col">
-							<div class="col">
-								<div class="form-row">
-                                    <label for="full-name">Full Name</label>
-                                    <p class="alert-danger">The title field is required.</p>
-									<input id="full-name" type="text">
-								</div>
-								<div class="form-row">
-									<label for="socia-profiles">Link to ONE of your socia profiles (optional)
-										<a class="tooltip-link has-tooltip" title="lorem ipsum dolar" href="#"><i class="fa fa-question-circle"></i></a>
-                                    </label>
-                                    <p class="alert-danger">The title field is required.</p>
-									<input id="socia-profiles" type="text">
-								</div>
-								<div class="form-row">
-                                    <label for="site">The site I host with Easyhost.pk (Optional)</label>
-                                    <p class="alert-danger">The title field is required.</p>
-									<input id="site" type="text">
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-row">
-                                    <label for="previous-hosting">Previous Hosting (Optional)</label>
-                                    <p class="alert-danger">The title field is required.</p>
-									<input id="previous-hosting" type="text">
-								</div>
-							</div>
-						</div>
+
 						<div class="submit-wrap">
 							<button class="btn" type="submit">Submit Review</button>
 						</div>

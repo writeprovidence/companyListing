@@ -40,7 +40,7 @@
                             <div class="form-row">
                                 <label for="address">Address:</label>
                                 <input id="address" type="text" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address"
-                                    value="{{ old('address') }}" placeholder="Address *">
+                                    value="{{ Auth::user()->address }}" placeholder="Address *">
 
                                 @if ($errors->has('address'))
                                 <span class="invalid-feedback" role="alert">

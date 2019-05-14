@@ -90,12 +90,12 @@
                                 </div>
                             </li>
                             <li>
-                                <span class="heading">Reviewss</span>
-                                <span class="value">10</span>
+                                <span class="heading">Reviews</span>
+                                <span class="value">{{Auth::user()->company->reviews()->count()}}</span>
                             </li>
                             <li>
                                 <span class="heading">Location</span>
-                                <span class="value">Pakistan</span>
+                                <span class="value">{{Auth::user()->company->country}}</span>
                             </li>
                             <li>
                                 <span class="heading">Traffic Rank</span>

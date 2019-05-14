@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 use App\Models\Company;
-class ApprovedCompanyMiddleware
+
+class CheckReviewerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +19,8 @@ class ApprovedCompanyMiddleware
     {
         $company = Company::whereSlug($request->route('companySlug'))->first();
 
-        if(! $company->companyApproved()){
+        if( Auth::id() && Auth::id() == $company->user_id){
+            $request->session()->flash('error', 'A company holder cannot post review for his own company');
             return redirect()->back();
         }
 

@@ -34,10 +34,10 @@ $(document).ready(function () {
             type: 'GET',
             url: api_endpoint,
             success: function (data) {
-               console.log(data);
+                //Do nothing
             },
             error: function (data) {
-                console.log(data);
+                //Do nothing
             }
         });
     }

@@ -23,7 +23,6 @@ class UserController extends Controller
             'title' => 'required | string',
             'name' => 'required |string',
         ];
-
         $this->validate($request, $rules);
         if(! Auth::user()->update($request->except('_token'))){
             $request->session()->flash('error', 'Cannot update profile at the moment!');
