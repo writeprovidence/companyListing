@@ -41,8 +41,126 @@ class AdminController extends Controller
 
     public function users()
     {
-        $data['users'] = User::paginate(25);
+        $data['users'] = User::orderBy('created_at', 'desc')->paginate(25);
 
         return view('dashboard.admin.users', $data);
     }
+
+    public function companies()
+    {
+        $data['companies'] = Company::orderBy('created_at', 'desc')->paginate(25);
+
+        return view('dashboard.admin.companies', $data);
+    }
+
+    public function approveCompany(Request $request, $companySlug)
+    {
+        $company = Company::whereSlug($companySlug)->first();
+        $company->update([
+            'is_public' => 1
+        ]);
+
+        $request->session()->flash('success', 'Company Approved');
+        return back();
+    }
+
+    public function rejectCompany(Request $request, $companySlug)
+    {
+        $company = Company::whereSlug($companySlug)->first();
+        $company->update([
+            'is_public' => 0
+        ]);
+
+        $request->session()->flash('success', 'Company Rejected');
+        return back();
+    }
+
+    public function editCompany($companySlug)
+    {
+        $data['company'] = Company::whereSlug($companySlug)->first();
+
+        return view('dashboard.admin.editCompany',$data);
+    }
+
+    public function updateCompany(Request $request, $companySlug)
+    {
+          $rules = [
+            'email' => 'required | email',
+            'phone' => 'required | numeric',
+            'city' => 'string',
+            'state' => 'string',
+            'zip' => 'numeric',
+            'description' => 'required | string | max:500'
+        ];
+
+        $this->validate($request, $rules);
+
+        $company = Company::whereSlug($companySlug)->first();
+
+        if(! $company->update($request->except('_token'))){
+            $request->session()->flash('error', 'Cannot update company at the moment!');
+            return redirect()->back();
+        }
+
+        $message = 'Company profile updated.';
+
+        $request->session()->flash('success', $message);
+        return redirect()->route('admin.companies');
+    }
+
+    public function reviews()
+    {
+        $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(25);
+
+        return view('dashboard.admin.reviews', $data);
+    }
+
+    public function approveReview(Request $request, $reviewSlug)
+    {
+        $review = Review::whereSlug($reviewSlug)->first();
+        $review->update([
+            'is_verified' => 1
+        ]);
+
+        $request->session()->flash('success', 'Review Approved');
+        return back();
+    }
+
+    public function rejectReview(Request $request, $reviewSlug)
+    {
+        $review = Review::whereSlug($reviewSlug)->first();
+        $review->update([
+            'is_verified' => 0
+        ]);
+
+        $request->session()->flash('success', 'Review Rejected');
+        return back();
+    }
+
+    public function editReview($reviewSlug)
+    {
+        $data['review'] = Review::whereSlug($reviewSlug)->first();
+        $data['company'] =  $data['review']->company;
+        return view('dashboard.admin.editReview',$data);
+    }
+
+    public function updateReview(Request $request, $reviewSlug)
+     {
+        $review = Review::whereSlug($reviewSlug)->first();
+
+        $rules = [
+            "title" => 'required | string | max:150',
+            "review" => 'required | string | max:1000',
+            "full_name" => 'required | string',
+        ];
+        $this->validate($request, $rules);
+
+        $data = $request->except(['_token']);
+
+        $review->update($data);
+
+        $request->session()->flash('success', 'successful');
+        return redirect()->back();
+    }
+
 }

@@ -1,0 +1,204 @@
+@extends('layouts.app')
+@section('content')
+		<main id="main">
+            <section class="hero-section" style="background-image: url('images/bg2.jpg');">
+                <div class="container">
+                    <div class="header-row">
+                        <div class="col">
+                            <h1>{{$company->name}}</h1>
+                            <span class="site-link"><a href="{{route('redirect.company', $company->slug)}}">{{$company->website}} <i
+                                        class="fa fa-sign-out"></i></a></span>
+                            <div class="btn-holder">
+                                <a class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
+                                <a class="btn btn-green" href="{{route('reviews.company',$company->slug)}}">Read Reviews</a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="company-rating-card">
+                                <header>
+                                    <h3>Company Rating</h3>
+                                </header>
+                                <div class="entry-body">
+                                    <span class="score-title">Overall Score:</span>
+                                    <div class="rating-block">
+                                        <div class="raiting-wrap">
+                                            <svg class="star-full" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <clipPath id="r1">
+                                                    <path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="black"/>
+                                                    <path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="black"/>
+                                                    <path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="black"/>
+                                                    <path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="black"/>
+                                                    <path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="black"/>
+                                                </clipPath>
+                                                <g clip-path="url('#r1')">
+                                                    <rect fill="#fbaf40" class="r1" x="0" y="0" width="92%" height="100%"/>
+                                                </g>
+                                            </svg>
+                                            <svg class="star-empty" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M512 198.525L335.11 172.821L256 12.53L176.892 172.821L0 198.525L128 323.294L97.784 499.47L256 416.291L414.216 499.47L383.999 323.294L512 198.525V198.525Z" fill="#fff"/>
+                                                <path d="M1024 198.995L847.11 173.291L768 13L688.892 173.291L512 198.995L640 323.764L609.784 499.94L768 416.761L926.216 499.94L895.999 323.764L1024 198.995V198.995Z" fill="#fff"/>
+                                                <path d="M1536 198.995L1359.11 173.291L1280 13L1200.89 173.291L1024 198.995L1152 323.764L1121.78 499.94L1280 416.761L1438.22 499.94L1408 323.764L1536 198.995V198.995Z" fill="#fff"/>
+                                                <path d="M2048 198.995L1871.11 173.291L1792 13L1712.89 173.291L1536 198.995L1664 323.764L1633.78 499.94L1792 416.761L1950.22 499.94L1920 323.764L2048 198.995V198.995Z" fill="#fff"/>
+                                                <path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="#fff"/>
+                                            </svg>
+                                        </div>
+                                        <span class="value">9.2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+			<section class="review-form-section">
+                @if(session('success'))
+                    <p class="alert-success">
+                        Your review has been Updated
+                    </p>
+                @endif
+				<div class="container">
+					<form action="{{route('admin.updatereview', $review->slug)}}" method="POST" class="review-form">
+                        @csrf
+						<h2>Voice your opinion about <mark>{{$company->name}}</mark></h2>
+
+                        <div class="form-row">
+                            <label for="title">Title:</label>
+                            <input id="title" type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" title="title" name="title"
+                                value="{{ $review->title}}" placeholder="Title *" required>
+
+                            @if ($errors->has('title'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('title') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+
+                        <div class="form-row">
+                            <label for="review">Summary:</label>
+                            <textarea id="review" name="review"> {{ $review->review }}</textarea>
+                        </div>
+
+                       <div class="form-row">
+                            <label for="full_name">Full Name:</label>
+                                <input id="full_name" type="text" class="form-control {{ $errors->has('full_name') ? ' is-invalid' : '' }}" name="full_name"
+                                    value="{{ $review->full_name }}" placeholder="Full Name *" required>
+
+                            @if ($errors->has('full_name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('full_name') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+
+						<div class="form-row">
+							<div>
+                                <span class="label">Your Scores (click on the stars) *</span>
+							</div>
+							<div class="rate-box">
+								<div class="left-col">
+									<div class="rate-row">
+										<span class="rate-label">Reliability</span>
+										<fieldset class="rate">
+											<input id="reliability-star5" type="radio" title="rate1" value="5" />
+											<label for="reliability-star5" title="Excellent">5</label>
+											<input id="reliability-star4" type="radio" title="rate1" value="4" />
+											<label for="reliability-star4" title="Good">4</label>
+											<input id="reliability-star3" type="radio" title="rate1" value="3" />
+											<label for="reliability-star3" title="Satisfactory">3</label>
+											<input id="reliability-star2" type="radio" title="rate1" value="2" />
+											<label for="reliability-star2" title="Bad">2</label>
+											<input id="reliability-star1" type="radio" title="rate1" value="1" />
+											<label for="reliability-star1" title="Very bad">1</label>
+										</fieldset>
+									</div>
+									<div class="rate-row">
+										<span class="rate-label">Pricing</span>
+										<fieldset class="rate">
+											<input id="pricing-star5" type="radio" title="rate2" value="5" />
+											<label for="pricing-star5" title="Excellent">5</label>
+											<input id="pricing-star4" type="radio" title="rate2" value="4" />
+											<label for="pricing-star4" title="Good">4</label>
+											<input id="pricing-star3" type="radio" title="rate2" value="3" />
+											<label for="pricing-star3" title="Satisfactory">3</label>
+											<input id="pricing-star2" type="radio" title="rate2" value="2" />
+											<label for="pricing-star2" title="Bad">2</label>
+											<input id="pricing-star1" type="radio" title="rate2" value="1" />
+											<label for="pricing-star1" title="Very bad">1</label>
+										</fieldset>
+									</div>
+									<div class="rate-row">
+										<span class="rate-label">User Friendly</span>
+										<fieldset class="rate">
+											<input id="user-friendly-star5" type="radio" title="rate3" value="5" />
+											<label for="user-friendly-star5" title="Excellent">5</label>
+											<input id="user-friendly-star4" type="radio" title="rate3" value="4" />
+											<label for="user-friendly-star4" title="Good">4</label>
+											<input id="user-friendly-star3" type="radio" title="rate3" value="3" />
+											<label for="user-friendly-star3" title="Satisfactory">3</label>
+											<input id="user-friendly-star2" type="radio" title="rate3" value="2" />
+											<label for="user-friendly-star2" title="Bad">2</label>
+											<input id="user-friendly-star1" type="radio" title="rate3" value="1" />
+											<label for="user-friendly-star1" title="Very bad">1</label>
+										</fieldset>
+									</div>
+									<div class="rate-row">
+										<span class="rate-label">Support</span>
+										<fieldset class="rate">
+											<input id="support-star5" type="radio" title="rate4" value="5" />
+											<label for="support-star5" title="Excellent">5</label>
+											<input id="support-star4" type="radio" title="rate4" value="4" />
+											<label for="support-star4" title="Good">4</label>
+											<input id="support-star3" type="radio" title="rate4" value="3" />
+											<label for="support-star3" title="Satisfactory">3</label>
+											<input id="support-star2" type="radio" title="rate4" value="2" />
+											<label for="support-star2" title="Bad">2</label>
+											<input id="support-star1" type="radio" title="rate4" value="1" />
+											<label for="support-star1" title="Very bad">1</label>
+										</fieldset>
+									</div>
+									<div class="rate-row">
+										<span class="rate-label">Features</span>
+										<fieldset class="rate">
+											<input id="features-star5" type="radio" title="rate5" value="5" />
+											<label for="features-star5" title="Excellent">5</label>
+											<input id="features-star4" type="radio" title="rate5" value="4" />
+											<label for="features-star4" title="Good">4</label>
+											<input id="features-star3" type="radio" title="rate5" value="3" />
+											<label for="features-star3" title="Satisfactory">3</label>
+											<input id="features-star2" type="radio" title="rate5" value="2" />
+											<label for="features-star2" title="Bad">2</label>
+											<input id="features-star1" type="radio" title="rate5" value="1" />
+											<label for="features-star1" title="Very bad">1</label>
+										</fieldset>
+									</div>
+								</div>
+								<div class="right-col">
+									<div class="average-rate-block">
+										<span class="title">Your Overall scrore</span>
+										<span class="value">
+											<span class="average">9.2</span>
+											<span>/10</span>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+                            <label for="service">Which service did you use with Easehost.pk?</label>
+                            <p class="alert-danger">The title field is required.</p>
+							<select id="service" name="service">
+								<option>- Choose service type -</option>
+								<option>option 1</option>
+								<option>option 2</option>
+								<option>option 3</option>
+							</select>
+						</div>
+
+						<div class="submit-wrap">
+							<button class="btn" type="submit">Submit Review</button>
+						</div>
+					</form>
+				</div>
+			</section>
+		</main>
+@endsection

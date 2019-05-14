@@ -12,8 +12,12 @@ class Review extends Model
         'is_verified', 'review', 'slug'
     ];
 
-     public function company()
+    public function company()
     {
         return $this->belongsTo('App\Models\Company');
+    }
+      public function isVerified()
+    {
+        return $this->is_verified ? true : false;
     }
 }

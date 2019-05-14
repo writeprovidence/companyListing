@@ -56,8 +56,22 @@ Route::get('search', 'SearchController@search')->name('search');
 Route::post('newsletter/subscribe', 'MailSubscriptionController@subscribe')->name('subscribe.newsletter');
 
 // Admin Routes
-
 Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
 Route::get('admin/dashboard/resetpassword', 'AdminController@showResetForm')->name('admin.password.reset');
 Route::post('admin/dashboard/resetpassword', 'AdminController@resetPassword')->name('admin.resetpassword');
 Route::get('admin/dashboard/users', 'AdminController@users')->name('admin.users');
+// Admin Company routes
+Route::get('admin/dashboard/companies', 'AdminController@companies')->name('admin.companies');
+Route::get('companies/{companySlug}/approve', 'AdminController@approveCompany')->name('approve.company');
+Route::get('companies/{companySlug}/reject', 'AdminController@rejectCompany')->name('reject.company');
+Route::get('companies/{companySlug}/edit', 'AdminController@editCompany')->name('admin.editcompany');
+Route::post('companies/{companySlug}/edit', 'AdminController@updateCompany')->name('admin.updatecompany');
+// Admin review routes
+Route::get('admin/dashboard/reviews', 'AdminController@reviews')->name('admin.reviews');
+Route::get('reviews/{reviewSlug}/approve', 'AdminController@approveReview')->name('approve.review');
+Route::get('reviews/{reviewSlug}/reject', 'AdminController@rejectReview')->name('reject.review');
+Route::get('reviews/{reviewSlug}/edit', 'AdminController@editReview')->name('admin.editreview');
+Route::post('reviews/{reviewSlug}/edit', 'AdminController@updateReview')->name('admin.updatereview');
+
+// Logs route
+Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admin.loginlogs');
