@@ -51,7 +51,6 @@ Route::get('dashboard/review/{companySlug}/downvote', 'ReviewController@downvote
 
 // Search
 Route::get('search', 'SearchController@search')->name('search');
-// Route::get('search', 'SearchController@orderSearchBy')->name('order.search');
 
 //News Letter Subscription
 Route::post('newsletter/subscribe', 'MailSubscriptionController@subscribe')->name('subscribe.newsletter');
@@ -76,6 +75,8 @@ Route::post('reviews/{reviewSlug}/edit', 'AdminController@updateReview')->name('
 
 // Logs route
 Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admin.loginlogs');
-Route::get('logs',function(){
-    return \App\Models\Company::first()->rating;
-});
+
+// Country Routes
+
+Route::get('companies/country/{country}', 'CompanyController@country')->name('contry.company');
+Route::post('companies/country/{country}', 'CompanyController@orderCountryBy')->name('order.country');

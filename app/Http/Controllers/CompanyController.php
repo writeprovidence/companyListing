@@ -170,4 +170,20 @@ class CompanyController extends Controller
         list($column, $orderValue) = explode(', ', $this->request->order);
        return $this->ranking($column, $orderValue, $this->request->country);
     }
+
+    public function country($country, $column = 'created_at', $value = 'desc')
+    {
+        $data['companies'] = Company::whereIsPublic(1)->orderBy($column, $value)->paginate(25);
+        if($data['companies']->count() == 0){
+            $this->request->session()->flash('info', 'No companies yet!');
+            return redirect()->back();
+        }
+        return view('countries', $data);
+    }
+
+    public function orderCountryBy($country)
+    {
+       list($column, $orderValue) = explode(', ', $this->request->order);
+       return $this->country($country, $column, $orderValue);
+    }
 }
