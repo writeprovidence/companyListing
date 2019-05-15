@@ -49,10 +49,11 @@ class AlexaRankUpdate extends Command
 
             $alexa = AlexaLog::whereCompanyId($company->id)->first();
 
-            if($alexa->count() == 1){
-                $alexa->updata($data);
+            if($alexa != null){
+                $alexa->update($data);
             }else{
-                Alexa::create($data);
+                $data['company_id'] = $company->id;
+                AlexaLog::create($data);
             }
         }
 
@@ -74,8 +75,8 @@ class AlexaRankUpdate extends Command
         }
 
         $data['alexa_global_rank'] = $this->resp['REACH']["@attributes"]['RANK'];
-        $data['alexa_top_country_id'] = $this->resp['COUNTRY']["@attributes"]['RANK'];
-        $data['alexa_country_rank'] = $this->resp['COUNTRY']["@attributes"]['CODE'];
+        $data['alexa_top_country_id'] = $this->resp['COUNTRY']["@attributes"]['CODE'];
+        $data['alexa_country_rank'] = $this->resp['COUNTRY']["@attributes"]['RANK'];
 
         return $data;
     }
