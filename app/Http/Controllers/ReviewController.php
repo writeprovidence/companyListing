@@ -31,9 +31,7 @@ class ReviewController extends Controller
 
     public function myReviews(Request $request)
     {
-        // Auth::user()->company
-        $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(5);
-
+        $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(1);
         if($data['reviews']->count() == 0){
             $request->session()->flash('info', 'No reviews!');
             return redirect()->back();
@@ -81,12 +79,11 @@ class ReviewController extends Controller
             $request->session()->flash('error', 'unsuccessful');
             return redirect('/');//->back();
         }
-
-        $this->sendReviewVerificationEmail($review->id);
-
         $review->update([
             'slug' => 'review-'.$review->id
         ]);
+
+        $this->sendReviewVerificationEmail($review->id);
 
         $request->session()->flash('success', 'successful');
         return redirect()->back();
@@ -134,5 +131,25 @@ class ReviewController extends Controller
             return redirect()->back();
         }
         return view('review.index', $data);
+    }
+
+    public function storeResponse(Request $request, $reviewSlug)
+    {
+        if(empty($request->review_response)){
+            $request->session()->flash('error', 'Response cannot be empty');
+            return back();
+        }
+
+        $review = Review::whereSlug($reviewSlug)->first();
+
+        $review->update([
+            'response' => $request->review_response,
+            'response_user_id' => Auth::id(),
+            'response_timestamp' => Carbon::now(),
+            'response_ip' => request()->ip(),
+        ]);
+
+        $request->session()->flash('success', 'Response posted sucessfully');
+        return back();
     }
 }

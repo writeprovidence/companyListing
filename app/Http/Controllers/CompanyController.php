@@ -34,10 +34,10 @@ class CompanyController extends Controller
 
     public function show(Request $request)
     {
-        if(Auth::user()->hasCompany()){
-            $request->session()->flash('error', 'Can only add one company');
-            return redirect()->route('home');
-        }
+        // if(Auth::user()->hasCompany()){
+        //     $request->session()->flash('error', 'Can only add one company');
+        //     return redirect()->route('home');
+        // }
 
         return view('dashboard.company.add');
     }
@@ -60,10 +60,14 @@ class CompanyController extends Controller
 
         $this->validate($request, $rules);
 
-        if(! Company::create($this->buildUpData($request))){
+        if(! $company = Company::create($this->buildUpData($request))){
             $request->session()->flash('error', 'Cannot create company at the moment!');
             return redirect()->back()->withInput();
         }
+
+        AlexaLog::create([
+            'company_id' => $company->id
+        ]);
 
         $message = 'Your company information has been saved and will require admin approval before this is made available to public';
 
@@ -118,7 +122,7 @@ class CompanyController extends Controller
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
         $data['company']->increment('page_views');
-        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(1);
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(6);
 
         return view('dashboard.company.show', $data);
     }

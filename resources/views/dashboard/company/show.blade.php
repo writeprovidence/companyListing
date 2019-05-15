@@ -29,7 +29,7 @@
                                                     <time datetime="2019-12-04">{{$review->created_at->diffForHUmans()}}</time>
                                                 </div>
                                                 <div class="text">
-                                                    <h3><a>{{$review->title}}</a></h3>
+                                                    <h3><a href="{{route('show.review', [$review->company->slug, $review->slug])}}">{{$review->title}}</a></h3>
                                                     <p>
                                                         {{$review->review}}
                                                     </p>
@@ -174,7 +174,7 @@
                         {{$company->description}}
                     </p>
                     <div>
-                        <a class="btn btn-green" href="{{$company->website}}">Visit Website</a>
+                        <a class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
                     </div>
                 </div>
             </section>

@@ -42,4 +42,10 @@ $(document).ready(function () {
         });
     }
 
+    $('.rewiew-btn.reply-review').click(function(e){
+        e.preventDefault();
+        $('.review-comment.comment-box').css({display:'block'});
+    });
+
+
 });

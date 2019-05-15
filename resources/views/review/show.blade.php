@@ -92,8 +92,10 @@
                                     </ul>
                                 </div>
                                 <div class="entry-response">
-                                    <h6>Easyhost Pakistan's Response</h6>
-                                    <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market.</p>
+                                    <h6>Response</h6>
+                                    <p>
+                                        {{$review->response}}
+                                    </p>
                                 </div>
                                 <div class="entry-footer">
                                     <div class="share-popup popup-holder">

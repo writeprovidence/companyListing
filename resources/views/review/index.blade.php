@@ -93,7 +93,7 @@
                                                 <time datetime="2019-12-04">{{$review->created_at->diffForHumans()}}</time>
                                             </div>
                                             <div class="text">
-                                                <h3><a>{{$review->title}}</a></h3>
+                                                <h3><a href="{{route('show.review', [$review->company->slug, $review->slug])}}">{{$review->title}}</a></h3>
                                                 <p>
                                                     {{$review->review}}
                                                 </p>
@@ -155,7 +155,7 @@
                                             <div>
                                                 <span class="label">Company</span>
                                                 <strong>
-                                                    <a href="{{route('profile.company', $review->company->slug)}}">{{$review->company->name}}</a> 
+                                                    <a href="{{route('profile.company', $review->company->slug)}}">{{$review->company->name}}</a>
                                                     <a href="{{route('profile.company', $review->company->slug)}}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                                 </strong>
                                             </div>
@@ -174,7 +174,9 @@
                                         </div>
                                         <div class="entry-response">
                                             <h6>Response</h6>
-                                            <p>We have collected the information from different Web Hosting companies to provide you information about the best detals available in the market.</p>
+                                            <p>
+                                                {{$review->response}}
+                                            </p>
                                         </div>
                                         <div class="entry-footer">
                                             <div class="share-popup popup-holder">

@@ -165,7 +165,7 @@
                                         </li>
                                         <li>
                                             <span class="heading">Traffic Rank</span>
-                                            <span class="value">2,000,000</span>
+                                            <span class="value">{{$company->alexa_global_rank}}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -184,7 +184,7 @@
                             </div>
                         </li>
                     @endforeach
-                  
+
                 </ul>
                 <nav class="pagination-block">
                     {{$companies->links('pagination.default')}}
