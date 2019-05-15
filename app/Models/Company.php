@@ -10,7 +10,8 @@ class Company extends Model
         'user_id', 'name', 'email', 'phone','website',
         'link_to_go', 'country', 'zip', 'description',
         'is_public', 'address_line1', 'address_line2',
-        'state', 'city', 'slug', 'clicks_sent', 'page_views'
+        'state', 'city', 'slug', 'clicks_sent', 'page_views',
+        'alexa_global_rank', 'alexa_top_country_id', 'alexa_country_rank'
     ];
 
     public function user()

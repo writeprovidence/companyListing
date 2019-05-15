@@ -253,7 +253,7 @@
                         </li>
                         <li>
                             <strong>Traffic Rank</strong>
-                            <span class="value">213,910 <span class="badge plus">+2,999</span></span>
+                            <span class="value">213,910 <span class="badge plus">{{$company->alexa_global_rank}}</span></span>
                         </li>
                     </ul>
                 </div>

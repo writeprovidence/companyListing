@@ -19,16 +19,25 @@ class ReviewController extends Controller
         // $this->middleware('checkReview', ['only' => ['addReview']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(10);
+        if($data['reviews']->count() == 0){
+            $request->session()->flash('info', 'No reviews!');
+            return redirect()->back();
+        }
         return view('review.index', $data);
     }
 
-    public function myReviews()
+    public function myReviews(Request $request)
     {
-        $data = [];
-        // $data['reviews'] = Reviews::orderBy('created_at', 'desc)->paginate(5);
+        // Auth::user()->company
+        $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(5);
+
+        if($data['reviews']->count() == 0){
+            $request->session()->flash('info', 'No reviews!');
+            return redirect()->back();
+        }
         return view('dashboard.review.index', $data);
     }
 
@@ -115,10 +124,15 @@ class ReviewController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function filterReview($companySlug)
+    public function filterReview(Request $request, $companySlug)
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
-        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(1);
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(5);
+
+        if($data['reviews']->count() == 0){
+            $request->session()->flash('info', 'No reviews for company');
+            return redirect()->back();
+        }
         return view('review.index', $data);
     }
 }

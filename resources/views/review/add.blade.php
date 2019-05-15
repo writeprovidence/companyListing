@@ -183,7 +183,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-row">
+						{{-- <div class="form-row">
                             <label for="service">Which service did you use with Easehost.pk?</label>
                             <p class="alert-danger">The title field is required.</p>
 							<select id="service" name="service">
@@ -192,7 +192,7 @@
 								<option>option 2</option>
 								<option>option 3</option>
 							</select>
-						</div>
+						</div> --}}
 
 						<div class="submit-wrap">
 							<button class="btn" type="submit">Submit Review</button>

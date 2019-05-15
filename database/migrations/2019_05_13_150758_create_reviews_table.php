@@ -33,8 +33,13 @@ class CreateReviewsTable extends Migration
             $table->integer('is_verified')->default(0);
             $table->integer('likes')->default(0);
             $table->integer('dislikes')->default(0);
+            $table->text('response')->nullable();
+            $table->integer('response_user_id')->nullable();
+            $table->timestamp('response_timestamp')->nullable();
+            $table->string('response_ip')->nullable();
             $table->timestamps();
         });
+
 
     }
 

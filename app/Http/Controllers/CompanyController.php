@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Company;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -15,9 +16,13 @@ class CompanyController extends Controller
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data['companies'] = Company::orderBy('created_at', 'desc')->paginate(25);
+        $data['companies'] = Company::whereIsPublic(1)->orderBy('created_at', 'desc')->paginate(25);
+        if($data['companies']->count() == 0){
+            $request->session()->flash('info', 'No companies yet!');
+            return redirect()->back();
+        }
         return view('companies', $data);
     }
 
@@ -27,8 +32,13 @@ class CompanyController extends Controller
         return view('ranking', $data);
     }
 
-    public function show()
+    public function show(Request $request)
     {
+        if(Auth::user()->hasCompany()){
+            $request->session()->flash('error', 'Can only add one company');
+            return redirect()->route('home');
+        }
+
         return view('dashboard.company.add');
     }
 
@@ -64,6 +74,7 @@ class CompanyController extends Controller
     protected function buildUpData($requestObject){
         $data = $requestObject->except('_token');
         $data['user_id'] = Auth::id();
+        $data['description'] = strip_tags($data['description']);
         $data['link_to_go'] = $requestObject->website;
         $data['slug'] = str_slug($requestObject->name) . '.com';
         return $data;
@@ -107,6 +118,7 @@ class CompanyController extends Controller
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
         $data['company']->increment('page_views');
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(1);
 
         return view('dashboard.company.show', $data);
     }
