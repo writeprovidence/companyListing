@@ -122,13 +122,18 @@ class CompanyController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function companyProfile($companySlug)
+    public function companyProfile($companySlug, $orderValue = 'desc')
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
         $data['company']->increment('page_views');
-        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(6);
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->orderBy('created_at', $orderValue)->paginate(6);
 
         return view('dashboard.company.show', $data);
+    }
+
+    public function ordercompanyProfileBy($companySlug)
+    {
+        return $this->companyProfile($companySlug, $this->request->order);
     }
 
     public function redirectToWebsite($companySlug)

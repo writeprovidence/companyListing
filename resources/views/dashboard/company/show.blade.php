@@ -10,10 +10,17 @@
 						<div class="col">
 							<div class="filter-block">
 								<h3>{{$company->name}}'s Customer Reviews</h3>
-								<select class="filter-select">
-									<option>Newest First</option>
-									<option>Olders First</option>
-								</select>
+								<form id="order-result" action="{{route('order.profile.company', $company->slug)}}" method="POST">
+                                    @csrf
+                                    <div class="form-row open-close">
+                                        <select class="filter-select" name="order" onchange="event.preventDefault();
+                                                                                        document.getElementById('order-result').submit(); ">
+                                            <option value="desc">Newest First</option>
+                                            <option value="asc">Oldest First</option>
+                                        </select>
+                                    </div>
+
+                                </form>
 							</div>
 							<ul class="review-list">
                                 @foreach($reviews as $review)

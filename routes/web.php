@@ -25,6 +25,7 @@ Route::post('dashboard/company-profile', 'CompanyController@store')->name('store
 Route::get('dashboard/company-profile/edit', 'CompanyController@edit')->name('edit.company');
 Route::post('dashboard/company-profile/edit', 'CompanyController@update')->name('update.company');
 Route::get('company-profile/{companySlug}', 'CompanyController@companyProfile')->name('profile.company');
+Route::post('company-profile/{companySlug}', 'CompanyController@orderCompanyProfileBy')->name('order.profile.company');
 Route::get('dashboard/go/{companySlug}', 'CompanyController@redirectToWebsite')->name('redirect.company');
 Route::get('dashboard/review', 'ReviewController@myReviews')->name('reviews');
 

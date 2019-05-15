@@ -11,7 +11,7 @@
 				<div class="container">
 					<aside class="top-entry-aside">
 
-                        <form id="order-result" action="{{route('filter.reviews.company', $company->slug)}}" method="POST" class="advanced-form">
+                        <form id="order-result" action="{{route('order.reviews')}}" method="POST" class="advanced-form">
                             @csrf
 							<h5 class="aside-title">Advanced Search</h5>
 							<div class="form-row open-close">
@@ -81,7 +81,6 @@
 						</form>
 					</aside>
 					<div class="top-entry-body">
-						<h3 class="top-heading">Customer Reviews for {{$company->name}}</h3>
 						<ul class="review-list commentr-mod">
                             @foreach($reviews as $review)
                                 <li>
