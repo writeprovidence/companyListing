@@ -75,3 +75,6 @@ Route::post('reviews/{reviewSlug}/edit', 'AdminController@updateReview')->name('
 
 // Logs route
 Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admin.loginlogs');
+Route::get('logs',function(){
+    return \App\Models\Company::first()->rating;
+});

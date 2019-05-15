@@ -28,4 +28,12 @@ class Company extends Model
     {
         return $this->hasMany('App\Models\Review');
     }
+
+    public function getRatingAttribute(){
+        $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
+        if(! count($reviewScores)){
+            return 0;
+        }
+        return floor(array_sum($reviewScores) / count($reviewScores));
+    }
 }
