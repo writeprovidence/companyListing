@@ -22,12 +22,12 @@ class CreateReviewsTable extends Migration
             $table->string('title');
             $table->text('review');
             $table->string('review_ip');
-            $table->string('reliability')->nullable(); //remove nullable asap
-            $table->string('pricing')->nullable(); //remove nullable asap
-            $table->string('user_friendly')->nullable(); //remove nullable asap
-            $table->string('support')->nullable(); //remove nullable asap
-            $table->string('features')->nullable(); //remove nullable asap
-            $table->string('services')->nullable();
+            $table->string('reliability')->default(0);
+            $table->string('pricing')->default(0);
+            $table->string('user_friendly')->default(0);
+            $table->string('support')->default(0);
+            $table->string('features')->default(0);
+            $table->string('score')->default(0);
             $table->string('verification_ip')->nullable();
             $table->string('verification_time')->nullable();
             $table->integer('is_verified')->default(0);

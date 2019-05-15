@@ -60,4 +60,23 @@ $(document).ready(function () {
         $('#order-result').submit();
     });
 
+    $('input[type=radio]').click(function(){
+        $('#average').html(calculateCulmulative('input[type=radio]:checked'));
+    });
+
+    function calculateCulmulative(selector){
+        var starsCulmulativeValue = 0;
+        $(selector).each(function () {
+            starsCulmulativeValue += parseInt($(this).val(), 10);
+        });
+        starsCulmulativeValue = (starsCulmulativeValue * 2) / 5;
+        return starsCulmulativeValue;
+    }
+
+    $('#review-form').submit(function(e){
+        var score = $("<input>")
+            .attr("type", "hidden")
+            .attr("name", "score").val(calculateCulmulative('input[type=radio]:checked'));
+        $(this).append(score);
+    });
 });

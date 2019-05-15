@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Company;
+use App\Models\AlexaLog;
 use App\Models\Review;
 use Illuminate\Http\Request;
 

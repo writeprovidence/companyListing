@@ -10,9 +10,9 @@ class Review extends Model
         'likes', 'dislikes', 'company_id', 'logged_user_id','full_name',
         'title', 'review_ip', 'verification_ip', 'verification_time',
         'is_verified', 'review', 'slug', 'response', 'response_user_id',
-        'response_timestamp', 'response_ip'
+        'response_timestamp', 'response_ip', 'reliability', 'pricing',
+        'user_friendly', 'support','features', 'services', 'score'
     ];
-
 
     public function company()
     {

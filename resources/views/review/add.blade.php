@@ -57,7 +57,7 @@
                     </p>
                 @endif
 				<div class="container">
-					<form action="{{route('store.review', $company->slug)}}" method="POST" class="review-form">
+					<form id="review-form" action="{{route('store.review', $company->slug)}}" method="POST" class="review-form">
                         @csrf
 						<h2>Voice your opinion about <mark>{{$company->name}}</mark></h2>
 
@@ -99,75 +99,75 @@
 									<div class="rate-row">
 										<span class="rate-label">Reliability</span>
 										<fieldset class="rate">
-											<input id="reliability-star5" type="radio" title="rate1" value="5" />
+											<input id="reliability-star5" type="radio" title="rate1" name="reliability" value="5" />
 											<label for="reliability-star5" title="Excellent">5</label>
-											<input id="reliability-star4" type="radio" title="rate1" value="4" />
+											<input id="reliability-star4" type="radio" title="rate1" name="reliability" value="4" />
 											<label for="reliability-star4" title="Good">4</label>
-											<input id="reliability-star3" type="radio" title="rate1" value="3" />
+											<input id="reliability-star3" type="radio" title="rate1"name="reliability"  value="3" />
 											<label for="reliability-star3" title="Satisfactory">3</label>
-											<input id="reliability-star2" type="radio" title="rate1" value="2" />
+											<input id="reliability-star2" type="radio" title="rate1" name="reliability" value="2" />
 											<label for="reliability-star2" title="Bad">2</label>
-											<input id="reliability-star1" type="radio" title="rate1" value="1" />
+											<input id="reliability-star1" type="radio" title="rate1" name="reliability" value="1" />
 											<label for="reliability-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">Pricing</span>
 										<fieldset class="rate">
-											<input id="pricing-star5" type="radio" title="rate2" value="5" />
+											<input id="pricing-star5" type="radio" title="rate2" name="pricing" value="5" />
 											<label for="pricing-star5" title="Excellent">5</label>
-											<input id="pricing-star4" type="radio" title="rate2" value="4" />
+											<input id="pricing-star4" type="radio" title="rate2" name="pricing" value="4" />
 											<label for="pricing-star4" title="Good">4</label>
-											<input id="pricing-star3" type="radio" title="rate2" value="3" />
+											<input id="pricing-star3" type="radio" title="rate2" name="pricing" value="3" />
 											<label for="pricing-star3" title="Satisfactory">3</label>
-											<input id="pricing-star2" type="radio" title="rate2" value="2" />
+											<input id="pricing-star2" type="radio" title="rate2" name="pricing" value="2" />
 											<label for="pricing-star2" title="Bad">2</label>
-											<input id="pricing-star1" type="radio" title="rate2" value="1" />
+											<input id="pricing-star1" type="radio" title="rate2" name="pricing" value="1" />
 											<label for="pricing-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">User Friendly</span>
 										<fieldset class="rate">
-											<input id="user-friendly-star5" type="radio" title="rate3" value="5" />
+											<input id="user-friendly-star5" type="radio" title="rate3" name="user_friendly" value="5" />
 											<label for="user-friendly-star5" title="Excellent">5</label>
-											<input id="user-friendly-star4" type="radio" title="rate3" value="4" />
+											<input id="user-friendly-star4" type="radio" title="rate3" name="user_friendly" value="4" />
 											<label for="user-friendly-star4" title="Good">4</label>
-											<input id="user-friendly-star3" type="radio" title="rate3" value="3" />
+											<input id="user-friendly-star3" type="radio" title="rate3" name="user_friendly" value="3" />
 											<label for="user-friendly-star3" title="Satisfactory">3</label>
-											<input id="user-friendly-star2" type="radio" title="rate3" value="2" />
+											<input id="user-friendly-star2" type="radio" title="rate3" name="user_friendly" value="2" />
 											<label for="user-friendly-star2" title="Bad">2</label>
-											<input id="user-friendly-star1" type="radio" title="rate3" value="1" />
+											<input id="user-friendly-star1" type="radio" title="rate3" name="user_friendly" value="1" />
 											<label for="user-friendly-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">Support</span>
 										<fieldset class="rate">
-											<input id="support-star5" type="radio" title="rate4" value="5" />
+											<input id="support-star5" type="radio" title="rate4" name="support" value="5" />
 											<label for="support-star5" title="Excellent">5</label>
-											<input id="support-star4" type="radio" title="rate4" value="4" />
+											<input id="support-star4" type="radio" title="rate4" name="support" value="4" />
 											<label for="support-star4" title="Good">4</label>
-											<input id="support-star3" type="radio" title="rate4" value="3" />
+											<input id="support-star3" type="radio" title="rate4" name="support" value="3" />
 											<label for="support-star3" title="Satisfactory">3</label>
-											<input id="support-star2" type="radio" title="rate4" value="2" />
+											<input id="support-star2" type="radio" title="rate4" name="support" value="2" />
 											<label for="support-star2" title="Bad">2</label>
-											<input id="support-star1" type="radio" title="rate4" value="1" />
+											<input id="support-star1" type="radio" title="rate4" name="support" value="1" />
 											<label for="support-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
 									<div class="rate-row">
 										<span class="rate-label">Features</span>
 										<fieldset class="rate">
-											<input id="features-star5" type="radio" title="rate5" value="5" />
+											<input id="features-star5" type="radio" title="rate5" name="features" value="5" />
 											<label for="features-star5" title="Excellent">5</label>
-											<input id="features-star4" type="radio" title="rate5" value="4" />
+											<input id="features-star4" type="radio" title="rate5" name="features" value="4" />
 											<label for="features-star4" title="Good">4</label>
-											<input id="features-star3" type="radio" title="rate5" value="3" />
+											<input id="features-star3" type="radio" title="rate5" name="features" value="3" />
 											<label for="features-star3" title="Satisfactory">3</label>
-											<input id="features-star2" type="radio" title="rate5" value="2" />
+											<input id="features-star2" type="radio" title="rate5" name="features" value="2" />
 											<label for="features-star2" title="Bad">2</label>
-											<input id="features-star1" type="radio" title="rate5" value="1" />
+											<input id="features-star1" type="radio" title="rate5" name="features" value="1" />
 											<label for="features-star1" title="Very bad">1</label>
 										</fieldset>
 									</div>
@@ -176,24 +176,13 @@
 									<div class="average-rate-block">
 										<span class="title">Your Overall scrore</span>
 										<span class="value">
-											<span class="average">9.2</span>
+											<span id="average" class="average">0</span>
 											<span>/10</span>
 										</span>
 									</div>
 								</div>
 							</div>
 						</div>
-						{{-- <div class="form-row">
-                            <label for="service">Which service did you use with Easehost.pk?</label>
-                            <p class="alert-danger">The title field is required.</p>
-							<select id="service" name="service">
-								<option>- Choose service type -</option>
-								<option>option 1</option>
-								<option>option 2</option>
-								<option>option 3</option>
-							</select>
-						</div> --}}
-
 						<div class="submit-wrap">
 							<button class="btn" type="submit">Submit Review</button>
 						</div>
