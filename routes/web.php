@@ -20,6 +20,7 @@ Route::get('dashboard', 'NavigationController@dashboard')->middleware(['auth','v
 Route::get('companies', 'CompanyController@index')->name('companies');
 Route::post('companies', 'CompanyController@orderBy')->name('order.companies');
 Route::get('rankings', 'CompanyController@ranking')->name('ranking');
+Route::post('rankings', 'CompanyController@orderRankingBy')->name('order.ranking');
 Route::get('dashboard/company-profile', 'CompanyController@show')->name('add.company');
 Route::post('dashboard/company-profile', 'CompanyController@store')->name('store.company');
 Route::get('dashboard/company-profile/edit', 'CompanyController@edit')->name('edit.company');

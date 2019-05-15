@@ -28,9 +28,9 @@ class CompanyController extends Controller
         return view('companies', $data);
     }
 
-    public function ranking()
+    public function ranking($column = 'created_at', $orderValue = 'desc')
     {
-        $data['companies'] = Company::orderBy('created_at', 'desc')->paginate(25);
+        $data['companies'] = Company::orderBy($column, $orderValue)->paginate(25);
         return view('ranking', $data);
     }
 
@@ -147,5 +147,12 @@ class CompanyController extends Controller
     {
        list($column, $orderValue) = explode(', ', $this->request->order);
        return $this->index($column, $orderValue);
+    }
+
+
+    public function orderRankingBy()
+    {
+        list($column, $orderValue) = explode(', ', $this->request->order);
+       return $this->ranking($column, $orderValue);
     }
 }
