@@ -15,12 +15,12 @@
                 <form action="#" class="advanced-form">
                     <h5 class="aside-title">By Country</h5>
                     <div class="form-row open-close">
-                        <select>
-                            <option>Newest Firs</option>
-                            <option>Oldest Firs</option>
-                            <option>Oldest Firs</option>
-                            <option>Highest Rating First</option>
-                            <option>Lowest Rating Firs</option>
+                        <select class="country">
+                            <option value="created_at, desc">Newest First</option>
+                            <option value="created_at, asc">Oldest First</option>
+                            <option value="score, desc">Highest Score</option>
+                            <option value="score, asc">Lowest Score</option>
+                            <option value="alexa_global_rank, desc">Alexa Rank</option>
                         </select>
                     </div>
                     <div class="form-row open-close">

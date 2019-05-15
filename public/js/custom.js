@@ -47,5 +47,17 @@ $(document).ready(function () {
         $('.review-comment.comment-box').css({display:'block'});
     });
 
+    $('.country').change(function(e){
+        orderValue = $(this).val();
+        var country = $("<input>")
+            .attr("type", "hidden")
+            .attr("name", "country").val("yes");
+        var order = $("<input>")
+            .attr("type", "hidden")
+            .attr("name", "order").val(orderValue);
+        $('#order-result').append(country).append(order);
+        $('#order-result select').remove();
+        $('#order-result').submit();
+    });
 
 });

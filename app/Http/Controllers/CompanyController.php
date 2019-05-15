@@ -18,8 +18,17 @@ class CompanyController extends Controller
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
-    public function index($column = 'created_at', $value = 'desc')
+    public function index($column = 'created_at', $value = 'desc', $country = null)
     {
+        if($country){
+            $data['companies'] = Company::whereIsPublic(1)->orderBy('country','asc')->orderBy($column, $value)->paginate(25);
+            if($data['companies']->count() == 0){
+                $this->request->session()->flash('info', 'No companies yet!');
+                return redirect()->back();
+            }
+            return view('companies', $data);
+        }
+
         $data['companies'] = Company::whereIsPublic(1)->orderBy($column, $value)->paginate(25);
         if($data['companies']->count() == 0){
             $this->request->session()->flash('info', 'No companies yet!');
@@ -28,8 +37,13 @@ class CompanyController extends Controller
         return view('companies', $data);
     }
 
-    public function ranking($column = 'created_at', $orderValue = 'desc')
+    public function ranking($column = 'created_at', $orderValue = 'desc', $country = null)
     {
+        if($country){
+            $data['companies'] = Company::orderBy('country', 'asc')->orderBy($column, $orderValue)->paginate(25);
+            return view('ranking', $data);
+        }
+
         $data['companies'] = Company::orderBy($column, $orderValue)->paginate(25);
         return view('ranking', $data);
     }
@@ -146,13 +160,13 @@ class CompanyController extends Controller
     public function orderBy()
     {
        list($column, $orderValue) = explode(', ', $this->request->order);
-       return $this->index($column, $orderValue);
+       return $this->index($column, $orderValue, $this->request->country);
     }
 
 
     public function orderRankingBy()
     {
         list($column, $orderValue) = explode(', ', $this->request->order);
-       return $this->ranking($column, $orderValue);
+       return $this->ranking($column, $orderValue, $this->request->country);
     }
 }
