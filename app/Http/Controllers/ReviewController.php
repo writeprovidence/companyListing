@@ -12,18 +12,21 @@ use App\Mail\VerifyReviewMailable;
 
 class ReviewController extends Controller
 {
-    public function __construct()
+    protected $request;
+
+    public function __construct(Request $request)
     {
+        $this->request = $request;
         $this->middleware('auth', ['except' => ['index','addReview', 'filterReview']]);
         $this->middleware('verified',['except' => ['index','addReview', 'filterReview']]);
         // $this->middleware('checkReview', ['only' => ['addReview']]);
     }
 
-    public function index(Request $request)
+    public function index( $value = 'desc')
     {
-        $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(10);
+        $data['reviews'] = Review::orderBy('created_at', $value)->paginate(10);
         if($data['reviews']->count() == 0){
-            $request->session()->flash('info', 'No reviews!');
+            $this->request->session()->flash('info', 'No reviews!');
             return redirect()->back();
         }
         return view('review.index', $data);
@@ -121,13 +124,13 @@ class ReviewController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function filterReview(Request $request, $companySlug)
+    public function filterReview($companySlug, $orderValue = 'desc')
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
-        $data['reviews'] = Review::whereCompanyId($data['company']->id)->paginate(5);
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->orderBy('created_at', $orderValue)->paginate(5);
 
         if($data['reviews']->count() == 0){
-            $request->session()->flash('info', 'No reviews for company');
+            $this->request->session()->flash('info', 'No reviews for company');
             return redirect()->back();
         }
         return view('review.index', $data);
@@ -135,8 +138,8 @@ class ReviewController extends Controller
 
     public function storeResponse(Request $request, $reviewSlug)
     {
-        if(empty($request->review_response)){
-            $request->session()->flash('error', 'Response cannot be empty');
+        if(empty($request->review_response) || count($request->review_response) > 500){
+            $request->session()->flash('error', 'Response cannot be empty or more than 500 characters');
             return back();
         }
 
@@ -151,5 +154,15 @@ class ReviewController extends Controller
 
         $request->session()->flash('success', 'Response posted sucessfully');
         return back();
+    }
+
+    public function orderBy()
+    {
+        return $this->index($this->request->order);
+    }
+
+    public function orderFilterReviewBy($companySlug)
+    {
+        return $this->filterReview($companySlug, $this->request->order);
     }
 }

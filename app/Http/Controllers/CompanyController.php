@@ -9,18 +9,20 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function __construct()
+    protected $request;
+    public function __construct(Request $request)
     {
+        $this->request = $request;
         $this->middleware('auth', ['except' => ['ranking','index']]);
         $this->middleware('verified', ['except' => ['ranking','index']]);
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
-    public function index(Request $request)
+    public function index($column = 'created_at', $value = 'desc')
     {
-        $data['companies'] = Company::whereIsPublic(1)->orderBy('created_at', 'desc')->paginate(25);
+        $data['companies'] = Company::whereIsPublic(1)->orderBy($column, $value)->paginate(25);
         if($data['companies']->count() == 0){
-            $request->session()->flash('info', 'No companies yet!');
+            $this->request->session()->flash('info', 'No companies yet!');
             return redirect()->back();
         }
         return view('companies', $data);
@@ -106,8 +108,10 @@ class CompanyController extends Controller
 
         $this->validate($request, $rules);
         $company = Auth::user()->company;
+        $data = $request->except('_token');
+        $data['description'] = strip_tags($data['description']);
 
-        if(! $company->update($request->except('_token'))){
+        if(! $company->update($data)){
             $request->session()->flash('error', 'Cannot update company at the moment!');
             return redirect()->back();
         }
@@ -133,5 +137,10 @@ class CompanyController extends Controller
         $company->increment('clicks_sent');
 
         return redirect($company->website);
+    }
+    public function orderBy()
+    {
+       list($column, $orderValue) = explode(', ', $this->request->order);
+       return $this->index($column, $orderValue);
     }
 }

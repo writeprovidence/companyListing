@@ -15,12 +15,10 @@ Route::get('/', 'NavigationController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('password/reset/{token}/{email}','Auth\ResetPasswordController@showResetForm')->name('password.reseter')->middleware(['web', 'guest']);
 Auth::routes(['verify' => true]);
-
-
-
 // Dashboard
 Route::get('dashboard', 'NavigationController@dashboard')->middleware(['auth','verified'])->name('dashboard');
 Route::get('companies', 'CompanyController@index')->name('companies');
+Route::post('companies', 'CompanyController@orderBy')->name('order.companies');
 Route::get('rankings', 'CompanyController@ranking')->name('ranking');
 Route::get('dashboard/company-profile', 'CompanyController@show')->name('add.company');
 Route::post('dashboard/company-profile', 'CompanyController@store')->name('store.company');
@@ -36,7 +34,9 @@ Route::post('dashboard/user-profile', 'UserController@update')->name('update.use
 
 // Reviews Route
 Route::get('/reviews', 'ReviewController@index')->name('all.reviews');
+Route::post('/reviews', 'ReviewController@orderBy')->name('order.reviews');
 Route::get('/review/{companySlug}', 'ReviewController@filterReview')->name('reviews.company');
+Route::post('/review/{companySlug}', 'ReviewController@orderFilterReviewBy')->name('filter.reviews.company');
 Route::get('dashboard/review/{companySlug}', 'ReviewController@addReview')->name('add.review');
 Route::post('dashboard/review/{companySlug}', 'ReviewController@store')->name('store.review');
 Route::get('dashboard/review/{reviewId}/verify', 'ReviewController@verifyReview')->name('verify.review');

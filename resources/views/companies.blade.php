@@ -86,14 +86,23 @@
             <div class="top-entry-body">
                 <div class="filter-block">
                     <h3>All Companies</h3>
-                    <select class="filter-select">
-                        <option>Newest First</option>
-                        <option>Oldest First</option>
-                        <option>Highest Score</option>
-                        <option>Lowest Score</option>
-                        <option>Alexa Rank</option>
-                        <option>Highest Reviews</option>
-                    </select>
+                    <form id="order-result" action="{{route('order.companies')}}" method="POST" >
+                        @csrf
+                        <h5 class="aside-title">Advanced Search</h5>
+                        <div class="form-row open-close">
+                            <select class="filter-select" name="order" onchange="event.preventDefault();
+                                                        document.getElementById('order-result').submit(); ">
+                                <option value="created_at, desc">Newest First</option>
+                                <option value="created_at, asc">Oldest First</option>
+                                <option value="score, desc">Highest Score</option>
+                                <option value="score, asc">Lowest Score</option>
+                                <option value="alexa_global_rank, desc">Alexa Rank</option>
+                                {{-- <option value="reviews, desc">Highest Reviews</option> --}}
+                            </select>
+                        </div>
+
+                    </form>
+
                 </div>
                 <ul class="review-list commentr-mod">
                     @foreach($companies as $company)

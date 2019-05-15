@@ -10,12 +10,15 @@
 			<div class="top-layout">
 				<div class="container">
 					<aside class="top-entry-aside">
-						<form action="#" class="advanced-form">
+
+                        <form id="order-result" action="{{route('filter.reviews.company', $company->slug)}}" method="POST" class="advanced-form">
+                            @csrf
 							<h5 class="aside-title">Advanced Search</h5>
 							<div class="form-row open-close">
-								<select>
-									<option>Newest First</option>
-									<option>Oldest First</option>
+                                <select name="order" onchange="event.preventDefault();
+                                    document.getElementById('order-result').submit(); ">
+									<option value="desc">Newest First</option>
+									<option value="asc">Oldest First</option>
 								</select>
 							</div>
 							<div class="form-row open-close">
@@ -78,7 +81,7 @@
 						</form>
 					</aside>
 					<div class="top-entry-body">
-						<h3 class="top-heading">Customer Reviews</h3>
+						<h3 class="top-heading">Customer Reviews for {{$company->name}}</h3>
 						<ul class="review-list commentr-mod">
                             @foreach($reviews as $review)
                                 <li>
