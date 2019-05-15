@@ -34,6 +34,48 @@ class Company extends Model
         if(! count($reviewScores)){
             return 0;
         }
+
         return floor(array_sum($reviewScores) / count($reviewScores));
+    }
+
+    public function getReliabilityAttribute(){
+        $reliabilityScores = \App\Models\Review::whereCompanyId($this->id)->pluck('reliability')->all();
+        if(! count($reliabilityScores)){
+            return 0;
+        }
+        return floor(array_sum($reliabilityScores) / count($reliabilityScores));
+    }
+
+    public function getPricingAttribute(){
+        $pricingScores = \App\Models\Review::whereCompanyId($this->id)->pluck('pricing')->all();
+        if(! count($pricingScores)){
+            return 0;
+        }
+        return floor(array_sum($pricingScores) / count($pricingScores));
+    }
+
+
+    public function getUserFriendlyAttribute(){
+        $userFriendlyScores = \App\Models\Review::whereCompanyId($this->id)->pluck('user_friendly')->all();
+        if(! count($userFriendlyScores)){
+            return 0;
+        }
+        return floor(array_sum($userFriendlyScores) / count($userFriendlyScores));
+    }
+
+    public function getSupportAttribute(){
+        $supportScores = \App\Models\Review::whereCompanyId($this->id)->pluck('support')->all();
+        if(! count($supportScores)){
+            return 0;
+        }
+        return floor(array_sum($supportScores) / count($supportScores));
+    }
+
+    public function getFeaturesAttribute(){
+        $featureScores = \App\Models\Review::whereCompanyId($this->id)->pluck('features')->all();
+        if(! count($featureScores)){
+            return 0;
+        }
+        return floor(array_sum($featureScores) / count($featureScores));
     }
 }

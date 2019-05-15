@@ -155,7 +155,7 @@
                                                 <ul class="data-review-list">
                                                     <li>
                                                         <span class="heading">Company Rating</span>
-                                                        <span class="value">{{$review->company->alexa_global_rank}}</span>
+                                                        <span class="value">{{$review->company->rating}}</span>
                                                     </li>
                                                     <li>
                                                         <span class="heading">Total Reviews</span>
