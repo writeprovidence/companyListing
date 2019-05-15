@@ -6,9 +6,15 @@
         <div class="entry-right">
             <ul class="header-links">
 
-                <li>
-                    <a href="{{route('edit.company')}}">Update Company</a>
-                </li>
+                @if(Auth::user()->company()->count())
+                    <li>
+                        <a href="{{route('edit.company')}}">Update Company</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{route('add.company')}}">Add Company</a>
+                    </li>
+                @endif
 
                 <li>
                     <a href="{{route('dashboard')}}">Dashboard</a>

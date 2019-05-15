@@ -10,7 +10,8 @@ class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware('auth', ['except' => ['ranking','index']]);
+        $this->middleware('verified', ['except' => ['ranking','index']]);
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
@@ -23,7 +24,7 @@ class CompanyController extends Controller
     public function ranking()
     {
         $data['companies'] = Company::orderBy('created_at', 'desc')->paginate(25);
-        return view('companies', $data);
+        return view('ranking', $data);
     }
 
     public function show()

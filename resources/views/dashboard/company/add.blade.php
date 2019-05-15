@@ -135,7 +135,7 @@
 
 								<div class="form-row">
 									<label for="description">Description:</label>
-									<textarea id="description" name="description"></textarea>
+									<textarea id="description" name="description">{{ old('description') }}</textarea>
 								</div>
 								<hr>
 								<div class="bottom-row">

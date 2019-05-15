@@ -42,19 +42,39 @@
                     </div>
                     <nav class="nav-holder">
                         <ul id="nav">
-                            <li class="active">
+                            <li class="
+                                @if(Request::is('/'))
+                                    {{'active'}}
+                                @endif
+                            ">
                                 <a href="{{route('index')}}">Home</a>
                             </li>
-                            <li>
+                            <li class="
+                                @if(Request::is('companies'))
+                                    {{'active'}}
+                                @endif
+                            ">
                                 <a href="{{route('companies')}}">Companies</a>
                             </li>
-                            <li>
+                           <li class="
+                                @if(Request::is('reviews'))
+                                    {{'active'}}
+                                @endif
+                            ">
                                 <a href="{{route('all.reviews')}}">Reviews</a>
                             </li>
-                            <li>
+                            <li class="
+                                @if(Request::is('rankings'))
+                                    {{'active'}}
+                                @endif
+                            ">
                                 <a href="{{route('ranking')}}">Rankings</a>
                             </li>
-                            <li>
+                            <li class="
+                                @if(Request::is('discounts'))
+                                    {{'active'}}
+                                @endif
+                            ">
                                 <a href="#">Discounts</a>
                             </li>
                         </ul>

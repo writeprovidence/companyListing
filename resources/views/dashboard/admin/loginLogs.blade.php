@@ -10,60 +10,26 @@
 			<div class="top-layout">
 				<div class="container">
 					<aside class="top-entry-aside">
-						<form action="#" class="advanced-form">
-							<h5 class="aside-title">Advanced Search</h5>
-							<div class="form-row open-close">
-								<select>
-									<option>Newest First</option>
-									<option>Oldest First</option>
-								</select>
-							</div>
-
-						</form>
 					</aside>
 					<div class="top-entry-body">
-						<h3 class="top-heading">All Companies</h3>
+						<h3 class="top-heading">Login Logs</h3>
 						<ul class="review-list commentr-mod">
-                            @foreach($companies as $company)
+                            @foreach($loginlogs as $log)
                                 <li>
                                     <div class="review-card">
-                                        <div class="entry-header">
-                                            <h3>{{$company->name}} Company </h3>
-                                            <small>( {{$company->companyApproved() ? 'Approved' : 'Not Approved'}} )</small>
-                                            @if($company->companyApproved())
-                                                <a href="{{route('reject.company', $company->slug)}}">
-                                                    <div class="score">
-                                                        Reject
-                                                    </div>
-                                                </a>
-                                            @else
-                                                <a href="{{route('approve.company', $company->slug)}}">
-                                                    <div class="score">
-                                                        Approve
-                                                    </div>
-                                                </a>
-                                            @endif
-                                        </div>
-
                                         <div class="entry-company">
-                                            <div>
-                                                <span class="label">Visit</span>
-                                                <strong class="company-link">
-                                                    <a href="{{route('profile.company',$company->slug)}}">{{$company->name}}'s Profile</a> &nbsp; &nbsp;
-                                                    <a href="{{route('admin.editcompany',$company->slug)}}"><i class="fa fa-pencil"></i></a>
-                                                </strong>
-                                            </div>
                                             <div>
                                                 <ul class="data-review-list">
                                                     <li>
-                                                        <span class="heading">Phone</span>
-                                                    <a href="tel:{{$company->phone}}">{{$company->phone}}</a>
+                                                        <span class="heading">{{$log->user->name}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="heading">{{$log->created_at->diffForHumans()}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="heading">{{$log->user_ip}}</span>
                                                     </li>
 
-                                                    <li>
-                                                        <span class="heading">Total Reviews</span>
-                                                        <span class="value">{{$company->reviews()->count()}}</span>
-                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -74,7 +40,7 @@
 						</ul>
 						<nav class="pagination-block">
 							<ul class="pagination">
-								{{$companies->links('pagination.default')}}
+								{{$loginlogs->links('pagination.default')}}
 							</ul>
 						</nav>
 					</div>

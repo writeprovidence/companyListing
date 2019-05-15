@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Review;
+use App\Models\LoginLog;
 use App\Models\Company;
 use App\User;
 use Illuminate\Http\Request;
@@ -162,5 +163,17 @@ class AdminController extends Controller
         $request->session()->flash('success', 'successful');
         return redirect()->back();
     }
+
+    public function loginLogs()
+    {
+        $data['loginlogs'] = LoginLog::orderBy('created_at', 'desc')->paginate(15);
+        return view('dashboard.admin.loginLogs', $data);
+    }
+
+    // public function clickLogs()
+    // {
+    //     $data['loginlogs'] = LoginLog::paginate(25);
+    //     return view('dashboard.admin.loginLogs', $data);
+    // }
 
 }

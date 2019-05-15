@@ -19,12 +19,10 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-
-
 // Dashboard
 Route::get('dashboard', 'NavigationController@dashboard')->middleware(['auth','verified'])->name('dashboard');
 Route::get('companies', 'CompanyController@index')->name('companies');
-Route::get('ranking', 'CompanyController@ranking')->name('ranking');
+Route::get('rankings', 'CompanyController@ranking')->name('ranking');
 Route::get('dashboard/company-profile', 'CompanyController@show')->name('add.company');
 Route::post('dashboard/company-profile', 'CompanyController@store')->name('store.company');
 Route::get('dashboard/company-profile/edit', 'CompanyController@edit')->name('edit.company');

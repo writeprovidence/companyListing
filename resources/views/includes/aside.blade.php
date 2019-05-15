@@ -5,7 +5,11 @@
         </div>
     </header>
     <ul class="dashboard-nav">
-        <li class="active">
+        <li class="
+            @if(Request::is('dashboard'))
+                {{'active'}}
+            @endif
+        ">
             <a href="{{route('dashboard')}}">
                 <div class="icon-wrap">
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -13,7 +17,12 @@
                 <span>Main</span>
             </a>
         </li>
-        <li>
+
+         <li class="
+            @if(Request::is('dashboard/user-profile'))
+                {{'active'}}
+            @endif
+        ">
             <a href="{{route('edit.user')}}">
                 <div class="icon-wrap">
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -21,7 +30,11 @@
                 <span>My Profile</span>
             </a>
         </li>
-        <li>
+        <li class="
+            @if(Request::is('dashboard/company-profile/edit'))
+                {{'active'}}
+            @endif
+        ">
             <a href="{{route('edit.company')}}">
                 <div class="icon-wrap">
                     <i class="fa fa-cog" aria-hidden="true"></i>
@@ -29,15 +42,19 @@
                 <span>Company info</span>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="#">
                 <div class="icon-wrap">
                     <i class="fa fa-filter" aria-hidden="true"></i>
                 </div>
                 <span>Nameservers</span>
             </a>
-        </li>
-        <li>
+        </li> --}}
+         <li class="
+            @if(Request::is('dashboard/review'))
+                {{'active'}}
+            @endif
+        ">
             <a href="{{route('reviews')}}">
                 <div class="icon-wrap">
                     <i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -45,13 +62,13 @@
                 <span>Reviews</span>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="#">
                 <div class="icon-wrap">
                     <i class="fa fa-list-ul" aria-hidden="true"></i>
                 </div>
                 <span>Company Products</span>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </aside>

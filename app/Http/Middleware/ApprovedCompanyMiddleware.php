@@ -16,6 +16,9 @@ class ApprovedCompanyMiddleware
     public function handle($request, Closure $next)
     {
         $company = Company::whereSlug($request->route('companySlug'))->first();
+        if(! $company){
+            return abort(404);
+        }
 
         if(! $company->companyApproved()){
             return redirect()->back();

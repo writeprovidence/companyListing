@@ -7,7 +7,7 @@
             <ul class="header-links">
                 <li><a href="{{route('login')}}">Login</a></li>
                 <li><a href="{{route('register')}}">Register</a></li>
-                <li><a href="#">List Company</a></li>
+                <li><a href="{{route('companies')}}">List Company</a></li>
             </ul>
             <ul class="social-networks">
                 <li>

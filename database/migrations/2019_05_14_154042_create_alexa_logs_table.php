@@ -15,7 +15,7 @@ class CreateAlexaLogsTable extends Migration
     {
         Schema::create('alexa_logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('company_id');
+            $table->integer('company_id');
             $table->string('alexa_global_rank');
             $table->string('alexa_top_country_id');
             $table->string('alexa_country_rank');

@@ -22,21 +22,25 @@
                             </form>
 
                         </div>
-                        <div class="siteinfo-line">
-                            <div class="sitemeta">
-                                <h1>{{Auth::user()->company->name}}</h1>
-                                <a href="{{Auth::user()->company->website}}" target="_blank">{{Auth::user()->company->website}}</a>
-                            </div>
-                            <div class="btn-wrap">
-                                <a class="btn btn-green" href="
-                                @if(Auth::user()->company->companyApproved())
-                                    {{route('profile.company',Auth::user()->company->slug)}}
-                                @else
-                                #
-                                @endif
-                                ">View Company Page</a>
-                            </div>
-                        </div>
+                                <div class="siteinfo-line">
+                                    <div class="sitemeta">
+                                        <h1>{{Auth::user()->company->name}}</h1>
+                                        <a href="{{route('redirect.company' , Auth::user()->company->slug)}}" target="_blank">{{Auth::user()->company->website}}</a>
+                                    </div>
+                                    <div class="btn-wrap">
+
+                                        @if(Auth::user()->company()->count())
+                                            @if(Auth::user()->company->companyApproved())
+                                                <a class="btn btn-green" href="{{route('profile.company',Auth::user()->company->slug)}}">View Company Page</a>
+                                            @else
+                                             <a class="btn btn-green" href="#">View Company Page</a>
+                                            @endif
+                                        @else
+                                            <a class="btn btn-green" href="{{route('add.company')}}">Add Company Page</a>
+                                        @endif
+
+                                    </div>
+                                </div>
                     </header>
                     <div class="dashmain-body">
                         <ul class="data-review-list">
@@ -86,7 +90,7 @@
                                                 fill="#e2d7d7" />
                                         </svg>
                                     </div>
-                                    <span class="value">5.4</span>
+                                    <span class="value">{{Auth::user()->company->alexa_global_rank}}</span>
                                 </div>
                             </li>
                             <li>
@@ -99,7 +103,7 @@
                             </li>
                             <li>
                                 <span class="heading">Traffic Rank</span>
-                                <span class="value">2,000,000</span>
+                                <span class="value">{{Auth::user()->company->alexa_global_rank}}</span>
                             </li>
                         </ul>
                         <div class="two-columns">
