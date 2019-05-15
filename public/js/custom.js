@@ -52,10 +52,10 @@ $(document).ready(function () {
         var country = $("<input>")
             .attr("type", "hidden")
             .attr("name", "country").val("yes");
-        var order = $("<input>")
+        var filterorder = $("<input>")
             .attr("type", "hidden")
             .attr("name", "order").val(orderValue);
-        $('#order-result').append(country).append(order);
+        $('#order-result').append(country).append(filterorder);
         $('#order-result select').remove();
         $('#order-result').submit();
     });
@@ -78,5 +78,30 @@ $(document).ready(function () {
             .attr("type", "hidden")
             .attr("name", "score").val(calculateCulmulative('input[type=radio]:checked'));
         $(this).append(score);
+    });
+
+    $('input[type=checkbox]').click(function () {
+        var stars = $("<input>")
+            .attr("type", "hidden")
+            .attr('class', 'stars-selector')
+            .attr("name", "stars").val(getStarFilters('input[type=checkbox]:checked'));
+
+        $('#order-result .stars-selector').remove();
+        $('#order-result').append(stars);
+    });
+
+    function getStarFilters(selector) {
+        var starsCulmulativeValue = [];
+        $(selector).each(function (e) {
+            starsCulmulativeValue.push($(this).attr('value'));
+        });
+        return starsCulmulativeValue;
+    }
+
+    $('#order-result').submit(function (e) {
+        var stars = $("<input>")
+            .attr("type", "hidden")
+            .attr("name", "stars").val(getStarFilters('input[type=checkbox]:checked'));
+        $(this).append(stars);
     });
 });

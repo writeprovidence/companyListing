@@ -15,7 +15,7 @@
 										<div class="entry-header">
                                             <span>Review by</span>
                                             <strong>{{$review->full_name}}</strong>
-                                            <div class="score">Overall Score: 9.2</div>
+                                            <div class="score">Overall Score: {{$review->score}}</div>
                                         </div>
 										<div class="entry-body">
 											<div class="date-wrap">
@@ -27,55 +27,45 @@
                                                     {{$review->review}}
                                                 </p>
                                             </div>
-                                            <ul class="value-list">
+                                           <ul class="value-list">
                                                 <li>
-                                                    <span>User-friendliness</span>
+                                                    <span>Reliability</span>
                                                     <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                        @for($i = 0; $i < $review->reliability; $i++)
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            @endfor
                                                     </span>
                                                 </li>
                                                 <li>
-                                                    <span>User-friendliness</span>
+                                                    <span>Pricing</span>
                                                     <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        @for($i = 0; $i < $review->pricing; $i++)
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            @endfor
                                                     </span>
                                                 </li>
                                                 <li>
-                                                    <span>User-friendliness</span>
+                                                    <span>User Friendly</span>
                                                     <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        @for($i = 0; $i < $review->user_friendly; $i++)
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            @endfor
                                                     </span>
                                                 </li>
                                                 <li>
-                                                    <span>User-friendliness</span>
+                                                    <span>Support</span>
                                                     <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                        @for($i = 0; $i < $review->support; $i++)
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            @endfor
                                                     </span>
                                                 </li>
                                                 <li>
-                                                    <span>User-friendliness</span>
+                                                    <span>Features</span>
                                                     <span class="rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        @for($i = 0; $i < $review->features; $i++)
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            @endfor
                                                     </span>
                                                 </li>
                                             </ul>
@@ -92,7 +82,7 @@
 												<ul class="data-review-list">
 													<li>
 														<span class="heading">Company Rating</span>
-														<span class="value">7.4</span>
+														<span class="value">{{$review->company->rating}}</span>
 													</li>
 													<li>
 														<span class="heading">Total Reviews</span>

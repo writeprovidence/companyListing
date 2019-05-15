@@ -22,9 +22,9 @@ class ReviewController extends Controller
         // $this->middleware('checkReview', ['only' => ['addReview']]);
     }
 
-    public function index( $value = 'desc')
+    public function index( $value = 'desc', $whereArray = [['is_verified', '=',  0]])
     {
-        $data['reviews'] = Review::orderBy('created_at', $value)->paginate(10);
+        $data['reviews'] = Review::where($whereArray)->orderBy('created_at', $value)->paginate(10);
         if($data['reviews']->count() == 0){
             $this->request->session()->flash('info', 'No reviews!');
             return redirect()->back();

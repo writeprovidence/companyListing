@@ -51,6 +51,7 @@ Route::get('dashboard/review/{companySlug}/downvote', 'ReviewController@downvote
 
 // Search
 Route::get('search', 'SearchController@search')->name('search');
+// Route::get('search', 'SearchController@orderSearchBy')->name('order.search');
 
 //News Letter Subscription
 Route::post('newsletter/subscribe', 'MailSubscriptionController@subscribe')->name('subscribe.newsletter');

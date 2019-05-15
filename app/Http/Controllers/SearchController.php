@@ -7,9 +7,29 @@ use App\Models\Company;
 
 class SearchController extends Controller
 {
-    public function search(Request $request )
+    public $request;
+
+    public function __construct(Request $request)
     {
-        $data['companies'] = Company::where('name', 'LIKE', "%{$request->search}%")->paginate(10);
+        $this->request = $request;
+    }
+    public function search($column = 'created_at', $value = 'desc', $country = null)
+    {
+        if($country){
+            $data['companies'] = Company::where('name', 'LIKE', "%{$this->request->search}%")->orderBy('country', 'asc')->orderBy($column, $value)->paginate(10);
+                return view('search.all', $data);
+            }
+
+        $data['companies'] = Company::where('name', 'LIKE', "%{$this->request->search}%")->orderBy($column, $value)->paginate(10);
+
         return view('search.all', $data);
+    }
+
+    public function orderSearchBy(
+
+    )
+    {
+        list($column, $orderValue) = explode(', ', $this->request->order);
+       return $this->search($column, $orderValue, $this->request->country);
     }
 }
