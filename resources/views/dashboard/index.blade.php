@@ -36,7 +36,7 @@
                                              <a class="btn btn-green" href="#">View Company Page</a>
                                             @endif
                                         @else
-                                            <a class="btn btn-green" href="{{route('add.company')}}">Add Company Page</a>
+                                            <a class="btn btn-green" href="{{route('add.company')}}">Add Company</a>
                                         @endif
 
                                     </div>

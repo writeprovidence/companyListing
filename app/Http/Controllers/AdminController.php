@@ -41,7 +41,7 @@ class AdminController extends Controller
         Auth::user()->password  =  Hash::make($request->password);
         Auth::user()->save();
 
-        $request->session()->flash('key', 'Updated Password Successfully');
+        $request->session()->flash('success', 'Updated Password Successfully!');
         return redirect()->route('admin.dashboard');
     }
 
@@ -108,9 +108,7 @@ class AdminController extends Controller
             return redirect()->back();
         }
 
-        $message = 'Company profile updated.';
-
-        $request->session()->flash('success', $message);
+        $request->session()->flash('success', 'Company profile updated.');
         return redirect()->route('admin.companies');
     }
 
@@ -160,8 +158,8 @@ class AdminController extends Controller
             "full_name" => 'required | string',
         ];
         $this->validate($request, $rules);
-
-        $data = $request->except(['_token']);
+        return $request;
+        $data = $request->except('_token');
 
         $review->update($data);
 

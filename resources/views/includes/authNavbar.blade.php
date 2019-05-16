@@ -6,19 +6,37 @@
         <div class="entry-right">
             <ul class="header-links">
 
-                @if(Auth::user()->company()->count())
+                @if(Auth::user()->isAdmin())
                     <li>
-                        <a href="{{route('edit.company')}}">Update Company</a>
+                        <a href="{{route('admin.dashboard')}}">Dashboard</a>
                     </li>
-                @else
-                    <li>
-                        <a href="{{route('add.company')}}">Add Company</a>
-                    </li>
-                @endif
 
-                <li>
-                    <a href="{{route('dashboard')}}">Dashboard</a>
-                </li>
+                    <li>
+                        <a href="{{route('admin.companies')}}">Manage Companies</a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('admin.users')}}">Manage Users</a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('admin.reviews')}}">Manage Reviews</a>
+                    </li>
+
+                @else
+                    @if(Auth::user()->company()->count())
+                        <li>
+                            <a href="{{route('edit.company')}}">Update Company</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{route('add.company')}}">Add Company</a>
+                        </li>
+                    @endif
+                        <li>
+                            <a href="{{route('dashboard')}}">Dashboard</a>
+                        </li>
+                @endif
 
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

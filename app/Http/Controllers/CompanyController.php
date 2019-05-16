@@ -51,11 +51,6 @@ class CompanyController extends Controller
 
     public function show(Request $request)
     {
-        if(Auth::user()->hasCompany()){
-            $request->session()->flash('error', 'You have added a company already!');
-            return redirect()->route('home');
-        }
-
         return view('dashboard.company.add');
     }
 
@@ -86,7 +81,7 @@ class CompanyController extends Controller
             'company_id' => $company->id
         ]);
 
-        $message = 'Your company information has been saved and will require admin approval before this is made available to public';
+        $message = 'Your company information has been saved and will require admin approval before it is made available to the public!';
 
         $request->session()->flash('success', $message);
         return redirect()->route('dashboard');
@@ -131,7 +126,11 @@ class CompanyController extends Controller
             return redirect()->back();
         }
 
-        $message = 'Your company information has been saved and will require admin approval before this is made available to public';
+        if($company->is_public){
+            $message = 'Your company information has been updated!';
+        }else{
+            $message = 'Your company information has been saved and will require admin approval before this is made available to public';
+        }
 
         $request->session()->flash('success', $message);
         return redirect()->route('dashboard');

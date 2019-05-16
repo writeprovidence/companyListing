@@ -68,10 +68,10 @@ Route::get('companies/{companySlug}/edit', 'AdminController@editCompany')->name(
 Route::post('companies/{companySlug}/edit', 'AdminController@updateCompany')->name('admin.updatecompany');
 // Admin review routes
 Route::get('admin/dashboard/reviews', 'AdminController@reviews')->name('admin.reviews');
-Route::get('reviews/{reviewSlug}/approve', 'AdminController@approveReview')->name('approve.review');
-Route::get('reviews/{reviewSlug}/reject', 'AdminController@rejectReview')->name('reject.review');
-Route::get('reviews/{reviewSlug}/edit', 'AdminController@editReview')->name('admin.editreview');
-Route::post('reviews/{reviewSlug}/edit', 'AdminController@updateReview')->name('admin.updatereview');
+Route::get('admin/reviews/{reviewSlug}/approve', 'AdminController@approveReview')->name('approve.review');
+Route::get('admin/reviews/{reviewSlug}/reject', 'AdminController@rejectReview')->name('reject.review');
+Route::get('admin/reviews/{reviewSlug}/edit', 'AdminController@editReview')->name('admin.editreview');
+Route::post('admin/reviews/{reviewSlug}/edit', 'AdminController@updateReview')->name('admin.updatereview');
 
 // Logs route
 Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admin.loginlogs');
