@@ -17,8 +17,8 @@
 								<div class="image-wrap">
 									<img src="images/ab.png" alt="image description" width="80" height="80">
 								</div>
-								<p>2,473 Listed Companies</p>
-								<p>1,000+ Real Reviews</p>
+								<p>{{$company_count}} Listed Companies</p>
+								<p>{{$review_count}}+ Real Reviews</p>
 								<p>1 Million+ Reads & Shares</p>
 							</div>
 						</div>

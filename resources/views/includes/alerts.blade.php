@@ -6,7 +6,7 @@
             @endif
             @if (session('error'))
                <script>
-                    toastr.success(" {{session('error')}} ")
+                    toastr.error(" {{session('error')}} ")
                 </script>
             @endif
 

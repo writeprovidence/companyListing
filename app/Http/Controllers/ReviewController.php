@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Validator;
 use App\Models\Company;
 use App\Models\Review;
 use Carbon\Carbon;
@@ -79,14 +80,14 @@ class ReviewController extends Controller
         $data = $this->buildUpData($request, $company->id);
 
         if(! $review = Review::create($data)){
-            $request->session()->flash('error', 'unsuccessful');
-            return redirect('/');//->back();
+            $request->session()->flash('error', 'You review has been unsuccessful!');
+            return redirect()->back()->withInputs();
         }
         $review->update([
             'slug' => 'review-'.$review->id
         ]);
 
-        // $this->sendReviewVerificationEmail($review->id);
+        $this->sendReviewVerificationEmail($review->id);
 
         $request->session()->flash('success', 'You review has been succesful!');
         return redirect()->back();
@@ -130,7 +131,7 @@ class ReviewController extends Controller
         $data['reviews'] = Review::whereCompanyId($data['company']->id)->orderBy('created_at', $orderValue)->paginate(5);
 
         if($data['reviews']->count() == 0){
-            $this->request->session()->flash('info', 'No reviews for company');
+            $this->request->session()->flash('info', 'No reviews for Company yet!');
             return redirect()->back();
         }
         return view('review.index', $data);
@@ -138,9 +139,14 @@ class ReviewController extends Controller
 
     public function storeResponse(Request $request, $reviewSlug)
     {
-        if(empty($request->review_response) || count($request->review_response) > 500){
-            $request->session()->flash('error', 'Response cannot be empty or more than 500 characters');
-            return back();
+        $validator = Validator::make($request->except('_token'), [
+            'review_response' => 'string | max:500 | required'
+        ]);
+
+        if ($validator->fails())
+        {
+            $request->session()->flash('error', 'Response cannot be empty or more than 500 characters!');
+            return redirect()->back();
         }
 
         $review = Review::whereSlug($reviewSlug)->first();
