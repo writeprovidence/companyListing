@@ -211,14 +211,13 @@
 									<div class="average-rate-block">
 										<span class="title">Your Overall scrore</span>
 										<span class="value">
-											<span class="average">{{$review->score}}</span>
+											<span id="average" class="average">{{$review->score}}</span>
 											<span>/10</span>
 										</span>
 									</div>
 								</div>
 							</div>
 						</div>
-
 
 						<div class="submit-wrap">
 							<button class="btn" type="submit">Submit Review</button>

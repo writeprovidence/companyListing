@@ -18,7 +18,6 @@ class CheckUserRoleMiddleware
     {
         if (Auth::guard($guard)->check()) {
             if(! Auth::user()->isAdmin()){
-                $request->session()->flash('error', 'No access granted to your user level! Contact admin');
                 return redirect()->route('dashboard');
             }
         }
