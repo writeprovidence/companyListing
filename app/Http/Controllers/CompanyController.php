@@ -41,7 +41,7 @@ class CompanyController extends Controller
     public function ranking($column = 'created_at', $orderValue = 'desc', $country = null)
     {
         if($country){
-            $data['companies'] = Company::orderBy('country', 'asc')->orderBy($column, $orderValue)->paginate(25);
+            $data['companies'] = Company::orderBy($column, $orderValue)->orderBy('country', 'asc')->paginate(25);
             return view('ranking', $data);
         }
 
@@ -51,10 +51,10 @@ class CompanyController extends Controller
 
     public function show(Request $request)
     {
-        // if(Auth::user()->hasCompany()){
-        //     $request->session()->flash('error', 'Can only add one company');
-        //     return redirect()->route('home');
-        // }
+        if(Auth::user()->hasCompany()){
+            $request->session()->flash('error', 'Can only add one company');
+            return redirect()->route('home');
+        }
 
         return view('dashboard.company.add');
     }

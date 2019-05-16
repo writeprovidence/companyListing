@@ -77,6 +77,5 @@ Route::post('reviews/{reviewSlug}/edit', 'AdminController@updateReview')->name('
 Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admin.loginlogs');
 
 // Country Routes
-
 Route::get('companies/country/{country}', 'CompanyController@country')->name('contry.company');
 Route::post('companies/country/{country}', 'CompanyController@orderCountryBy')->name('order.country');

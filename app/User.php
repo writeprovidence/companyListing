@@ -51,6 +51,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->is_verified ? true : false;
     }
 
+    public function isAdmin()
+    {
+        return $this->role == 'admin' ? true : false;
+    }
+
     public function reviews()
     {
         return $this->hasMany('App\Models\Review', 'logged_user_id');
