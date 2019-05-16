@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <main id="main">
-    <section class="hero-section page-mod" style="background-image: url('images/bg2.jpg');">
+    <section class="hero-section page-mod" style="background-image: url('{{asset('images/bg2.jpg')}}');">
         <div class="container">
             <h1>Web Hosting Companies by Country</h1>
             <p>Find and rate your web hosting service provider or select the best provider for your website. Find and
