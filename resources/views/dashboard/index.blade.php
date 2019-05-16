@@ -6,7 +6,7 @@
             <div class="dashboard-wrap">
 
                 @include('includes.aside')
-
+                {{-- {{dd(session('error'))}} --}}
                 <div class="dashboard-body">
                     <header class="dashmain-head">
                         <div class="user-line">
