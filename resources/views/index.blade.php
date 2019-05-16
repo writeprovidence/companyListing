@@ -102,6 +102,7 @@
 					</div>
 				</div>
 			</section>
+            @if($reviews->count() > 0)
 			<section class="section bg-grey">
 				<div class="container">
 					<header class="section-header">
@@ -162,10 +163,11 @@
                         @endforeach
 					</ul>
 					<div class="entry-button">
-						<a class="btn btn-green" href="{{route('all.reviews')}}" role="button">Browse All Reviews</a>
+                        <a class="btn btn-green" href="{{route('all.reviews')}}" role="button">Browse All Reviews</a>
 					</div>
 				</div>
 			</section>
+            @endif
 			<section class="section">
 				<div class="container">
 					<ul class="info-list">

@@ -10,11 +10,14 @@ class MailSubscriptionController extends Controller
     public function subscribe(Request $request)
     {
 
-        if (! Newsletter::isSubscribed($request->email) ) 
+        if (! Newsletter::isSubscribed($request->email) )
         {
             Newsletter::subscribePending($request->email);
-            return redirect()->back()->with('success', 'Thanks For Subscribe');
+            $request->session()->flash('success', 'Thanks For Subscribe');
+            return redirect()->back();
         }
-         return redirect()->back()->with('error', 'Sorry! You have already subscribed ');
+
+        $request->session()->flash('error', 'Sorry! You have already subscribed ');
+        return redirect()->back();
     }
 }

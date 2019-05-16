@@ -27,7 +27,7 @@
                                                     {{$review->review}}
                                                 </p>
                                             </div>
-                                           <ul class="value-list">
+                                            <ul class="value-list">
                                                 <li>
                                                     <span>Reliability</span>
                                                     <span class="rating">

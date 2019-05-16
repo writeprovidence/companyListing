@@ -52,7 +52,7 @@ class CompanyController extends Controller
     public function show(Request $request)
     {
         if(Auth::user()->hasCompany()){
-            $request->session()->flash('error', 'Can only add one company');
+            $request->session()->flash('error', 'You have added a company already!');
             return redirect()->route('home');
         }
 
