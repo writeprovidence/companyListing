@@ -70,6 +70,7 @@ Route::get('companies/{companySlug}/edit', 'AdminController@editCompany')->name(
 Route::post('companies/{companySlug}/edit', 'AdminController@updateCompany')->name('admin.updatecompany');
 // Admin review routes
 Route::get('admin/dashboard/reviews', 'AdminController@reviews')->name('admin.reviews');
+Route::post('admin/dashboard/reviews', 'AdminController@orderReviews')->name('admin.reviews.order');
 Route::get('admin/reviews/{reviewSlug}/approve', 'AdminController@approveReview')->name('approve.review');
 Route::get('admin/reviews/{reviewSlug}/reject', 'AdminController@rejectReview')->name('reject.review');
 Route::get('admin/reviews/{reviewSlug}/edit', 'AdminController@editReview')->name('admin.editreview');

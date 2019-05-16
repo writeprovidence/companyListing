@@ -121,11 +121,16 @@ class AdminController extends Controller
         return redirect()->route('admin.companies');
     }
 
-    public function reviews()
+    public function reviews($orderValue = 'desc')
     {
-        $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(25);
+        $data['reviews'] = Review::orderBy('created_at', $orderValue)->paginate(25);
 
         return view('dashboard.admin.reviews', $data);
+    }
+
+    public function orderReviews(Request $request)
+    {
+        return $this->reviews($request->order);
     }
 
     public function approveReview(Request $request, $reviewSlug)
