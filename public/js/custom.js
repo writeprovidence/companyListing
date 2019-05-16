@@ -98,10 +98,4 @@ $(document).ready(function () {
         return starsCulmulativeValue;
     }
 
-    $('#order-result').submit(function (e) {
-        var stars = $("<input>")
-            .attr("type", "hidden")
-            .attr("name", "stars").val(getStarFilters('input[type=checkbox]:checked'));
-        $(this).append(stars);
-    });
-});
+#});

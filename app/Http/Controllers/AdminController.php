@@ -52,15 +52,20 @@ class AdminController extends Controller
         return view('dashboard.admin.users', $data);
     }
 
-    public function orderUser(Request $request)
+    public function orderUsers(Request $request)
     {
-        return $this->users($request);
+        return $this->users($request->order);
     }
-    public function companies()
+    public function companies($orderValue = 'desc')
     {
-        $data['companies'] = Company::orderBy('created_at', 'desc')->paginate(25);
+        $data['companies'] = Company::orderBy('created_at', $orderValue)->paginate(25);
 
         return view('dashboard.admin.companies', $data);
+    }
+
+     public function orderCompanies(Request $request)
+    {
+        return $this->companies($request->order);
     }
 
     public function approveCompany(Request $request, $companySlug)

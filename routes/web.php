@@ -60,8 +60,10 @@ Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
 Route::get('admin/dashboard/resetpassword', 'AdminController@showResetForm')->name('admin.password.reset');
 Route::post('admin/dashboard/resetpassword', 'AdminController@resetPassword')->name('admin.resetpassword');
 Route::get('admin/dashboard/users', 'AdminController@users')->name('admin.users');
+Route::post('admin/dashboard/users', 'AdminController@orderUsers')->name('admin.user.order');
 // Admin Company routes
 Route::get('admin/dashboard/companies', 'AdminController@companies')->name('admin.companies');
+Route::post('admin/dashboard/companies', 'AdminController@orderCompanies')->name('admin.companies.order');
 Route::get('companies/{companySlug}/approve', 'AdminController@approveCompany')->name('approve.company');
 Route::get('companies/{companySlug}/reject', 'AdminController@rejectCompany')->name('reject.company');
 Route::get('companies/{companySlug}/edit', 'AdminController@editCompany')->name('admin.editcompany');
