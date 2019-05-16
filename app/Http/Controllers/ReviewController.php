@@ -26,7 +26,7 @@ class ReviewController extends Controller
     {
         $data['reviews'] = Review::where($whereArray)->orderBy('created_at', $value)->paginate(10);
         if($data['reviews']->count() == 0){
-            $this->request->session()->flash('info', 'No reviews!');
+            $this->request->session()->flash('info', 'No reviews yet!');
             return redirect()->back();
         }
         return view('review.index', $data);
@@ -36,7 +36,7 @@ class ReviewController extends Controller
     {
         $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(5);
         if($data['reviews']->count() == 0){
-            $request->session()->flash('info', 'No reviews!');
+            $request->session()->flash('info', 'You do not have any reviews yet!');
             return redirect()->back();
         }
         return view('dashboard.review.index', $data);
@@ -86,9 +86,9 @@ class ReviewController extends Controller
             'slug' => 'review-'.$review->id
         ]);
 
-        $this->sendReviewVerificationEmail($review->id);
+        // $this->sendReviewVerificationEmail($review->id);
 
-        $request->session()->flash('success', 'successful');
+        $request->session()->flash('success', 'You review has been succesful!');
         return redirect()->back();
 
     }
