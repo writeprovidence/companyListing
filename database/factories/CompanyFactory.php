@@ -10,7 +10,7 @@ $factory->define(App\Models\Company::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'website' => $faker->domainName,
         'link_to_go' => $faker->domainName,
-        'score' => rand(0,10),
+        'rating' => rand(3,10),
         'description' => $faker->paragraph,
         'zip' => $faker->postcode,
         'state' => $faker->state,

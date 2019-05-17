@@ -86,8 +86,8 @@ $(document).ready(function () {
             .attr('class', 'stars-selector')
             .attr("name", "stars").val(getStarFilters('input[type=checkbox]:checked'));
 
-        $('#order-result .stars-selector').remove();
-        $('#order-result').append(stars);
+        $('#order-results .stars-selector').remove();
+        $('#order-results').append(stars);
     });
 
     function getStarFilters(selector) {

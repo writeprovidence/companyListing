@@ -9,7 +9,7 @@
 							<p>WH.TIPS (Web Hosting Tips) is the platform that helps its users in finding Best Web Hosting solution for their websites. We offer our recommendations by collecting reviews from users of the listed web hosting companies and based on the advices from our in house experts!</p>
 							<div class="btn-wrap">
 								<a class="btn btn-green" href="{{route('companies')}}" role="button">Browse Hosting Companies</a>
-								<a class="btn btn-green" href="#" role="button">Review Your Web Hosting</a>
+								<a class="btn btn-green" href="{{route('all.reviews')}}" role="button">Review Your Web Hosting</a>
 							</div>
 						</div>
 						<div class="col">

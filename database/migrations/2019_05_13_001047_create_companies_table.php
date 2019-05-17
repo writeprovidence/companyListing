@@ -22,7 +22,7 @@ class CreateCompaniesTable extends Migration
             $table->string('phone');
             $table->string('website');
             $table->string('link_to_go');
-            $table->string('score')->default(0);
+            $table->string('rating')->default(0);
             $table->text('description');
             $table->string('zip')->nullable();
             $table->string('state')->nullable();

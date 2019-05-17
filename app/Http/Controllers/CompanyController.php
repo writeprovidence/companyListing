@@ -21,6 +21,17 @@ class CompanyController extends Controller
 
     public function index($column = 'created_at', $value = 'desc', $country = null)
     {
+
+        if($country){
+            // $this->loadCompaniesByCountry()
+            $data['companies'] = Company::whereIsPublic(1)->orderBy('country','asc')->orderBy($column, $value)->paginate(25);
+            if($data['companies']->count() == 0){
+                $this->request->session()->flash('info', 'No companies yet!');
+                return redirect()->back();
+            }
+            return view('companies', $data);
+        }
+
         if($country){
             $data['companies'] = Company::whereIsPublic(1)->orderBy('country','asc')->orderBy($column, $value)->paginate(25);
             if($data['companies']->count() == 0){
@@ -159,15 +170,68 @@ class CompanyController extends Controller
     }
     public function orderBy()
     {
-       list($column, $orderValue) = explode(', ', $this->request->order);
-       return $this->index($column, $orderValue, $this->request->country);
+        if(! $this->checkIfFilterByStar($this->request)){
+            list($column, $orderValue) = explode(', ', $this->request->order);
+            return $this->index($column, $orderValue, $this->request->country);
+        }
+
+
+        $data['companies'] = Company::whereRating(explode(',', $this->request->stars))->paginate(25);
+
+        return view('companies', $data);
     }
 
+    public function checkIfFilterByStar(Request $request){
+        return $request->has('stars');
+    }
 
     public function orderRankingBy()
     {
-        list($column, $orderValue) = explode(', ', $this->request->order);
-       return $this->ranking($column, $orderValue, $this->request->country);
+        if(! $this->checkIfFilterByStar($this->request)){
+            list($column, $orderValue) = explode(', ', $this->request->order);
+            return $this->ranking($column, $orderValue, $this->request->country);
+        }
+
+        $dataH = collect(explode(',', $this->request->stars))->map(function($star){
+            return (array) explode(',', "rating,{$star}");
+        });
+
+        $dataH = \Illuminate\Support\Collection::unwrap($dataH);
+
+        switch(count($dataH)){
+            case 6:
+                $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                    ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
+                                    ->orWhere($dataH[4][0], $dataH[4][1])->orWhere($dataH[5][0], $dataH[5][1])->paginate(25);
+                break;
+            case 5:
+                $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                        ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
+                                        ->orWhere($dataH[4][0], $dataH[4][1])->paginate(25);
+            break;
+            case 4:
+            $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])->paginate(25);
+            break;
+            case 3:
+             $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                ->orWhere($dataH[2][0], $dataH[2][1])->paginate(25);
+            break;
+            case 2:
+            $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                ->paginate(25);
+            break;
+            case 1:
+            $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])
+                                ->paginate(25);
+            break;
+            default:
+            $data['companies'] = Company::orderBy('created_at', 'desc')
+                                ->paginate(25);
+            break;
+        }
+
+        return view('ranking', $data);
     }
 
     public function country($country, $column = 'created_at', $value = 'desc')

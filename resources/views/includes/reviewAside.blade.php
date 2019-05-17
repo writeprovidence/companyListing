@@ -4,33 +4,33 @@
         <h3>Review Rating</h3>
         <ul>
             <li>
-                <a href="#">
+                <a>
                     <span>5 Star</span>
-                    <span>22 reviews</span>
+                    <span>{{$five_star_reviews}} reviews</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a>
                     <span>4 Star</span>
-                    <span>22 reviews</span>
+                    <span>{{$four_star_reviews}} reviews</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a>
                     <span>3 Star</span>
-                    <span>22 reviews</span>
+                    <span>{{$three_star_reviews}} reviews</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a>
                     <span>2 Star</span>
-                    <span>22 reviews</span>
+                    <span>{{$two_star_reviews}} reviews</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a>
                     <span>1 Star</span>
-                    <span>22 reviews</span>
+                    <span>{{$one_star_reviews}} reviews</span>
                 </a>
             </li>
         </ul>

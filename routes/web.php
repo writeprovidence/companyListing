@@ -82,3 +82,7 @@ Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admi
 // Country Routes
 Route::get('companies/country/{country}', 'CompanyController@country')->name('contry.company');
 Route::post('companies/country/{country}', 'CompanyController@orderCountryBy')->name('order.country');
+
+// Route::get('d', function(){
+//     return \App\Models\Company::all()->first()->recalculateRating();
+// });

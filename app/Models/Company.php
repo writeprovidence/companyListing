@@ -12,7 +12,7 @@ class Company extends Model
         'is_public', 'address_line1', 'address_line2',
         'state', 'city', 'slug', 'clicks_sent', 'page_views',
         'alexa_global_rank', 'alexa_top_country_id',
-        'alexa_country_rank', 'score'
+        'alexa_country_rank', 'rating'
     ];
 
     public function user()
@@ -29,10 +29,19 @@ class Company extends Model
         return $this->hasMany('App\Models\Review');
     }
 
-    public function getRatingAttribute(){
+    public function setRatingAttribute(){
         $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
         if(! count($reviewScores)){
-            return 0;
+            $this->attributes['rating'] =  0;
+        }
+        $this->attributes['rating']  = floor(array_sum($reviewScores) / count($reviewScores));
+        return floor(array_sum($reviewScores) / count($reviewScores));
+    }
+
+    public function recalculateRating(){
+        $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
+        if(! count($reviewScores)){
+            $this->attributes['rating'] =  0;
         }
 
         return floor(array_sum($reviewScores) / count($reviewScores));

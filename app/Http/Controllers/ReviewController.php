@@ -35,6 +35,11 @@ class ReviewController extends Controller
 
     public function myReviews(Request $request)
     {
+        $data['five_star_reviews'] = Review::whereScore(5)->count();
+        $data['four_star_reviews'] = Review::whereScore(4)->count();
+        $data['three_star_reviews'] = Review::whereScore(3)->count();
+        $data['two_star_reviews'] = Review::whereScore(2)->count();
+        $data['one_star_reviews'] = Review::whereScore(1)->count();
         $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(5);
         if($data['reviews']->count() == 0){
             $request->session()->flash('info', 'You do not have any reviews yet!');
@@ -86,7 +91,7 @@ class ReviewController extends Controller
         $review->update([
             'slug' => 'review-'.$review->id
         ]);
-
+        $this->updateCompanyRating($company->id);
         $this->sendReviewVerificationEmail($review->id);
 
         $request->session()->flash('success', 'You review has been succesful!');
@@ -164,11 +169,65 @@ class ReviewController extends Controller
 
     public function orderBy()
     {
-        return $this->index($this->request->order);
+        if(! $this->checkIfFilterByStar($this->request)){
+           return $this->index($this->request->order);
+        }
+
+        $dataH = collect(explode(',', $this->request->stars))->map(function($star){
+            return (array) explode(',', "score,{$star}");
+        });
+
+        $dataH = \Illuminate\Support\Collection::unwrap($dataH);
+
+        switch(count($dataH)){
+            case 6:
+                $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                    ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
+                                    ->orWhere($dataH[4][0], $dataH[4][1])->orWhere($dataH[5][0], $dataH[5][1])->paginate(25);
+                break;
+            case 5:
+                $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                        ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
+                                        ->orWhere($dataH[4][0], $dataH[4][1])->paginate(25);
+            break;
+            case 4:
+            $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])->paginate(25);
+            break;
+            case 3:
+             $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                ->orWhere($dataH[2][0], $dataH[2][1])->paginate(25);
+            break;
+            case 2:
+            $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                ->paginate(25);
+            break;
+            case 1:
+            $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])
+                                ->paginate(25);
+            break;
+            default:
+            $data['reviews'] = Review::orderBy('created_at', 'desc')
+                                ->paginate(25);
+            break;
+        }
+
+        return view('review.index', $data);
+    }
+
+     public function checkIfFilterByStar(Request $request){
+        return $request->has('stars');
     }
 
     public function orderFilterReviewBy($companySlug)
     {
         return $this->filterReview($companySlug, $this->request->order);
+    }
+
+    public function updateCompanyRating($companyId){
+        $company = Company::whereId($companyId)->first();
+        $company->update([
+            'rating' => $company->recalculateRating()
+        ]);
     }
 }
