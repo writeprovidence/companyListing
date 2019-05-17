@@ -43,6 +43,19 @@
     </li>
 
     <li class="
+        @if(Request::is('dashboard/nameservers'))
+            {{'active'}}
+        @endif
+        ">
+        <a href="{{route('nameservers')}}">
+            <div class="icon-wrap">
+                <i class="fa fa-filter" aria-hidden="true"></i>
+            </div>
+            <span>Nameservers</span>
+        </a>
+    </li>
+
+    <li class="
         @if(Request::is('dashboard/review'))
             {{'active'}}
         @endif

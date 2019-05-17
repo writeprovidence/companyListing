@@ -20,6 +20,11 @@ class Company extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function nameservers()
+    {
+        return $this->hasOne('App\Models\Nameservers');
+    }
+
     public function companyApproved()
     {
         return $this->is_public ? true : false;
@@ -87,4 +92,10 @@ class Company extends Model
         }
         return floor(array_sum($featureScores) / count($featureScores));
     }
+
+    public function hasNameservers()
+    {
+        return $this->nameservers ? true : false;
+    }
 }
+

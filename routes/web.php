@@ -29,6 +29,9 @@ Route::get('company-profile/{companySlug}', 'CompanyController@companyProfile')-
 Route::post('company-profile/{companySlug}', 'CompanyController@orderCompanyProfileBy')->name('order.profile.company');
 Route::get('dashboard/go/{companySlug}', 'CompanyController@redirectToWebsite')->name('redirect.company');
 Route::get('dashboard/review', 'ReviewController@myReviews')->name('reviews');
+Route::get('dashboard/nameservers', 'NameserverController@index')->name('nameservers');
+Route::post('dashboard/nameservers', 'NameserverController@store')->name('store.nameservers');
+Route::post('dashboard/nameservers/update', 'NameserverController@update')->name('update.nameservers');
 
 // User Route
 Route::get('dashboard/user-profile', 'UserController@edit')->name('edit.user');
