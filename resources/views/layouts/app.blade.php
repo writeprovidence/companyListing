@@ -118,21 +118,17 @@
                         <section class="col">
                             <h3>Company</h3>
                             <ul class="footer-links">
-                                <li><a href="#">ABC Link</a></li>
-                                <li><a href="#">ABC Link</a></li>
-                                <li><a href="#">ABC Link</a></li>
-                                <li><a href="#">ABC Link</a></li>
-                                <li><a href="#">ABC Link</a></li>
+                            @foreach($latest_companies as $latest_company)
+                                <li><a href="{{route('profile.company', $latest_company->slug)}}">{{$latest_company->name}}</a></li>
+                            @endforeach
                             </ul>
                         </section>
                         <section class="col">
                             <h3>Top Web Hosting</h3>
                             <ul class="footer-links">
-                                <li><a href="#">Global Best Hosting Companies</a></li>
-                                <li><a href="#">Global Best Hosting Companies</a></li>
-                                <li><a href="#">Global Best Hosting Companies</a></li>
-                                <li><a href="#">Global Best Hosting Companies</a></li>
-                                <li><a href="#">Global Best Hosting Companies</a></li>
+                                @foreach($top_companies as $top_company)
+                                    <li><a href="{{route('profile.company', $top_company->slug)}}">{{$top_company->name}}</a></li>
+                                @endforeach
                             </ul>
                         </section>
                         <div class="col">
