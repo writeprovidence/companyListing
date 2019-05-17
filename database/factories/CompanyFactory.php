@@ -11,6 +11,7 @@ $factory->define(App\Models\Company::class, function (Faker $faker) {
         'website' => $faker->domainName,
         'link_to_go' => $faker->domainName,
         'rating' => rand(3,10),
+        'feature' => rand(0,1),
         'description' => $faker->paragraph,
         'zip' => $faker->postcode,
         'state' => $faker->state,

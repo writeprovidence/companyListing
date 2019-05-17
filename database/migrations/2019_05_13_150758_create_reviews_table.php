@@ -24,6 +24,7 @@ class CreateReviewsTable extends Migration
             $table->string('review_ip');
             $table->string('reliability')->default(0);
             $table->string('pricing')->default(0);
+            $table->string('feature')->default(0);
             $table->string('user_friendly')->default(0);
             $table->string('support')->default(0);
             $table->string('features')->default(0);
@@ -31,6 +32,7 @@ class CreateReviewsTable extends Migration
             $table->string('verification_ip')->nullable();
             $table->string('verification_time')->nullable();
             $table->integer('is_verified')->default(0);
+            $table->integer('is_public')->default(0);
             $table->integer('likes')->default(0);
             $table->integer('dislikes')->default(0);
             $table->text('response')->nullable();

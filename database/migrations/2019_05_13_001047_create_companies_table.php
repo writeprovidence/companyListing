@@ -31,6 +31,7 @@ class CreateCompaniesTable extends Migration
             $table->string('address_line1')->nullable();
             $table->string('address_line2')->nullable();
             $table->boolean('is_public')->default(0);
+            $table->boolean('feature')->default(0);
             $table->integer('clicks_sent')->default(0);
             $table->integer('page_views')->default(0);
             $table->string('alexa_global_rank')->default(0);

@@ -137,7 +137,7 @@ class AdminController extends Controller
     {
         $review = Review::whereSlug($reviewSlug)->first();
         $review->update([
-            'is_verified' => 1
+            'is_public' => 1
         ]);
 
         $request->session()->flash('success', 'Review Approved');
@@ -148,7 +148,7 @@ class AdminController extends Controller
     {
         $review = Review::whereSlug($reviewSlug)->first();
         $review->update([
-            'is_verified' => 0
+            'is_public' => 0
         ]);
 
         $request->session()->flash('success', 'Review Rejected');

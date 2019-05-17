@@ -30,8 +30,14 @@
                                 <li>
                                     <div class="review-card">
                                         <div class="entry-header">
-                                            <h3>{{$company->name}} Company </h3>
-                                            <small>( {{$company->companyApproved() ? 'Approved' : 'Not Approved'}} )</small>
+                                            <h3>{{$company->name}} Company
+                                                @if($company->companyApproved())
+                                                    <a href="#" class="btn-feature">Feature</a>
+                                                @endif
+                                            </h3>
+
+
+
                                             @if($company->companyApproved())
                                                 <a href="{{route('reject.company', $company->slug)}}">
                                                     <div class="score">

@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 class NameserverController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function index()
     {
         if(! Auth::user()->hasCompany()){
@@ -39,6 +44,7 @@ class NameserverController extends Controller
         return redirect()->route('dashboard');
 
     }
+
     public function update(Request $request)
     {
         $this->validate($request, [

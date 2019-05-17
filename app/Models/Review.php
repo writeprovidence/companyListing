@@ -11,7 +11,8 @@ class Review extends Model
         'title', 'review_ip', 'verification_ip', 'verification_time',
         'is_verified', 'review', 'slug', 'response', 'response_user_id',
         'response_timestamp', 'response_ip', 'reliability', 'pricing',
-        'user_friendly', 'support','features', 'services', 'score'
+        'user_friendly', 'support','features', 'services', 'score',
+        'feature'
     ];
 
     public function company()

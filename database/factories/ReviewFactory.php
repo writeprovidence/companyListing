@@ -15,6 +15,8 @@ $factory->define(App\Models\Review::class, function (Faker $faker) {
         'support' => rand(0,5),
         'score' => rand(0,10),
         'is_verified' => rand(0,1),
+        'is_public' => rand(0,1),
+        'feature' => rand(0,1),
         'likes' => rand(0,100),
         'dislikes' => rand(0,100),
         'slug' => 'review-'. rand(1,2000),

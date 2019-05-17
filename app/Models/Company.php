@@ -12,7 +12,7 @@ class Company extends Model
         'is_public', 'address_line1', 'address_line2',
         'state', 'city', 'slug', 'clicks_sent', 'page_views',
         'alexa_global_rank', 'alexa_top_country_id',
-        'alexa_country_rank', 'rating'
+        'alexa_country_rank', 'rating','feature'
     ];
 
     public function user()
@@ -34,14 +34,14 @@ class Company extends Model
         return $this->hasMany('App\Models\Review');
     }
 
-    public function setRatingAttribute(){
-        $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
-        if(! count($reviewScores)){
-            $this->attributes['rating'] =  0;
-        }
-        $this->attributes['rating']  = floor(array_sum($reviewScores) / count($reviewScores));
-        return floor(array_sum($reviewScores) / count($reviewScores));
-    }
+    // public function setRatingAttribute(){
+    //     $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
+    //     if(! count($reviewScores)){
+    //         $this->attributes['rating'] =  0;
+    //     }
+    //     $this->attributes['rating']  = floor(array_sum($reviewScores) / count($reviewScores));
+    //     return floor(array_sum($reviewScores) / count($reviewScores));
+    // }
 
     public function recalculateRating(){
         $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
@@ -96,6 +96,11 @@ class Company extends Model
     public function hasNameservers()
     {
         return $this->nameservers ? true : false;
+    }
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Products');
     }
 }
 

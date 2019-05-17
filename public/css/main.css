@@ -8891,3 +8891,11 @@ ul.reviewbox-list.reset {
     }
 }
 
+.btn-feature{
+    font-size:10px;
+    background-color: #f77e18;
+    color:white !important;
+    text-decoration:none !important;
+    padding: .4em 1em;
+    border-radius: 25px;
+}

@@ -29,54 +29,21 @@
 						</div>
 						<div class="entry-body">
 							<ul class="hosting-list">
+                                @foreach($featured_companies as $company)
 								<li>
 									<div class="hosting-card">
 										<span class="cnt"></span>
 										<div class="entry-image">
-											<img src="images/bluehost.jpg" alt="bluehost">
+											<p>{{$company->name}}</p>
 										</div>
 										<ul class="entry-links">
-											<li><a href="#">Visit Site</a></li>
-											<li><a href="#">Read Reviews</a></li>
+											<li><a href="{{route('profile.company', $company->slug)}}">Visit Site</a></li>
+											<li><a href="{{route('reviews.company', $company->slug)}}">Read Reviews</a></li>
 										</ul>
 									</div>
-								</li>
-								<li>
-									<div class="hosting-card">
-										<span class="cnt"></span>
-										<div class="entry-image">
-											<img src="images/bluehost.jpg" alt="bluehost">
-										</div>
-										<ul class="entry-links">
-											<li><a href="#">Visit Site</a></li>
-											<li><a href="#">Read Reviews</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="hosting-card">
-										<span class="cnt"></span>
-										<div class="entry-image">
-											<img src="images/bluehost.jpg" alt="bluehost">
-										</div>
-										<ul class="entry-links">
-											<li><a href="#">Visit Site</a></li>
-											<li><a href="#">Read Reviews</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="hosting-card">
-										<span class="cnt"></span>
-										<div class="entry-image">
-											<img src="images/bluehost.jpg" alt="bluehost">
-										</div>
-										<ul class="entry-links">
-											<li><a href="#">Visit Site</a></li>
-											<li><a href="#">Read Reviews</a></li>
-										</ul>
-									</div>
-								</li>
+                                </li>
+                                @endforeach
+
 							</ul>
 						</div>
 					</div>

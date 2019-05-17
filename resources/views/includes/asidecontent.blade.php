@@ -67,4 +67,17 @@
             <span>Reviews</span>
         </a>
     </li>
+
+    <li class="
+        @if(Request::is('dashboard/products'))
+            {{'active'}}
+        @endif
+        ">
+        <a href="{{route('products')}}">
+            <div class="icon-wrap">
+                <i class="fa fa-list-ul" aria-hidden="true"></i>
+            </div>
+            <span>Company Products</span>
+        </a>
+    </li>
 </ul>

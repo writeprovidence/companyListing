@@ -32,6 +32,9 @@ Route::get('dashboard/review', 'ReviewController@myReviews')->name('reviews');
 Route::get('dashboard/nameservers', 'NameserverController@index')->name('nameservers');
 Route::post('dashboard/nameservers', 'NameserverController@store')->name('store.nameservers');
 Route::post('dashboard/nameservers/update', 'NameserverController@update')->name('update.nameservers');
+Route::get('dashboard/products', 'ProductController@index')->name('products');
+Route::post('dashboard/products', 'ProductController@store')->name('store.products');
+Route::post('dashboard/products/update', 'ProductController@update')->name('update.products');
 
 // User Route
 Route::get('dashboard/user-profile', 'UserController@edit')->name('edit.user');
