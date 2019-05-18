@@ -22,7 +22,10 @@
 								</select>
 							</div>
 
-						</form>
+                        </form>
+                        <form id="order-results" action="{{route('user.search')}}" method="GET" class="advanced-form">
+                            @include('includes.namesearchform')
+                        </form>
 					</aside>
 					<div class="top-entry-body">
 						<h3 class="top-heading">All Users</h3>

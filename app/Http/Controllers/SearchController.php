@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\User;
+use App\Models\Review;
 
 class SearchController extends Controller
 {
@@ -25,11 +27,27 @@ class SearchController extends Controller
         return view('search.all', $data);
     }
 
-    public function orderSearchBy(
-
-    )
+    public function orderSearchBy()
     {
         list($column, $orderValue) = explode(', ', $this->request->order);
        return $this->search($column, $orderValue, $this->request->country);
+    }
+
+    public function companies(){
+        $data['companies'] = Company::where('name', 'LIKE', "%{$this->request->search}%")->orderBy('name', 'asc')->paginate(100);
+
+        return view('dashboard.admin.companies', $data);
+    }
+
+    public function reviews(){
+        $data['reviews'] = Review::where('title', 'LIKE', "%{$this->request->search}%")->orderBy('title', 'asc')->paginate(100);
+
+        return view('dashboard.admin.reviews', $data);
+    }
+
+    public function users(){
+        $data['users'] = User::where('name', 'LIKE', "%{$this->request->search}%")->orderBy('name', 'asc')->paginate(100);
+
+        return view('dashboard.admin.users', $data);
     }
 }

@@ -10,19 +10,22 @@
 			<div class="top-layout">
 				<div class="container">
 					<aside class="top-entry-aside">
-                <form id="order-result" action="{{route('admin.companies.order')}}" method="POST" class="advanced-form">
-                    @csrf
-                    <h5 class="aside-title">Advanced Search</h5>
-                    <div class="form-row open-close">
-                        <select class="filter-select" name="order" onchange="event.preventDefault();
-                                                        document.getElementById('order-result').submit(); ">
-                            <option value="desc">Newest First</option>
-                            <option value="asc">Oldest First</option>
-                        </select>
-                    </div>
+                        <form id="order-result" action="{{route('admin.companies.order')}}" method="POST" class="advanced-form">
+                            @csrf
+                            <h5 class="aside-title">Advanced Search</h5>
+                            <div class="form-row open-close">
+                                <select class="filter-select" name="order" onchange="event.preventDefault();
+                                                                document.getElementById('order-result').submit(); ">
+                                    <option value="desc">Newest First</option>
+                                    <option value="asc">Oldest First</option>
+                                </select>
+                            </div>
 
-                </form>
-					</aside>
+                        </form>
+                        <form id="order-results" action="{{route('company.search')}}" method="GET" class="advanced-form">
+                            @include('includes.namesearchform')
+                        </form>
+                    </aside>
 					<div class="top-entry-body">
 						<h3 class="top-heading">All Companies</h3>
 						<ul class="review-list commentr-mod">

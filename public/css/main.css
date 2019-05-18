@@ -8890,6 +8890,10 @@ ul.reviewbox-list.reset {
         padding: 10px 15px;
     }
 }
+input.btn.form-control {
+    width: 10em;
+    margin-top: .3em;
+}
 
 .btn-feature{
     font-size:10px;

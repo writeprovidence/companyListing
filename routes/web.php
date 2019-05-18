@@ -67,6 +67,7 @@ Route::get('admin/dashboard/resetpassword', 'AdminController@showResetForm')->na
 Route::post('admin/dashboard/resetpassword', 'AdminController@resetPassword')->name('admin.resetpassword');
 Route::get('admin/dashboard/users', 'AdminController@users')->name('admin.users');
 Route::post('admin/dashboard/users', 'AdminController@orderUsers')->name('admin.user.order');
+
 // Admin Company routes
 Route::get('admin/dashboard/companies', 'AdminController@companies')->name('admin.companies');
 Route::post('admin/dashboard/companies', 'AdminController@orderCompanies')->name('admin.companies.order');
@@ -74,6 +75,7 @@ Route::get('companies/{companySlug}/approve', 'AdminController@approveCompany')-
 Route::get('companies/{companySlug}/reject', 'AdminController@rejectCompany')->name('reject.company');
 Route::get('companies/{companySlug}/edit', 'AdminController@editCompany')->name('admin.editcompany');
 Route::post('companies/{companySlug}/edit', 'AdminController@updateCompany')->name('admin.updatecompany');
+
 // Admin review routes
 Route::get('admin/dashboard/reviews', 'AdminController@reviews')->name('admin.reviews');
 Route::post('admin/dashboard/reviews', 'AdminController@orderReviews')->name('admin.reviews.order');
@@ -89,8 +91,12 @@ Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admi
 Route::get('companies/country/{country}', 'CompanyController@country')->name('contry.company');
 Route::post('companies/country/{country}', 'CompanyController@orderCountryBy')->name('order.country');
 
-// Feature Routes
+// Feature and Unfeature Routes
 Route::get('feature/company/{companySlug}', 'FeatureController@featureCompany')->name('feature.company');
-Route::get('unfeature/company/{companySlug}', 'FeatureController@unfeatureCompany')->name('unfeature.company');;
-Route::get('feature/review/{reviewSlug}', 'FeatureController@featureReview')->name('feature.review');;
-Route::get('unfeature/review/{reviewSlug}', 'FeatureController@unfeatureReview')->name('unfeature.review');;
+Route::get('unfeature/company/{companySlug}', 'FeatureController@unfeatureCompany')->name('unfeature.company');
+Route::get('feature/review/{reviewSlug}', 'FeatureController@featureReview')->name('feature.review');
+Route::get('unfeature/review/{reviewSlug}', 'FeatureController@unfeatureReview')->name('unfeature.review');
+
+Route::get('search/company', 'SearchController@companies')->name('companies.search');
+Route::get('search/reviews', 'SearchController@reviews')->name('reviews.search');
+Route::get('search/users', 'SearchController@users')->name('user.search');
