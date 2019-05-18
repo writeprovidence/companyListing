@@ -29,6 +29,19 @@
             <span>My Profile</span>
         </a>
     </li>
+
+    <li class="
+            @if(Request::is('user/resetpassword'))
+                {{'active'}}
+            @endif
+        ">
+        <a href="{{route('edit.password.user')}}">
+            <div class="icon-wrap">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <span>Reset Password</span>
+        </a>
+    </li>
     <li class="
             @if(Request::is('dashboard/company-profile/edit'))
                 {{'active'}}

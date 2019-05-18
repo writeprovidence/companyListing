@@ -100,3 +100,8 @@ Route::get('unfeature/review/{reviewSlug}', 'FeatureController@unfeatureReview')
 Route::get('search/company', 'SearchController@companies')->name('companies.search');
 Route::get('search/reviews', 'SearchController@reviews')->name('reviews.search');
 Route::get('search/users', 'SearchController@users')->name('user.search');
+
+
+// Reset Password C:\Users\
+Route::get('user/resetpassword', 'PasswordController@showUserResetForm')->name('edit.password.user');
+Route::post('user/resetpassword', 'PasswordController@resetUserPassword')->name('admin.resetpassword');
