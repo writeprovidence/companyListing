@@ -30,9 +30,17 @@
                                 <li>
                                     <div class="review-card">
                                         <div class="entry-header">
-                                            <h3>{{$review->full_name}}'s Review </h3>
-                                            <small>( {{$review->isVerified() ? 'Approved' : 'Not Approved'}} )</small>
-                                            @if($review->isVerified())
+                                            <h3>{{$review->full_name}}'s Review
+                                                @if($review->isApproved())
+                                                    @if($review->isFeatured())
+                                                        <a href="{{route('unfeature.review', $review->slug)}}" class="btn-feature">UnFeature</a>
+                                                    @else
+                                                          <a href="{{route('feature.review', $review->slug)}}" class="btn-feature">Feature</a>
+                                                    @endif
+                                                @endif
+                                            </h3>
+
+                                            @if($review->isApproved())
                                                 <a href="{{route('reject.review', $review->slug)}}">
                                                     <div class="score">
                                                         Reject

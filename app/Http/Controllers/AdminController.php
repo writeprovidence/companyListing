@@ -83,7 +83,8 @@ class AdminController extends Controller
     {
         $company = Company::whereSlug($companySlug)->first();
         $company->update([
-            'is_public' => 0
+            'is_public' => 0,
+            'feature' => 0
         ]);
 
         $request->session()->flash('success', 'Company Rejected');
@@ -148,7 +149,8 @@ class AdminController extends Controller
     {
         $review = Review::whereSlug($reviewSlug)->first();
         $review->update([
-            'is_public' => 0
+            'is_public' => 0,
+            'feature' => 0
         ]);
 
         $request->session()->flash('success', 'Review Rejected');
