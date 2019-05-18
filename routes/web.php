@@ -89,6 +89,8 @@ Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admi
 Route::get('companies/country/{country}', 'CompanyController@country')->name('contry.company');
 Route::post('companies/country/{country}', 'CompanyController@orderCountryBy')->name('order.country');
 
-// Route::get('d', function(){
-//     return \App\Models\Company::all()->first()->recalculateRating();
-// });
+// Feature Routes
+Route::get('feature/company/{companySlug}', 'FeatureController@featureCompany')->name('feature.company');
+Route::get('unfeature/company/{companySlug}', 'FeatureController@unfeatureCompany')->name('unfeature.company');;
+Route::get('feature/review/{reviewSlug}', 'FeatureController@featureReview')->name('feature.review');;
+Route::get('unfeature/review/{reviewSlug}', 'FeatureController@unfeatureReview')->name('unfeature.review');;

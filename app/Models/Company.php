@@ -98,6 +98,11 @@ class Company extends Model
         return $this->nameservers ? true : false;
     }
 
+    public function isFeatured()
+    {
+        return $this->feature == 1 ? true : false;
+    }
+
     public function products()
     {
         return $this->hasMany('App\Models\Products');

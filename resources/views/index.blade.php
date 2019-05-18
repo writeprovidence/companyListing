@@ -69,7 +69,7 @@
 					</div>
 				</div>
 			</section>
-            @if($reviews->count() > 0)
+            @if($featured_reviews->count() > 0)
 			<section class="section bg-grey">
 				<div class="container">
 					<header class="section-header">
@@ -77,7 +77,7 @@
 						<p>Real customer reviews, checked by our team before they are made public</p>
 					</header>
 					<ul class="reviewbox-list">
-                        @foreach($reviews as $review)
+                        @foreach($featured_reviews as $review)
                             <li>
                                 <div class="reviewbox-card">
                                     <header class="entry-header">
