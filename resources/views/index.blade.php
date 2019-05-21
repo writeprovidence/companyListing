@@ -109,7 +109,7 @@
                                                 {{$review->review}}
                                             </p>
                                             <div class="links">
-                                                <a href="{{route('redirect.company', $review->company->slug)}}">Visit Site</a> |
+                                                <a target="_blank" href="{{route('redirect.company', $review->company->slug)}}">Visit Site</a> |
                                                 <a href="{{route('reviews.company', $review->company->slug)}}">Read Reviews</a>
                                             </div>
                                         </div>
