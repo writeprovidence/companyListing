@@ -89,7 +89,7 @@ class CompanyController extends Controller
             return redirect()->back()->withInput();
         }
 
-        $request->avatar->storeAs('public/companies',
+        $request->avatar->storeAs('companies',
             str_slug($request->name) . '.' . time() . '.' . $request->file('avatar')->getClientOriginalExtension()
         );
 
