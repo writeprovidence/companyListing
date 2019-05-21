@@ -22,23 +22,19 @@
                             </div>
                             <ul class="socialshare-list">
                                 <li>
-                                    <a class="fa fa-facebook-official" href="#"></a>
+                                    <a class="fa fa-facebook-official" href="{{$company->facebook}}"></a>
                                 </li>
                                 <li>
-                                    <a  class="fa fa-twitter-square"href="#"></a>
+                                    <a  class="fa fa-twitter-square"href="{{$company->twitter}}"></a>
                                 </li>
                                 <li>
-                                    <a class="fa fa-linkedin-square" href="#"></a>
+                                    <a class="fa fa-linkedin-square" href="{{$company->linkedin}}"></a>
                                 </li>
+
                                 <li>
-                                    <a class="fa fa-pinterest-square" href="#"></a>
+                                    <a class="fa fa-envelope" href="mailto:{{$company->email}}"></a>
                                 </li>
-                                <li>
-                                    <a class="fa fa-envelope" href="#"></a>
-                                </li>
-                                <li>
-                                    <a class="fa fa-share-alt-square" href="#"></a>
-                                </li>
+
                             </ul>
                         </div>
                         <div class="col">

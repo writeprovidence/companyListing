@@ -47,7 +47,7 @@ class AdminController extends Controller
 
     public function users($orderValue = 'desc')
     {
-        $data['users'] = User::orderBy('created_at', $orderValue)->paginate(25);
+        $data['users'] = User::whereRole('user')->orderBy('created_at', $orderValue)->paginate(25);
 
         return view('dashboard.admin.users', $data);
     }

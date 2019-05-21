@@ -14,8 +14,8 @@ class CompanyController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['except' => ['ranking','index']]);
-        $this->middleware('verified', ['except' => ['ranking','index']]);
+        $this->middleware('auth', ['except' => ['ranking','index', 'companyProfile']]);
+        $this->middleware('verified', ['except' => ['ranking','index', 'companyProfile']]);
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
@@ -70,6 +70,7 @@ class CompanyController extends Controller
         $rules = [
             'name' => 'required | string | max:150',
             'website' => 'required | url',
+            'avatar' => 'required | image',
             'email' => 'required | email',
             'phone' => 'required | numeric',
             'address_line1' => 'string',
@@ -88,6 +89,10 @@ class CompanyController extends Controller
             return redirect()->back()->withInput();
         }
 
+        $request->avatar->storeAs('public/companies',
+            str_slug($request->name) . '.' . time() . '.' . $request->file('avatar')->getClientOriginalExtension()
+        );
+
         AlexaLog::create([
             'company_id' => $company->id
         ]);
@@ -100,6 +105,7 @@ class CompanyController extends Controller
 
     protected function buildUpData($requestObject){
         $data = $requestObject->except('_token');
+        $data['avatar'] = str_slug($requestObject->name) . '.' . time() . '.' . $requestObject->file('avatar')->getClientOriginalExtension();
         $data['user_id'] = Auth::id();
         $data['description'] = strip_tags($data['description']);
         $data['link_to_go'] = $requestObject->website;

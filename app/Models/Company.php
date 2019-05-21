@@ -12,7 +12,8 @@ class Company extends Model
         'is_public', 'address_line1', 'address_line2',
         'state', 'city', 'slug', 'clicks_sent', 'page_views',
         'alexa_global_rank', 'alexa_top_country_id',
-        'alexa_country_rank', 'rating','feature'
+        'alexa_country_rank', 'rating','feature', 'linkedin',
+        'twitter', 'facebook', 'avatar'
     ];
 
     public function user()

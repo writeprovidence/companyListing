@@ -24,10 +24,14 @@ class CreateCompaniesTable extends Migration
             $table->string('link_to_go');
             $table->string('rating')->default(0);
             $table->text('description');
+            $table->text('avatar');
             $table->string('zip')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('country');
+            $table->string('linkedin')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();
             $table->string('address_line1')->nullable();
             $table->string('address_line2')->nullable();
             $table->boolean('is_public')->default(0);

@@ -9,7 +9,7 @@
                         @include('includes.aside')
 
 						<div class="dashboard-body">
-							<form action="{{route('store.company')}}" method="POST" class="dashboard-form">
+							<form action="{{route('store.company')}}" method="POST" class="dashboard-form" enctype="multipart/form-data">
                                 @csrf
                                 <h3>Company Information</h3>
 
@@ -57,6 +57,42 @@
                                     @if ($errors->has('phone'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+								<div class="form-row">
+									<label for="facebook">Facebook:</label>
+                                        <input id="facebook" type="url" class="form-control {{ $errors->has('facebook') ? ' is-invalid' : '' }}" name="facebook"
+                                            value="{{ old('facebook') }}" placeholder="Facebook" required>
+
+                                    @if ($errors->has('facebook'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('facebook') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+								<div class="form-row">
+									<label for="twitter">Twitter:</label>
+                                        <input id="twitter" type="url" class="form-control {{ $errors->has('twitter') ? ' is-invalid' : '' }}" name="twitter"
+                                            value="{{ old('twitter') }}" placeholder="Twitter" required>
+
+                                    @if ($errors->has('twitter'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('twitter') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+								<div class="form-row">
+									<label for="linkedin">Linkedin:</label>
+                                        <input id="linkedin" type="url" class="form-control {{ $errors->has('linkedin') ? ' is-invalid' : '' }}" name="linkedin"
+                                            value="{{ old('linkedin') }}" placeholder="Linkedin" required>
+
+                                    @if ($errors->has('linkedin'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('linkedin') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -118,6 +154,17 @@
                                     @if ($errors->has('zip'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('zip') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+								<div class="form-row">
+									<label for="avatar">Avatars:</label>
+                                        <input id="avatar" type="file" class=" {{ $errors->has('avatar') ? ' is-invalid' : '' }} " name="avatar">
+
+                                    @if ($errors->has('avatar'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('avatar') }}</strong>
                                     </span>
                                     @endif
                                 </div>

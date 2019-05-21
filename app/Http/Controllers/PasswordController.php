@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Hash;
 use Illuminate\Http\Request;
 
 class PasswordController extends Controller
@@ -10,12 +12,13 @@ class PasswordController extends Controller
     {
         $this->middleware(['auth', 'verified']);
     }
+
     public function showUserResetForm()
     {
         return view('dashboard.admin.resetpassword');
     }
 
-    public function resetPassword(Request $request)
+    public function resetUserPassword(Request $request)
     {
         $rules = [
             'password' => 'required | string | min:6 | confirmed',
@@ -27,6 +30,6 @@ class PasswordController extends Controller
         Auth::user()->save();
 
         $request->session()->flash('success', 'Updated Password Successfully!');
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('dashboard');
     }
 }

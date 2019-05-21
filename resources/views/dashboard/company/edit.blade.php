@@ -49,6 +49,42 @@
                                     @endif
                                 </div>
 
+                                <div class="form-row">
+                                    <label for="facebook">Facebook:</label>
+                                    <input id="facebook" type="url" class="form-control {{ $errors->has('facebook') ? ' is-invalid' : '' }}"
+                                        name="facebook" value="{{ Auth::user()->company->facebook }}" placeholder="Facebook *" required>
+
+                                    @if ($errors->has('facebook'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('facebook') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-row">
+                                    <label for="twitter">Twitter:</label>
+                                    <input id="twitter" type="url" class="form-control {{ $errors->has('twitter') ? ' is-invalid' : '' }}"
+                                        name="twitter" value="{{ Auth::user()->company->twitter }}" placeholder="Twitter *" required>
+
+                                    @if ($errors->has('twitter'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('twitter') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-row">
+                                    <label for="linkedin">Linkedin:</label>
+                                    <input id="linkedin" type="url" class="form-control {{ $errors->has('linkedin') ? ' is-invalid' : '' }}"
+                                        name="linkedin" value="{{ Auth::user()->company->linkedin }}" placeholder="Linkedin *" required>
+
+                                    @if ($errors->has('linkedin'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('linkedin') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
 								<div class="form-row">
 									<label for="address_line1">Address Line1:</label>
                                         <input id="address_line1" type="text" class="form-control {{ $errors->has('address_line1') ? ' is-invalid' : '' }}" name="address_line1"

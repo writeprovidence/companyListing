@@ -959,6 +959,13 @@ input[type='submit']:hover
     background: #ff2e25;
 }
 
+input[type='file']#avatar{
+    color: #000;
+}
+input[type='file']#avatar:hover{
+    background: transparent;
+}
+
 html
 {
     box-sizing: border-box;

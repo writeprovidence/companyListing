@@ -28,23 +28,24 @@
 							<h3>Recommended Web Hosting Companies 2019</h3>
 						</div>
 						<div class="entry-body">
-							<ul class="hosting-list">
-                                @foreach($featured_companies as $company)
-								<li>
-									<div class="hosting-card">
-										<span class="cnt"></span>
-										<div class="entry-image">
-											<p>{{$company->name}}</p>
-										</div>
-										<ul class="entry-links">
-											<li><a href="{{route('profile.company', $company->slug)}}">Visit Site</a></li>
-											<li><a href="{{route('reviews.company', $company->slug)}}">Read Reviews</a></li>
-										</ul>
-									</div>
-                                </li>
-                                @endforeach
-
-							</ul>
+                            @if($featured_companies->count() > 0)
+                                <ul class="hosting-list">
+                                    @foreach($featured_companies as $company)
+                                        <li>
+                                            <div class="hosting-card">
+                                                <span class="cnt"></span>
+                                                <div class="entry-image">
+                                                    <p>{{$company->name}}</p>
+                                                </div>
+                                                <ul class="entry-links">
+                                                    <li><a href="{{route('profile.company', $company->slug)}}">Visit Site</a></li>
+                                                    <li><a href="{{route('reviews.company', $company->slug)}}">Read Reviews</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
 						</div>
 					</div>
 				</div>
@@ -75,49 +76,51 @@
 					<header class="section-header">
 						<h1>Recent Reviews Posted</h1>
 						<p>Real customer reviews, checked by our team before they are made public</p>
-					</header>
-					<ul class="reviewbox-list">
-                        @foreach($featured_reviews as $review)
-                            <li>
-                                <div class="reviewbox-card">
-                                    <header class="entry-header">
-                                        <span>Review by</span>
-                                        <strong>{{$review->full_name}}</strong>
-                                    </header>
-                                    <div class="entry-rating">
-                                        <div class="rating">
-                                            <div class="raiting-wrap">
-                                                    <span class="rating">
-                                                        @for($i = 0; $i < $review->score; $i++)
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                            @endfor
-                                                    </span>
+                    </header>
+                    @if($featured_reviews->count() > 0)
+                        <ul class="reviewbox-list">
+                            @foreach($featured_reviews as $review)
+                                <li>
+                                    <div class="reviewbox-card">
+                                        <header class="entry-header">
+                                            <span>Review by</span>
+                                            <strong>{{$review->full_name}}</strong>
+                                        </header>
+                                        <div class="entry-rating">
+                                            <div class="rating">
+                                                <div class="raiting-wrap">
+                                                        <span class="rating">
+                                                            @for($i = 0; $i < $review->score; $i++)
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                @endfor
+                                                        </span>
+                                                </div>
+                                                <span class="value">{{$review->score}}.00</span>
                                             </div>
-                                            <span class="value">{{$review->score}}.00</span>
+                                            <time datetime="2019-02-11">{{$review->created_at->diffForHumans()}}</time>
                                         </div>
-                                        <time datetime="2019-02-11">{{$review->created_at->diffForHumans()}}</time>
-                                    </div>
-                                    <div class="entry-company">
-                                        <span>About Company</span>
-                                        <strong><a href="{{route('profile.company', $review->company->slug)}}">{{$review->company->name}}</a> <a href="{{route('profile.company', $review->company->slug)}}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></strong>
-                                    </div>
-                                    <div class="entry-body">
-                                        <h3><a>{{$review->title}}</a></h3>
-                                        <p>
-                                            {{$review->review}}
-                                        </p>
-                                        <div class="links">
-                                            <a href="{{route('redirect.company', $review->company->slug)}}">Visit Site</a> |
-                                            <a href="{{route('reviews.company', $review->company->slug)}}">Read Reviews</a>
+                                        <div class="entry-company">
+                                            <span>About Company</span>
+                                            {{-- <strong><a href="{{route('profile.company', $review->company->slug)}}">{{$review->company->name}}</a> <a href="{{route('profile.company', $review->company->slug)}}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></strong> --}}
+                                        </div>
+                                        <div class="entry-body">
+                                            <h3><a>{{$review->title}}</a></h3>
+                                            <p>
+                                                {{$review->review}}
+                                            </p>
+                                            <div class="links">
+                                                <a href="{{route('redirect.company', $review->company->slug)}}">Visit Site</a> |
+                                                <a href="{{route('reviews.company', $review->company->slug)}}">Read Reviews</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                        @endforeach
-					</ul>
-					<div class="entry-button">
-                        <a class="btn btn-green" href="{{route('all.reviews')}}" role="button">Browse All Reviews</a>
-					</div>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="entry-button">
+                            <a class="btn btn-green" href="{{route('all.reviews')}}" role="button">Browse All Reviews</a>
+                        </div>
+                    @endif
 				</div>
 			</section>
             @endif
