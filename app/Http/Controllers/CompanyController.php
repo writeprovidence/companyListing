@@ -14,8 +14,8 @@ class CompanyController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['except' => ['ranking','index', 'companyProfile']]);
-        $this->middleware('verified', ['except' => ['ranking','index', 'companyProfile']]);
+        $this->middleware('auth', ['only' => ['store','edit', 'update']]);
+        $this->middleware('verified', ['only' => ['store','edit', 'update']]);
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
@@ -29,7 +29,7 @@ class CompanyController extends Controller
                 $this->request->session()->flash('info', 'No companies yet!');
                 return redirect()->back();
             }
-            return view('companies', $data);
+            return view('company.index', $data);
         }
 
         if($country){
@@ -38,7 +38,7 @@ class CompanyController extends Controller
                 $this->request->session()->flash('info', 'No companies yet!');
                 return redirect()->back();
             }
-            return view('companies', $data);
+            return view('company.index', $data);
         }
 
         $data['companies'] = Company::whereIsPublic(1)->orderBy($column, $value)->paginate(25);
@@ -46,7 +46,7 @@ class CompanyController extends Controller
             $this->request->session()->flash('info', 'No companies yet!');
             return redirect()->back();
         }
-        return view('companies', $data);
+        return view('company.index', $data);
     }
 
     public function ranking($column = 'created_at', $orderValue = 'desc', $country = null)
@@ -184,7 +184,7 @@ class CompanyController extends Controller
 
         $data['companies'] = Company::whereRating(explode(',', $this->request->stars))->paginate(25);
 
-        return view('companies', $data);
+        return view('company.index', $data);
     }
 
     public function checkIfFilterByStar(Request $request){
@@ -254,5 +254,19 @@ class CompanyController extends Controller
     {
        list($column, $orderValue) = explode(', ', $this->request->order);
        return $this->country($country, $column, $orderValue);
+    }
+
+    public function addTagLine()
+    {
+        $this->validate($this->request, [
+            'tag_line' => 'required | string | max:25',
+        ]);
+
+        if(Auth::user()->company()->update(['tag_line' => $this->request->tag_line])){
+            $this->request->session()->flash('success', 'Added Tag Line Successfully!');
+            return back();
+        }
+        $this->request->session()->flash('error', 'Can not add Tag Line!');
+        return back();
     }
 }

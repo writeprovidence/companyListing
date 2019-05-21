@@ -46,7 +46,7 @@ class SearchController extends Controller
     }
 
     public function users(){
-        $data['users'] = User::where('name', 'LIKE', "%{$this->request->search}%")->orderBy('name', 'asc')->paginate(100);
+        $data['users'] = User::where('name', 'LIKE', "%{$this->request->search}%")->paginate(40);
 
         return view('dashboard.admin.users', $data);
     }

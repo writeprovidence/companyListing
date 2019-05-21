@@ -34,7 +34,11 @@
                                 <li>
                                     <div class="review-card">
                                         <div class="entry-header">
-                                            <h3>{{$user->name}}'s Profile</h3>
+                                            <h3>
+                                                <a class="text-white" href="{{route('admin.edit.user',$user->id)}}">
+                                                    {{$user->name}}'s Profile
+                                                </a>
+                                            </h3>
                                             <div class="score">Reviews Done: {{$user->reviews()->count()}}</div>
                                         </div>
                                         <ul class="data-review-list">

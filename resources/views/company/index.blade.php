@@ -3,7 +3,7 @@
 <main id="main">
     <section class="hero-section page-mod" style="background-image: url('{{asset('images/bg2.jpg')}}');">
         <div class="container">
-            <h1>Web Hosting Rankings</h1>
+            <h1>Web Hosting Companies</h1>
             <p>Find and rate your web hosting service provider or select the best provider for your website. Find and
                 rate your web hosting service provider or select the best provider for your website. Find and rate your
                 web hosting service provider or select the best provider for your website.</p>
@@ -18,19 +18,21 @@
                         <select class="country">
                             <option value="created_at, desc">Newest First</option>
                             <option value="created_at, asc">Oldest First</option>
-                            <option value="rank, desc">Highest Rating</option>
-                            <option value="rank, asc">Lowest Rating</option>
+                            <option value="rating, desc">Highest Score</option>
+                            <option value="rating, asc">Lowest Score</option>
+                            <option value="alexa_global_rank, desc">Alexa Rank</option>
                         </select>
                     </div>
                 </form>
-                <form id="order-results" action="{{route('order.ranking')}}" method="POST" class="advanced-form">
+
+                <form id="order-results" action="{{route('order.companies')}}" method="POST" class="advanced-form">
                     @include('includes.starFilter')
                 </form>
             </aside>
             <div class="top-entry-body">
                 <div class="filter-block">
-                    <h3>Global Top 10 Ranked Companies</h3>
-                    <form id="order-result" action="{{route('order.ranking')}}" method="POST">
+                    <h3>All Companies</h3>
+                    <form id="order-result" action="{{route('order.companies')}}" method="POST" >
                         @csrf
                         <h5 class="aside-title">Advanced Search</h5>
                         <div class="form-row open-close">
@@ -38,8 +40,9 @@
                                                         document.getElementById('order-result').submit(); ">
                                 <option value="created_at, desc">Newest First</option>
                                 <option value="created_at, asc">Oldest First</option>
-                                <option value="rating, desc">Highest Rating</option>
-                                <option value="rating, asc">Lowest Rating</option>
+                                <option value="rating, desc">Highest Score</option>
+                                <option value="rating, asc">Lowest Score</option>
+                                <option value="alexa_global_rank, desc">Alexa Rank</option>
                             </select>
                         </div>
 
@@ -50,6 +53,7 @@
                     @foreach($companies as $company)
                         @include('includes.companyBox')
                     @endforeach
+
                 </ul>
                 <nav class="pagination-block">
                     {{$companies->links('pagination.default')}}

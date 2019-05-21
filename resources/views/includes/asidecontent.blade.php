@@ -60,11 +60,11 @@
             {{'active'}}
         @endif
         ">
-        <a href="{{route('nameservers')}}">
+        <a href="{{route('domains')}}">
             <div class="icon-wrap">
                 <i class="fa fa-filter" aria-hidden="true"></i>
             </div>
-            <span>Nameservers</span>
+            <span>Domains</span>
         </a>
     </li>
 

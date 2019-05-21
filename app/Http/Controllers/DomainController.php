@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\Nameservers;
+use App\Models\Domain;
 use Illuminate\Http\Request;
 
 
-class NameserverController extends Controller
+class DomainController extends Controller
 {
 
     public function __construct()
@@ -22,26 +22,31 @@ class NameserverController extends Controller
             return redirect()->back();
         }
 
-        if(! Auth::user()->company->hasNameservers()){
-            return view('dashboard.nameservers.add');
-        }
+        $data['domains'] = Auth::user()->company->domains;
+        return view('dashboard.domain.add', $data);
+    }
 
-        $data['nameservers'] = Auth::user()->company->nameservers;
-        return view('dashboard.nameservers.edit', $data);
+    public function edit()
+    {
+        if(! Auth::user()->hasCompany()){
+             $request->session()->flash('error', 'Must add company before adding server');
+            return redirect()->back();
+        }
+        return view('dashboard.domain.add');
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name_1' => 'required'
+            'name' => 'required'
         ]);
         $data = $request->except('_token');
         $data['company_id'] = Auth::user()->company->id;
 
-        Nameservers::create($data);
+        Domain::create($data);
 
-        $request->session()->flash('success', 'Added Nameserver to company!');
-        return redirect()->route('dashboard');
+        $request->session()->flash('success', 'Added Domain to company!');
+        return redirect()->back();
 
     }
 
@@ -52,9 +57,9 @@ class NameserverController extends Controller
         ]);
         $data = $request->except('_token');
 
-        Nameservers::whereCompanyId(Auth::user()->company->id)->first()->update($data);
+        Domain::whereCompanyId(Auth::user()->company->id)->first()->update($data);
 
-        $request->session()->flash('success', 'Updated Nameserver to successfully!');
+        $request->session()->flash('success', 'Updated Domain successfully!');
         return redirect()->route('dashboard');
 
     }

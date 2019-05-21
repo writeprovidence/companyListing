@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Newsletter;
+use Illuminate\Http\Request;
+use App\Models\Newsletter as DBNewsletter;
+
 
 class MailSubscriptionController extends Controller
 {
@@ -13,6 +15,11 @@ class MailSubscriptionController extends Controller
         if (! Newsletter::isSubscribed($request->email) )
         {
             Newsletter::subscribePending($request->email);
+            DBNewsletter::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'ip_address' => request()->ip(),
+            ]);
             $request->session()->flash('success', 'Thanks For Subscribe');
             return redirect()->back();
         }

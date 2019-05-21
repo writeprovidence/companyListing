@@ -18,9 +18,10 @@ class ReviewController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview']]);
-        $this->middleware('verified',['except' => ['index','addReview', 'filterReview']]);
+        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show']]);
+        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show']]);
         $this->middleware('checkReview', ['only' => ['addReview']]);
+        $this->middleware('userOnly', ['only' => ['addReview', 'store']]);
     }
 
     public function index( $value = 'desc', $whereArray = [['is_verified', '=',  0]])

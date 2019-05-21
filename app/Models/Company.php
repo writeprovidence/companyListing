@@ -13,7 +13,7 @@ class Company extends Model
         'state', 'city', 'slug', 'clicks_sent', 'page_views',
         'alexa_global_rank', 'alexa_top_country_id',
         'alexa_country_rank', 'rating','feature', 'linkedin',
-        'twitter', 'facebook', 'avatar'
+        'twitter', 'facebook', 'avatar', 'tag_line'
     ];
 
     public function user()
@@ -21,9 +21,9 @@ class Company extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function nameservers()
+    public function domains()
     {
-        return $this->hasOne('App\Models\Nameservers');
+        return $this->hasMany('App\Models\Domain');
     }
 
     public function companyApproved()
@@ -92,11 +92,6 @@ class Company extends Model
             return 0;
         }
         return floor(array_sum($featureScores) / count($featureScores));
-    }
-
-    public function hasNameservers()
-    {
-        return $this->nameservers ? true : false;
     }
 
     public function isFeatured()

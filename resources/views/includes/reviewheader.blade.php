@@ -2,8 +2,8 @@
 				<div class="container">
                     <div class="header-row">
                         <div class="col">
-                            <h1>{{$company->name}}</h1>
-                            <span class="site-link"><a href="{{route('redirect.company', $company->slug)}}">{{$company->website}} <i class="fa fa-sign-out"></i></a></span>
+                            <h1>{{$company->name}} <span style="font-size:14px">{{$company->tag_line}}</span> </h1>
+                            <span class="site-link"><a  href="{{route('profile.company', $company->slug)}}">{{$company->website}} <i class="fa fa-sign-out"></i></a></span>
 
                             <div class="text-open-close open-close">
                                 <div class="slide">
@@ -17,18 +17,18 @@
                                 </a>
                             </div>
                             <div class="btn-holder">
-                                <a class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
+                                <a class="btn btn-green" target="_blank" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
                                 <a class="btn btn-green" href="{{route('add.review' , $company->slug)}}">Submit Review</a>
                             </div>
                             <ul class="socialshare-list">
                                 <li>
-                                    <a class="fa fa-facebook-official" href="{{$company->facebook}}"></a>
+                                    <a target="_blank" class="fa fa-facebook-official" href="{{$company->facebook}}"></a>
                                 </li>
                                 <li>
-                                    <a  class="fa fa-twitter-square"href="{{$company->twitter}}"></a>
+                                    <a target="_blank" class="fa fa-twitter-square"href="{{$company->twitter}}"></a>
                                 </li>
                                 <li>
-                                    <a class="fa fa-linkedin-square" href="{{$company->linkedin}}"></a>
+                                    <a target="_blank" class="fa fa-linkedin-square" href="{{$company->linkedin}}"></a>
                                 </li>
 
                                 <li>
@@ -110,7 +110,7 @@
                         </li>
                         <li>
                             <strong>Total Domains</strong>
-                            <span class="value">213,910 <span class="badge">-2,999</span></span>
+                            <span class="value">{{$company->domains()->count()}}</span>
                         </li>
                         <li>
                             <strong>Traffic Rank</strong>

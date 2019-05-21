@@ -19,6 +19,7 @@ Auth::routes(['verify' => true]);
 Route::get('dashboard', 'NavigationController@dashboard')->middleware(['auth','verified'])->name('dashboard');
 Route::get('companies', 'CompanyController@index')->name('companies');
 Route::post('companies', 'CompanyController@orderBy')->name('order.companies');
+Route::post('companies/tagline', 'CompanyController@addTagLine')->name('tagline.add');
 Route::get('rankings', 'CompanyController@ranking')->name('ranking');
 Route::post('rankings', 'CompanyController@orderRankingBy')->name('order.ranking');
 Route::get('dashboard/company-profile', 'CompanyController@show')->name('add.company');
@@ -29,9 +30,9 @@ Route::get('company-profile/{companySlug}', 'CompanyController@companyProfile')-
 Route::post('company-profile/{companySlug}', 'CompanyController@orderCompanyProfileBy')->name('order.profile.company');
 Route::get('dashboard/go/{companySlug}', 'CompanyController@redirectToWebsite')->name('redirect.company');
 Route::get('dashboard/review', 'ReviewController@myReviews')->name('reviews');
-Route::get('dashboard/nameservers', 'NameserverController@index')->name('nameservers');
-Route::post('dashboard/nameservers', 'NameserverController@store')->name('store.nameservers');
-Route::post('dashboard/nameservers/update', 'NameserverController@update')->name('update.nameservers');
+Route::get('dashboard/domains', 'DomainController@index')->name('domains');
+Route::post('dashboard/domains', 'DomainController@store')->name('store.domains');
+Route::post('dashboard/domains/update', 'DomainController@update')->name('update.domains');
 Route::get('dashboard/products', 'ProductController@index')->name('products');
 Route::post('dashboard/products', 'ProductController@store')->name('store.products');
 Route::post('dashboard/products/update', 'ProductController@update')->name('update.products');
@@ -105,3 +106,6 @@ Route::get('search/users', 'SearchController@users')->name('user.search');
 // Reset Password C:\Users\
 Route::get('user/resetpassword', 'PasswordController@showUserResetForm')->name('edit.password.user');
 Route::post('user/resetpassword', 'PasswordController@resetUserPassword')->name('admin.resetpassword');
+
+Route::get('user/{user}/edit', 'UserController@editByAdmin')->name('admin.edit.user');
+Route::put('user/{user}/edit', 'UserController@updateByAdmin')->name('admin.update.user');

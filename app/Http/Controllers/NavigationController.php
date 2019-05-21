@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class NavigationController extends Controller
 {
+    public function __construct(){
+        $this->middleware('userOnly', ['only' => ['dashboard']]);
+    }
     public function index()
     {
         $data['company_count'] = Company::whereIsPublic(1)->get()->count();

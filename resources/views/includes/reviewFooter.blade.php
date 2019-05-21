@@ -7,7 +7,7 @@
             {{$company->description}}
         </p>
         <div>
-            <a class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
+            <a target="_blank" class="btn btn-green" href="{{route('redirect.company', $company->slug)}}">Visit Website</a>
         </div>
     </div>
 </section>

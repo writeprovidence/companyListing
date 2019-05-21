@@ -26,6 +26,7 @@ class CreateCompaniesTable extends Migration
             $table->text('description');
             $table->text('avatar');
             $table->string('zip')->nullable();
+            $table->string('tag_line')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('country');

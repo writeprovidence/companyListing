@@ -73,9 +73,10 @@
                             <div class="col">
                                 <h4>Add Badge To Your Site</h4>
                                 <p>Let your customers known that you are verified company!</p>
-                                <form action="#" class="dashboard-form">
+                                <form action="{{route('tagline.add')}}" method="POST" class="dashboard-form">
+                                    @csrf
                                     <div class="form-row">
-                                        <input id="name" type="text" value="Text Field">
+                                        <input id="name" type="text" name="tag_line" value="{{old('tag_line') ?? Auth::user()->company->tag_line}}">
                                     </div>
                                 </form>
                             </div>

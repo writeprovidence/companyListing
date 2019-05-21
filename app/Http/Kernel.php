@@ -63,5 +63,6 @@ class Kernel extends HttpKernel
         'approvedCompany' => \App\Http\Middleware\ApprovedCompanyMiddleware::class,
         'checkReview' => \App\Http\Middleware\CheckReviewerMiddleware::class,
         'admin' => \App\Http\Middleware\CheckUserRoleMiddleware::class,
+        'userOnly' => \App\Http\Middleware\AdminCanNotAccessMiddleware::class,
     ];
 }
