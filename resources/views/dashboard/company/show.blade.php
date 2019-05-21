@@ -137,7 +137,7 @@
 								<div class="widget">
 									<h3>Website thumbnail</h3>
 									<div>
-										<img src="{{asset('storage/companies/' .$company->avatar)}}" alt="image description" style="max-width:200px; max-height:200px">
+										<img src="{{asset('images/companies/' .$company->avatar)}}" alt="image description" style="max-width:200px; max-height:200px">
 									</div>
 								</div>
 								<div class="widget">
