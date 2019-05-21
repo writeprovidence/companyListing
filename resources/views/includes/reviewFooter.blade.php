@@ -11,60 +11,27 @@
         </div>
     </div>
 </section>
+
 <section class="section text-center">
     <div class="container">
         <header class="section-header">
             <h1>Global Top Web Hosting Companies</h1>
         </header>
         <ul class="hosting-list">
-            <li>
-                <div class="hosting-card">
-                    <span class="cnt"></span>
-                    <div class="entry-image">
-                        <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
+            @foreach($global_companies as $company)
+                <li>
+                    <div class="hosting-card">
+                        <span class="cnt"></span>
+                        <div class="entry-image">
+                            <p>{{$company->name}}</p>
+                        </div>
+                        <ul class="entry-links">
+                            <li><a href="{{route('profile.company', $company->slug)}}">Visit Site</a></li>
+                            <li><a href="{{route('reviews.company', $company->slug)}}">Read Reviews</a></li>
+                        </ul>
                     </div>
-                    <ul class="entry-links">
-                        <li><a href="#">Visit Site</a></li>
-                        <li><a href="#">Read Reviews</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="hosting-card">
-                    <span class="cnt"></span>
-                    <div class="entry-image">
-                        <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
-                    </div>
-                    <ul class="entry-links">
-                        <li><a href="#">Visit Site</a></li>
-                        <li><a href="#">Read Reviews</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="hosting-card">
-                    <span class="cnt"></span>
-                    <div class="entry-image">
-                        <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
-                    </div>
-                    <ul class="entry-links">
-                        <li><a href="#">Visit Site</a></li>
-                        <li><a href="#">Read Reviews</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="hosting-card">
-                    <span class="cnt"></span>
-                    <div class="entry-image">
-                        <img src="{{asset('images/bluehost.jpg')}}" alt="bluehost">
-                    </div>
-                    <ul class="entry-links">
-                        <li><a href="#">Visit Site</a></li>
-                        <li><a href="#">Read Reviews</a></li>
-                    </ul>
-                </div>
-            </li>
+                </li>
+            @endforeach
         </ul>
     </div>
 </section>

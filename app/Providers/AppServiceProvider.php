@@ -21,8 +21,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $latest_companies = Company::orderBy('created_at', 'desc')->limit(5)->get();
             $top_companies = Company::orderBy('alexa_global_rank', 'desc')->limit(5)->get();
+            $global_companies = Company::whereIsPublic(1)->whereFeature(1)->orderBy('created_at', 'desc')->limit(4)->get();
+
             $view->with('latest_companies', $latest_companies)
-                ->with('top_companies', $top_companies);
+                ->with('top_companies', $top_companies)
+                ->with('global_companies', $global_companies);
         });
     }
 

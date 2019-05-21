@@ -23,12 +23,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="hero-bottom">
-						<div class="entry-header">
-							<h3>Recommended Web Hosting Companies 2019</h3>
-						</div>
-						<div class="entry-body">
-                            @if($featured_companies->count() > 0)
+                    @if($featured_companies->count() > 0)
+                        <div class="hero-bottom">
+                            <div class="entry-header">
+                                <h3>Recommended Web Hosting Companies 2019</h3>
+                            </div>
+                            <div class="entry-body">
                                 <ul class="hosting-list">
                                     @foreach($featured_companies as $company)
                                         <li>
@@ -45,9 +45,9 @@
                                         </li>
                                     @endforeach
                                 </ul>
-                            @endif
-						</div>
-					</div>
+                            </div>
+                        </div>
+                    @endif
 				</div>
 			</section>
 			<section class="section">
