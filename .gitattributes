@@ -1,5 +1,7 @@
 * text=auto
 *.js linguist-vendored
+*.html linguist-vendored
+*.HTML linguist-vendored
 *.css linguist-vendored
 *.vue linguist-vendored
 *.php linguist-vendored=false
