@@ -1,5 +1,5 @@
-*.php linguist-vendored=false
 * linguist-vendored
+*.php linguist-vendored=false
 # * text=auto
 # *.js linguist-vendored
 # *.html linguist-vendored
