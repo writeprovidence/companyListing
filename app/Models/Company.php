@@ -39,7 +39,7 @@ class Company extends Model
         $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
         if(count($reviewScores) != 0){
             $this->attributes['rating']  = floor(array_sum($reviewScores) / count($reviewScores));
-            return floor(array_sum($reviewScores) / count($reviewScores));
+            return array_sum($reviewScores) / count($reviewScores);
         }
         $this->attributes['rating'] =  0;
     }
@@ -67,6 +67,10 @@ class Company extends Model
             return 0;
         }
         return floor(array_sum($pricingScores) / count($pricingScores));
+    }
+
+    public function getPercentageRatingAttribute(){
+       return $this->rating * 10;
     }
 
 
