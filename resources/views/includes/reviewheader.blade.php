@@ -47,7 +47,7 @@
                                     <div class="rating-block">
                                        <span class="rating">
                                             @for($i = 0; $i < $company->rating; $i++)
-                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true" style="color: #ffd71e;"></i>
                                                 @endfor
                                         </span>
 

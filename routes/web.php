@@ -109,3 +109,12 @@ Route::post('user/resetpassword', 'PasswordController@resetUserPassword')->name(
 
 Route::get('user/{user}/edit', 'UserController@editByAdmin')->name('admin.edit.user');
 Route::put('user/{user}/edit', 'UserController@updateByAdmin')->name('admin.update.user');
+
+Route::get('email', function(){
+	Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+	{
+		$message->subject('Mailgun and Laravel are awesome!');
+		$message->from('no-reply@website_name.com', 'Website Name');
+		$message->to('ishukpong418@gmail.com');
+	});
+});

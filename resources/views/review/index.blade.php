@@ -136,7 +136,8 @@
                                                                 </button>
                                                             </li>
                                                             <li>
-                                                                <button class="share-btn facebook" type="button">
+                                                                <button class="share-btn facebook" type="submit" onclick="event.preventDefault();
+                                    document.getElementById('order-result').submit();>
                                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                                                     <span>Facebook</span>
                                                                 </button>

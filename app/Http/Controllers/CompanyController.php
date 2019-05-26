@@ -15,7 +15,7 @@ class CompanyController extends Controller
     {
         $this->request = $request;
         $this->middleware('auth', ['only' => ['store','edit', 'update']]);
-        $this->middleware('verified', ['only' => ['store','edit', 'update']]);
+        $this->middleware('verified', ['only' => ['store','edit', 'update','add']]);
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 

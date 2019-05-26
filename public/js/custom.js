@@ -10,23 +10,7 @@ $(document).ready(function () {
     $('.rewiew-btn').click(function(e){
         e.preventDefault();
         $this = $(this);
-        $buttonContent = $this.attr('data-value');
-
-        switch($buttonContent){
-            case 'yes':
-                $this.html('Thank You for your feedback');
-                $this.next().text('no');
-                url = '/dashboard/review/' + $this.attr('data-id') + '/upvote';
-                updateProjectStatus(url)
-            break;
-            case 'no':
-                $this.html('Thank You for your feedback');
-                $this.prev().text('yes');
-                url = '/dashboard/review/' + $this.attr('data-id') + '/downvote';
-                updateProjectStatus(url)
-            break;
-        }
-
+        $this.parent().html('Thank You for your feedback');
     })
 
     function updateProjectStatus(api_endpoint) {
