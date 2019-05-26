@@ -37,11 +37,11 @@ class Company extends Model
 
     public function setRatingAttribute(){
         $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
-        if(count($reviewScores) == 0){
-            $this->attributes['rating'] =  0;
+        if(count($reviewScores) != 0){
+            $this->attributes['rating']  = floor(array_sum($reviewScores) / count($reviewScores));
+            return floor(array_sum($reviewScores) / count($reviewScores));
         }
-        $this->attributes['rating']  = floor(array_sum($reviewScores) / count($reviewScores));
-        return floor(array_sum($reviewScores) / count($reviewScores));
+        $this->attributes['rating'] =  0;
     }
 
     public function recalculateRating(){
