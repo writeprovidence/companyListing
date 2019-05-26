@@ -1,5 +1,10 @@
-* text=auto
-*.css linguist-vendored
-*.scss linguist-vendored
-*.js linguist-vendored
-CHANGELOG.md export-ignore
+* linguist-vendored
+*.php linguist-vendored=false
+# * text=auto
+# *.js linguist-vendored
+# *.html linguist-vendored
+# *.HTML linguist-vendored
+# *.css linguist-vendored
+# *.vue linguist-vendored
+# *.php linguist-vendored=false
+# CHANGELOG.md export-ignore
