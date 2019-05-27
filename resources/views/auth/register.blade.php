@@ -16,9 +16,7 @@
                                 value="{{ old('name') }}" placeholder="Your name *" required>
 
                             @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
+                            <p class="alert-danger">{{ $errors->first('name') }}</p>
                             @endif
                         </div>
                     </div>
@@ -31,9 +29,7 @@
                                 value="{{ old('email') }}" placeholder="Your email *" required>
 
                             @if ($errors->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                            <p class="alert-danger">{{ $errors->first('email') }}</p>
                             @endif
                         </div>
                     </div>
@@ -46,15 +42,12 @@
                                 placeholder="Create password*" required>
 
                             @if ($errors->has('password'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                            <p class="alert-danger">{{ $errors->first('password') }}</p>
                             @endif
                         </div>
                     </div>
 
                     <div class="form-group row">
-
                         <div class="col-md-6 form-row">
                             <input id="password-confirm" type="password" class="form-control"
                                 name="password_confirmation" placeholder="Confirm password*" required>
@@ -77,7 +70,7 @@
                         <button type="submit">Register</button>
                     </div>
                     <div class="help-text">
-                        <span>* Required fild</span>
+                        <span>* Required field</span>
                     </div>
                 </form>
             </div>

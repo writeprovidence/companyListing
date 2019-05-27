@@ -30,9 +30,7 @@
 
                                     @if ($errors->has('password'))
                                     <br>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('password') }}</p>
                                     @endif
                                 </div>
                             </div>

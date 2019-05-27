@@ -18,6 +18,11 @@ class CreateReviewsTable extends Migration
             $table->integer('company_id');
             $table->string('slug')->nullable();
             $table->string('full_name');
+            $table->string('email');
+            $table->string('service');
+            $table->string('site')->nullable();
+            $table->string('previous_hosting')->nullable();
+            $table->string('social_profile')->nullable();
             $table->integer('logged_user_id')->nullable();
             $table->string('title');
             $table->text('review');

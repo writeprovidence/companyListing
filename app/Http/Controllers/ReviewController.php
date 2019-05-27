@@ -18,8 +18,8 @@ class ReviewController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show']]);
-        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show']]);
+        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview']]);
+        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview']]);
         $this->middleware('checkReview', ['only' => ['addReview']]);
         $this->middleware('userOnly', ['only' => ['addReview', 'store']]);
     }
@@ -52,7 +52,6 @@ class ReviewController extends Controller
     public function addReview($companySlug)
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
-
         return view('review.add', $data);
     }
 
@@ -80,20 +79,27 @@ class ReviewController extends Controller
             "title" => 'required | string | max:150',
             "review" => 'required | string | max:1000',
             "full_name" => 'required | string',
+            "site" => 'url',
+            "email" => 'required | email',
+            'service' => 'string',
+            "social_profile" => 'url',
+
         ];
         $this->validate($request, $rules);
 
         $data = $this->buildUpData($request, $company->id);
 
         if(! $review = Review::create($data)){
-            $request->session()->flash('error', 'You review has been unsuccessful!');
+            $request->session()->flash('error', 'Your review has been unsuccessful!');
             return redirect()->back()->withInputs();
         }
+
         $review->update([
             'slug' => 'review-'.$review->id
         ]);
+
         $this->updateCompanyRating($company->id);
-        $this->sendReviewVerificationEmail($review->id);
+        $this->sendReviewVerificationEmail($request->email, $review->id);
 
         $request->session()->flash('success', 'You review has been succesful!');
         return redirect()->back();
@@ -108,12 +114,9 @@ class ReviewController extends Controller
         return $data;
     }
 
-    protected function sendReviewVerificationEmail($reviewId)
+    protected function sendReviewVerificationEmail($email, $reviewId)
     {
-        if(Auth::user())
-        {
-            Mail::to(Auth::user()->email)->send(new VerifyReviewMailable($reviewId));
-        }
+        Mail::to($email)->send(new VerifyReviewMailable($reviewId));
     }
 
 
@@ -128,6 +131,9 @@ class ReviewController extends Controller
         $review->update($data);
 
         $request->session()->flash('success', 'Review Confirmed!');
+        if(! Auth::user()){
+            return redirect()->route('index');
+        }
         return redirect()->route('dashboard');
     }
 

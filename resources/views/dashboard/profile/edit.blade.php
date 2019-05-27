@@ -18,9 +18,7 @@
                                     name="title" value="{{ Auth::user()->title }}" placeholder="Title *" required>
 
                                 @if ($errors->has('title'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('title') }}</strong>
-                                </span>
+                                <p class="alert-danger">{{ $errors->first('password') }}</p>
                                 @endif
                             </div>
 
@@ -30,9 +28,7 @@
                                     value="{{ Auth::user()->name }}" required>
 
                                 @if ($errors->has('name'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
+                                <p class="alert-danger">{{ $errors->first('password') }}</p>
                                 @endif
                             </div>
 
@@ -43,9 +39,7 @@
                                     value="{{ Auth::user()->address }}" placeholder="Address *">
 
                                 @if ($errors->has('address'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('address') }}</strong>
-                                </span>
+                                <p class="alert-danger">{{ $errors->first('password') }}</p>
                                 @endif
                             </div>
 

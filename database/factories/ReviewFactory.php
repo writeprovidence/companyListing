@@ -5,6 +5,8 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\Review::class, function (Faker $faker) {
     return [
         'full_name' => $faker->name,
+        'email' => $faker->email,
+        'service' => $faker->sentence,
         'title' => $faker->title,
         'review' => $faker->paragraph,
         'review_ip' => $faker->ipv4,

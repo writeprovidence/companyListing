@@ -20,14 +20,15 @@
                                 value="{{ old('name') }}" placeholder="Product Name *" required>
 
                             @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
+                            <p class="alert-danger">{{ $errors->first('name') }}</p>
                             @endif
                         </div>
 
                     <div class="form-row">
                         <label for="description">Summary:</label>
+                        @if ($errors->has('description'))
+                        <p class="alert-danger">{{ $errors->first('description') }}</p>
+                        @endif
                         <textarea id="description" name="description"> {{ old('description')}}</textarea>
                     </div>
 

@@ -19,9 +19,7 @@
                                             value="{{ old('name') }}" placeholder="Company Name *" required>
 
                                     @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                   <p class="alert-danger">{{ $errors->first('name') }}</p>
                                     @endif
                                 </div>
 
@@ -31,9 +29,7 @@
                                             value="{{ old('website') }}" placeholder="Site (Https://)*" required>
 
                                     @if ($errors->has('website'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('website') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('website') }}</p>
                                     @endif
                                 </div>
 
@@ -43,9 +39,7 @@
                                             value="{{ old('email') }}" placeholder="Email *" required>
 
                                     @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                   <p class="alert-danger">{{ $errors->first('email') }}</p>
                                     @endif
                                 </div>
 
@@ -55,9 +49,7 @@
                                             value="{{ old('phone') }}" placeholder="Phone Number *" required>
 
                                     @if ($errors->has('phone'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('phone') }}</p>
                                     @endif
                                 </div>
 
@@ -67,9 +59,7 @@
                                             value="{{ old('facebook') }}" placeholder="Facebook" required>
 
                                     @if ($errors->has('facebook'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('facebook') }}</strong>
-                                        </span>
+                                       <p class="alert-danger">{{ $errors->first('facebook') }}</p>
                                     @endif
                                 </div>
 
@@ -79,9 +69,7 @@
                                             value="{{ old('twitter') }}" placeholder="Twitter" required>
 
                                     @if ($errors->has('twitter'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('twitter') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('twitter') }}</p>
                                     @endif
                                 </div>
 
@@ -91,9 +79,7 @@
                                             value="{{ old('linkedin') }}" placeholder="Linkedin" required>
 
                                     @if ($errors->has('linkedin'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('linkedin') }}</strong>
-                                    </span>
+                                   <p class="alert-danger">{{ $errors->first('linkedin') }}</p>
                                     @endif
                                 </div>
 
@@ -103,9 +89,7 @@
                                             value="{{ old('address_line1') }}" placeholder="Address 1 *">
 
                                     @if ($errors->has('address_line1'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address_line1') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('address_line1') }}</p>
                                     @endif
                                 </div>
 
@@ -116,9 +100,7 @@
                                             value="{{ old('address_line2') }}" placeholder="Address 2 *">
 
                                     @if ($errors->has('address_line2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address_line2') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('address_line2') }}</p>
                                     @endif
                                 </div>
 
@@ -128,9 +110,7 @@
                                             value="{{ old('city') }}" placeholder="City *">
 
                                     @if ($errors->has('city'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('city') }}</p>
                                     @endif
                                 </div>
 
@@ -140,9 +120,7 @@
                                             value="{{ old('state') }}" placeholder="State *">
 
                                     @if ($errors->has('state'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('state') }}</strong>
-                                    </span>
+                                   <p class="alert-danger">{{ $errors->first('state') }}</p>
                                     @endif
                                 </div>
 
@@ -152,9 +130,7 @@
                                             value="{{ old('zip') }}" placeholder="Zip *">
 
                                     @if ($errors->has('zip'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('zip') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('zip') }}</p>
                                     @endif
                                 </div>
 
@@ -163,9 +139,7 @@
                                         <input id="avatar" type="file" class=" {{ $errors->has('avatar') ? ' is-invalid' : '' }} " name="avatar">
 
                                     @if ($errors->has('avatar'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('avatar') }}</p>
                                     @endif
                                 </div>
 
@@ -422,7 +396,10 @@
 
 								<div class="form-row">
 									<label for="description">Description:</label>
-									<textarea id="description" name="description">{{ old('description') }}</textarea>
+                                    <textarea id="description" name="description">{{ old('description') }}</textarea>
+                                    @if ($errors->has('description'))
+                                    <p class="alert-danger">{{ $errors->first('description') }}</p>
+                                    @endif
 								</div>
 								<hr>
 								<div class="bottom-row">

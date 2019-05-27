@@ -30,10 +30,8 @@
                                         <input id="email" type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                                             value="{{ Auth::user()->company->email }}" placeholder="Email *" required>
 
-                                    @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                   @if ($errors->has('email'))
+                                    <p class="alert-danger">{{ $errors->first('email') }}</p>
                                     @endif
                                 </div>
 
@@ -42,10 +40,8 @@
                                         <input id="phone" type="text" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
                                            value="{{ Auth::user()->company->phone }}" placeholder="Phone Number *" required>
 
-                                    @if ($errors->has('phone'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
+                                   @if ($errors->has('phone'))
+                                    <p class="alert-danger">{{ $errors->first('phone') }}</p>
                                     @endif
                                 </div>
 
@@ -55,9 +51,7 @@
                                         name="facebook" value="{{ Auth::user()->company->facebook }}" placeholder="Facebook *" required>
 
                                     @if ($errors->has('facebook'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('facebook') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('facebook') }}</p>
                                     @endif
                                 </div>
 
@@ -66,11 +60,9 @@
                                     <input id="twitter" type="url" class="form-control {{ $errors->has('twitter') ? ' is-invalid' : '' }}"
                                         name="twitter" value="{{ Auth::user()->company->twitter }}" placeholder="Twitter *" required>
 
-                                    @if ($errors->has('twitter'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('twitter') }}</strong>
-                                    </span>
-                                    @endif
+                                   @if ($errors->has('twitter'))
+                                <p class="alert-danger">{{ $errors->first('twitter') }}</p>
+                                @endif
                                 </div>
 
                                 <div class="form-row">
@@ -78,10 +70,8 @@
                                     <input id="linkedin" type="url" class="form-control {{ $errors->has('linkedin') ? ' is-invalid' : '' }}"
                                         name="linkedin" value="{{ Auth::user()->company->linkedin }}" placeholder="Linkedin *" required>
 
-                                    @if ($errors->has('linkedin'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('linkedin') }}</strong>
-                                    </span>
+                                   @if ($errors->has('linkedin'))
+                                    <p class="alert-danger">{{ $errors->first('linkedin') }}</p>
                                     @endif
                                 </div>
 
@@ -90,11 +80,9 @@
                                         <input id="address_line1" type="text" class="form-control {{ $errors->has('address_line1') ? ' is-invalid' : '' }}" name="address_line1"
                                             value="{{ Auth::user()->company->address_line1 }}" placeholder="Address 1 *">
 
-                                    @if ($errors->has('address_line1'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address_line1') }}</strong>
-                                    </span>
-                                    @endif
+                                   @if ($errors->has('address_line1'))
+                                <p class="alert-danger">{{ $errors->first('address_line1') }}</p>
+                                @endif
                                 </div>
 
 
@@ -103,10 +91,8 @@
                                         <input id="address_line2" type="text" class="form-control {{ $errors->has('address_line2') ? ' is-invalid' : '' }}" name="address_line2"
                                             value="{{ Auth::user()->company->address_line2}}" placeholder="Address 2 *">
 
-                                    @if ($errors->has('address_line2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address_line2') }}</strong>
-                                    </span>
+                                   @if ($errors->has('address_line2'))
+                                    <p class="alert-danger">{{ $errors->first('address_line2') }}</p>
                                     @endif
                                 </div>
 
@@ -116,9 +102,7 @@
                                             value="{{ Auth::user()->company->city }}" placeholder="City *">
 
                                     @if ($errors->has('city'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
+                                    <p class="alert-danger">{{ $errors->first('city') }}</p>
                                     @endif
                                 </div>
 
@@ -127,10 +111,8 @@
                                         <input id="state" type="text" class="form-control {{ $errors->has('state') ? ' is-invalid' : '' }}" name="state"
                                            value="{{ Auth::user()->company->state }}" placeholder="State *">
 
-                                    @if ($errors->has('state'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('state') }}</strong>
-                                    </span>
+                                   @if ($errors->has('state'))
+                                    <p class="alert-danger">{{ $errors->first('state') }}</p>
                                     @endif
                                 </div>
 
@@ -139,10 +121,8 @@
                                         <input id="zip" type="text" class="form-control {{ $errors->has('zip') ? ' is-invalid' : '' }}" name="zip"
                                            value="{{ Auth::user()->company->zip }}" placeholder="Zip *">
 
-                                    @if ($errors->has('zip'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('zip') }}</strong>
-                                    </span>
+                                   @if ($errors->has('zip'))
+                                    <p class="alert-danger">{{ $errors->first('zip') }}</p>
                                     @endif
                                 </div>
 

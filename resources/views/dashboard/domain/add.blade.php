@@ -16,13 +16,11 @@
                         <div class="form-row">
                             <label for="name">Domains:</label>
                             <input id="name" type="text"
-                                class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
-                                placeholder="Domain Name *" required>
+                            class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
+                            placeholder="Domain Name *" required>
 
                             @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
+                           <p class="alert-danger">{{ $errors->first('name') }}</p>
                             @endif
                         </div>
                         <hr>
