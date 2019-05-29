@@ -79,11 +79,8 @@ class ReviewController extends Controller
             "title" => 'required | string | max:150',
             "review" => 'required | string | max:1000',
             "full_name" => 'required | string',
-            "site" => 'url',
             "email" => 'required | email',
             'service' => 'string',
-            "social_profile" => 'url',
-
         ];
         $this->validate($request, $rules);
 

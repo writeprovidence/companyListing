@@ -85,21 +85,21 @@
 						<h2>Voice your opinion about <mark>{{$company->name}}</mark></h2>
 
                         <div class="form-row">
-                            <label for="title">Title:</label>
+                            <label for="title">Title (Minimum 2 words) * 0 out of 1200 characters</label>
                             @if ($errors->has('title'))
                             <p class="alert-danger">{{ $errors->first('title') }}</p>
                             @endif
 
                             <input id="title" type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" title="title" name="title"
-                                value="{{ old('title') }}" placeholder="Title *" required>
+                                value="{{ old('title') }}" placeholder="Title *">
                         </div>
 
                         <div class="form-row">
-                            <label for="review">Summary:</label>
+                            <label for="review">Summary *</label>
                             @if ($errors->has('review'))
                             <p class="alert-danger">{{ $errors->first('review') }}</p>
                             @endif
-                            <textarea id="review" name="review"> {{ old('review')}}</textarea>
+                            <textarea id="review" name="review"> {{old('review')}}</textarea>
                         </div>
 
 						<div class="form-row">
@@ -215,7 +215,7 @@
                                         <p class="alert-danger">{{ $errors->first('full_name') }}</p>
                                         @endif
                                     <input id="full_name" type="text" class="form-control {{ $errors->has('full_name') ? ' is-invalid' : '' }}"
-                                        name="full_name" value="{{ old('full_name') }}" placeholder="Full Name *" required>
+                                        name="full_name" value="{{ old('full_name') }}" placeholder="Full Name *">
                                 </div>
 
                                 <div class="form-row">
@@ -224,22 +224,22 @@
                                         <p class="alert-danger">{{ $errors->first('email') }}</p>
                                         @endif
                                     <input id="email" type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                        name="email" value="{{ old('email') }}" placeholder="Email *" required>
+                                        name="email" value="{{ old('email') }}" placeholder="Email *">
                                 </div>
 
                                 <div class="form-row">
-                                    <label for="socia-profiles">Link to ONE of your social profiles (optional)
-                                        <a class="tooltip-link has-tooltip" title="lorem ipsum dolar" ><i
-                                                class="fa fa-question-circle"></i></a>
+                                    <label for="socia-profiles">Link to ONE of your social profiles
+                                        {{-- <a class="tooltip-link has-tooltip" title="lorem ipsum dolar" ><i
+                                                class="fa fa-question-circle"></i></a> --}}
                                     </label>
                                    @if ($errors->has('social_profile'))
-                                    <p class="alert-danger">{{ $errors->first('social_profile') }}</p>
+                                     <p class="alert-danger">{{ $errors->first('social_profile') }}</p>
                                     @endif
                                     <input id="socia-profiles" type="text" class="form-control {{ $errors->has('social_profile') ? ' is-invalid' : '' }}"
                                         name="social_profile" value="{{ old('social_profile') }}" placeholder="Social Profile">
                                 </div>
                                 <div class="form-row">
-                                    <label for="site">The site I host with Easyhost.pk (Optional)</label>
+                                    <label for="site">The site I host with Easyhost.pk</label>
                                     @if ($errors->has('site'))
                                     <p class="alert-danger">{{ $errors->first('site') }}</p>
                                     @endif
@@ -249,7 +249,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-row">
-                                    <label for="previous-hosting">Previous Hosting (Optional)</label>
+                                    <label for="previous-hosting">Previous Hosting</label>
                                     @if ($errors->has('previous_hosting'))
                                     <p class="alert-danger">{{ $errors->first('previous_hosting') }}</p>
                                     @endif
