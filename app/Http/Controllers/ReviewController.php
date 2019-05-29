@@ -76,7 +76,7 @@ class ReviewController extends Controller
         $company = Company::whereSlug($companySlug)->first();
 
         $rules = [
-            "title" => 'required | string | max:150',
+            "title" => 'required | string | min:2 | max:150',
             "review" => 'required | string | max:1000',
             "full_name" => 'required | string',
             "email" => 'required | email',

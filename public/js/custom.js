@@ -7,7 +7,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.rewiew-btn').click(function(e){
+    $('.feedback').click(function(e){
         e.preventDefault();
         $this = $(this);
         $this.parent().html('Thank You for your feedback');
