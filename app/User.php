@@ -33,7 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne('App\Models\Company')->withDefault([
             'name' => 'No Company Yet',
             'slug' => 'No-Company-Yet',
-            'website' => '#',
+            // 'website' => '#',
             'country' => 'Not Available',
             'alexa_global_rank' => 'nil',
             'rating' => 'nil'

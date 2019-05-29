@@ -3,7 +3,7 @@
                     <div class="header-row">
                         <div class="col">
                             <h1>{{$company->name}} <span style="font-size:14px">{{$company->tag_line}}</span> </h1>
-                            <span class="site-link"><a  href="{{route('profile.company', $company->slug)}}">{{$company->website}} <i class="fa fa-sign-out"></i></a></span>
+                            <span class="site-link"><a  target="_blank" href="{{route('redirect.company', $company->slug)}}">{{$company->website}} <i class="fa fa-sign-out"></i></a></span>
 
                             <div class="text-open-close open-close">
                                 <div class="slide">
