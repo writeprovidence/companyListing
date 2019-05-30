@@ -128,10 +128,7 @@ class ReviewController extends Controller
         $review->update($data);
 
         $request->session()->flash('success', 'Review Confirmed!');
-        if(! Auth::user()){
-            return redirect()->route('index');
-        }
-        return redirect()->route('dashboard');
+        return redirect()->route('index');
     }
 
     public function filterReview($companySlug, $orderValue = 'desc')

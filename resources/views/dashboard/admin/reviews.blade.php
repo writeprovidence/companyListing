@@ -22,7 +22,7 @@
                     </div>
 
                 </form>
-                <form id="order-results" action="{{route('review.searchs')}}" method="GET" class="advanced-form">
+                <form id="order-results" action="{{route('reviews.search')}}" method="GET" class="advanced-form">
                     @include('includes.namesearchform')
                 </form>
 					</aside>
