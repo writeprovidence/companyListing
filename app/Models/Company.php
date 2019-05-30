@@ -105,7 +105,15 @@ class Company extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasOne('App\Models\Product');
+    }
+
+    public function hasProduct()
+    {
+        if($this->products){
+            return $this->products->updated_at->ne($this->products->created_at) ? true : false;
+        }
+        return false;
     }
 }
 

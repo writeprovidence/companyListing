@@ -94,9 +94,9 @@
                                             <div class="popup">
                                                 <ul>
                                                     <li>
-                                                        <button class="share-btn " type="button">
+                                                        <button class="share-btn copy" type="button">
                                                             <i class="fa fa-link" aria-hidden="true"></i>
-                                                            <span>Copy Link</span>
+                                                            <span class="copy-text">Copy Link</span>
                                                         </button>
                                                     </li>
                                                     <li>

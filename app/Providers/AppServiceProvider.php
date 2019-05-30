@@ -24,12 +24,14 @@ class AppServiceProvider extends ServiceProvider
             $latest_companies = Company::orderBy('created_at', 'desc')->limit(5)->get();
             $top_companies = Company::orderBy('alexa_global_rank', 'desc')->limit(5)->get();
             $global_companies = Company::whereIsPublic(1)->whereFeature(1)->orderBy('created_at', 'desc')->limit(4)->get();
-            $hasProduct = Product::whereCompanyId(Auth::user()->company->id)->first();
+            if(Auth::user()->hasCompany()){
+                $hasProduct = Product::whereCompanyId(Auth::user()->company->id)->first();
+                $view->with('hasProduct', $hasProduct->hasProduct());
+            }
 
             $view->with('latest_companies', $latest_companies)
                 ->with('top_companies', $top_companies)
-                ->with('global_companies', $global_companies)
-                ->with('hasProduct', $hasProduct->hasProduct());
+                ->with('global_companies', $global_companies);
         });
     }
 

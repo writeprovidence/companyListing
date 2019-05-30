@@ -28,6 +28,11 @@ class ProductController extends Controller
 
     public function add()
     {
+        $data['products'] = Product::whereCompanyId(Auth::user()->company->id)->first();
+        if($data['products'] == NULL){
+            $this->request->session()->flash('error', 'No Company Yet!');
+            return redirect()->back();
+        }
         return view('dashboard.products.add');
     }
 

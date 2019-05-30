@@ -31,7 +31,7 @@
     $(".share-btn.copy").on("click", function () {
         url = $(this).attr('aria-link');
         copyToClipboard(url);
-        $("span.copy-text").text('Link Copied');
+        $(this).children("span.copy-text").text('Link Copied');
         return false;
     });
 

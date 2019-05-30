@@ -87,7 +87,7 @@
         @endif
         ">
         <a href="
-        @if($hasProduct)
+        @if(Auth::user()->company->hasProduct())
             {{route('edit.products')}}
         @else
             {{route('add.products')}}
