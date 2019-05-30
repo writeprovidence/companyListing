@@ -71,7 +71,7 @@ class CompanyController extends Controller
         $rules = [
             'name' => 'required | string | max:150',
             'website' => 'required | url',
-            'avatar' => 'required | image',
+            'avatar' => 'required | image | mimes:jpg,jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required | email',
             'phone' => 'required | numeric',
             'address_line1' => 'string',

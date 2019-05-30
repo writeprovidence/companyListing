@@ -43,7 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasCompany()
     {
-        return $this->company ? true : false;
+        return $this->company->name != "No Company Yet" ? true : false;
     }
 
     public function isVerified()

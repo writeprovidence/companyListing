@@ -11,6 +11,11 @@ class Product extends Model
         'product_1_name', 'product_2_name', 'product_3_name', 'product_4_name', 'product_5_name',
         'company_id'
     ];
+
+    public function hasProduct()
+    {
+        return $this->updated_at->ne($this->created_at) ? true : false;
+    }
 }
 
 

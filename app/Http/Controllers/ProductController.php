@@ -9,20 +9,26 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function __construct()
+    protected $request;
+    public function __construct(Request $request)
     {
         $this->middleware(['auth', 'verified']);
+        $this->request = $request;
     }
 
     public function index()
     {
         $data['products'] = Product::whereCompanyId(Auth::user()->company->id)->first();
+        if($data['products'] == NULL){
+            $this->request->session()->flash('error', 'No Company Yet!');
+            return redirect()->back();
+        }
         return view('dashboard.products.edit', $data);
     }
 
     public function add()
     {
-        return view('dashboard.products.add', $data);
+        return view('dashboard.products.add');
     }
 
     public function store(Request $request)
@@ -58,10 +64,15 @@ class ProductController extends Controller
             $this->updateCompanyProduct(5,$data);
         }
 
-
-
         $request->session()->flash('success', 'Added Product to company!');
         return redirect()->route('dashboard');
 
+    }
+    public function updateCompanyProduct($productNumber, $data)
+    {
+        $data['product']->update([
+            "product_{$productNumber}_name" => $data['name'],
+            "product_{$productNumber}_summary" => $data['summary']
+        ]);
     }
 }

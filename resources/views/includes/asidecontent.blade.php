@@ -86,7 +86,13 @@
             {{'active'}}
         @endif
         ">
-        <a href="{{route('edit.products')}}">
+        <a href="
+        @if($hasProduct)
+            {{route('edit.products')}}
+        @else
+            {{route('add.products')}}
+        @endif
+        ">
             <div class="icon-wrap">
                 <i class="fa fa-list-ul" aria-hidden="true"></i>
             </div>

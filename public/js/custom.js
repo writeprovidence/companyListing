@@ -82,4 +82,11 @@ $(document).ready(function () {
         return starsCulmulativeValue;
     }
 
+    $('.btn.add-field').click(function(e){
+        e.preventDefault();
+        $domain = $('.form-row.append-after');
+        $newDomainContent = $domain.clone()
+        $domain.after($newDomainContent);
+        $domain.removeClass('append-after');
+    });
 });

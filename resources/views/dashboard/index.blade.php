@@ -4,11 +4,14 @@
     <div class="dashboard-block">
         <div class="container">
             <div class="dashboard-wrap">
-
                 @include('includes.aside')
-                {{-- {{dd(session('error'))}} --}}
                 <div class="dashboard-body">
                     <header class="dashmain-head">
+                        @if(session('success'))
+                        <p class="alert-success">
+                            {{session('success')}}
+                        </p>
+                        @endif
                         <div class="user-line">
                             <strong>Welcome {{Auth::user()->name}}</strong>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

@@ -15,10 +15,10 @@ class DomainController extends Controller
         $this->middleware(['auth', 'verified']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         if(! Auth::user()->hasCompany()){
-             $request->session()->flash('error', 'Must add company before adding server');
+             $request->session()->flash('error', 'Must add company before adding domain');
             return redirect()->back();
         }
 
@@ -41,11 +41,17 @@ class DomainController extends Controller
             'name' => 'required'
         ]);
         $data = $request->except('_token');
-        $data['company_id'] = Auth::user()->company->id;
+        $domainsCollection = collect($data['name']);
+        $domainsCollection->each(function($domain){
+            if($domain != NULL){
+                Domain::create([
+                    'company_id' => Auth::user()->company->id,
+                    'name' => $domain,
+                ]);
+            }
+        });
 
-        Domain::create($data);
-
-        $request->session()->flash('success', 'Added Domain to company!');
+        $request->session()->flash('success', 'Added Domain(s) to company!');
         return redirect()->back();
 
     }

@@ -9,31 +9,40 @@
                 @include('includes.aside')
 
                 <div class="dashboard-body">
-                    <form action="{{route('store.domains')}}" method="POST" class="dashboard-form">
+                    @if(session('success'))
+                    <p class="alert-success">
+                       {{session('success')}}
+                    </p>
+                    @endif
+                    <form action="{{route('store.domains')}}" method="POST" class="dashboard-form domain">
                         @csrf
-                        <h3>Domains</h3>
+                        <div class="bottom-row">
+                            <h3>Domains</h3>
 
-                        <div class="form-row">
+                            <button class="btn add-field" type="submit">Add Domain Field</button>
+                        </div>
+
+                        <div class="form-row append-after">
                             <label for="name">Domains:</label>
                             <input id="name" type="text"
-                            class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
-                            placeholder="Domain Name *" required>
+                                class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name[]"
+                                placeholder="Domain Name *" >
 
                             @if ($errors->has('name'))
-                           <p class="alert-danger">{{ $errors->first('name') }}</p>
+                            <p class="alert-danger">{{ $errors->first('name') }}</p>
                             @endif
                         </div>
                         <hr>
 
                         @if(Auth::user()->company->domains()->count() > 0)
-                            <h4>Domain List</h4>
-                            <ol>
-                                @foreach($domains as $domain)
-                                    <li>
-                                        {{$domain->name}}
-                                    </li>
-                                @endforeach
-                            </ol >
+                        <h4>Domain List</h4>
+                        <ol>
+                            @foreach($domains as $domain)
+                            <li>
+                                {{$domain->name}}
+                            </li>
+                            @endforeach
+                        </ol>
                         @endif
 
                         <div class="bottom-row">

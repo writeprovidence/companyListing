@@ -971,6 +971,10 @@ a.btn.reset:hover{
     color:white;
 }
 
+div.shift-error{
+    margin-left:160px;
+}
+
 input[type='file']#avatar:hover{
     background: transparent;
 }
