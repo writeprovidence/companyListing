@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Company;
+use App\Models\Product;
 use App\Models\AlexaLog;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -94,6 +95,10 @@ class CompanyController extends Controller
         );
 
         AlexaLog::create([
+            'company_id' => $company->id
+        ]);
+
+        Product::create([
             'company_id' => $company->id
         ]);
 

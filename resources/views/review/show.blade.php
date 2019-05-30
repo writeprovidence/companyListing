@@ -117,8 +117,8 @@
                                     </div>
                                     <div>
                                         <span class="entry-text">Is this review helpful to you?</span>
-                                        <a class="rewiew-btn" data-value="yes" data-id="{{$company->slug}}" href="#"><i class="fa fa-thumbs-up"></i> yes</a>
-                                        <a class="rewiew-btn" data-value="no" data-id="{{$company->slug}}" href="#"><i class="fa fa-thumbs-down"></i> no</a>
+                                        <a class="rewiew-btn feedback" data-value="yes" data-id="{{$company->slug}}" href="#"><i class="fa fa-thumbs-up"></i> Yes</a>
+                                        <a class="rewiew-btn feedback" data-value="no" data-id="{{$company->slug}}" href="#"><i class="fa fa-thumbs-down"></i> No</a>
                                     </div>
                                 </div>
                             </div>

@@ -25,7 +25,7 @@
                        </p>
                        <p>
                             If you did not receive the email <br><br><br>
-                            <a class="btn" href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>
+                            <a class="btn reset" href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>
                        </p>
                        <br>
                     </div>

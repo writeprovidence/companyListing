@@ -86,7 +86,7 @@
             {{'active'}}
         @endif
         ">
-        <a href="{{route('products')}}">
+        <a href="{{route('edit.products')}}">
             <div class="icon-wrap">
                 <i class="fa fa-list-ul" aria-hidden="true"></i>
             </div>

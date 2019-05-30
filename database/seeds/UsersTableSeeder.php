@@ -15,6 +15,9 @@ class UsersTableSeeder extends Seeder
             factory(App\Models\Company::class, 1)->create([
                 'user_id' => $user->id
             ])->each(function($company){
+                factory(App\Models\Product::class)->create([
+                    'company_id' => $company->id,
+                ]);
                 factory(App\Models\Review::class, rand(3,12))->create([
                     'company_id' => $company->id,
                 ]);

@@ -967,6 +967,10 @@ a.text-white {
     color: #fff !important;
 }
 
+a.btn.reset:hover{
+    color:white;
+}
+
 input[type='file']#avatar:hover{
     background: transparent;
 }

@@ -33,9 +33,9 @@ Route::get('dashboard/review', 'ReviewController@myReviews')->name('reviews');
 Route::get('dashboard/domains', 'DomainController@index')->name('domains');
 Route::post('dashboard/domains', 'DomainController@store')->name('store.domains');
 Route::post('dashboard/domains/update', 'DomainController@update')->name('update.domains');
-Route::get('dashboard/products', 'ProductController@index')->name('products');
+Route::get('dashboard/products/add', 'ProductController@add')->name('add.products');
 Route::post('dashboard/products', 'ProductController@store')->name('store.products');
-Route::post('dashboard/products/update', 'ProductController@update')->name('update.products');
+Route::get('dashboard/products', 'ProductController@index')->name('edit.products');
 
 // User Route
 Route::get('dashboard/user-profile', 'UserController@edit')->name('edit.user');
