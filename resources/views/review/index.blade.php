@@ -124,21 +124,20 @@
                                                     <div class="popup">
                                                         <ul>
                                                             <li>
-                                                                <button class="share-btn " type="button">
+                                                                <button class="share-btn copy" type="button" aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                                     <i class="fa fa-link" aria-hidden="true"></i>
-                                                                    <span>Copy Link</span>
+                                                                    <span class="copy-text">Copy Link</span>
                                                                 </button>
                                                             </li>
                                                             <li>
-                                                                <button class="share-btn twitter" type="button">
+                                                                <button class="share-btn twitter" type="button" aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                                     <i class="fa fa-twitter" aria-hidden="true"></i>
                                                                     <span>Twitter</span>
                                                                 </button>
                                                             </li>
                                                             <li>
-                                                                <button class="share-btn facebook" type="submit" onclick="event.preventDefault();
-                                    document.getElementById('order-result').submit();>
-                                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                                <button class="share-btn facebook" type="submit" aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
+                                                                    <i class="fa fa-facebook" aria-hidden="true" ></i>
                                                                     <span>Facebook</span>
                                                                 </button>
                                                             </li>

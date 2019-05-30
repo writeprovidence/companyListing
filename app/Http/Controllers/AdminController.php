@@ -140,9 +140,15 @@ class AdminController extends Controller
         $review->update([
             'is_public' => 1
         ]);
+        $this->sendReviewApprovalEmail($review->email);
 
         $request->session()->flash('success', 'Review Approved');
         return back();
+    }
+
+    protected function sendReviewApprovalEmail($email)
+    {
+        Mail::to($email)->send(new ApproveReviewMailable());
     }
 
     public function rejectReview(Request $request, $reviewSlug)
