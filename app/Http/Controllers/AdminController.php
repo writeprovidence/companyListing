@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Illuminate\Support\Facades\Mail;
-use App\Models\Review;
-use App\Models\LoginLog;
-use App\Models\Company;
 use App\User;
+use App\Models\Review;
+use App\Models\Company;
+use App\Models\LoginLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ApproveReviewMailable;
+
 
 
 class AdminController extends Controller
