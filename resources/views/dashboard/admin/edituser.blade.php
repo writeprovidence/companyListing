@@ -5,8 +5,6 @@
             <div class="container">
                 <div class="dashboard-wrap">
 
-                    @include('includes.aside')
-
                     <div class="dashboard-body">
                         <form action="{{route('admin.update.user', $user->id)}}" method="POST" class="dashboard-form">
                             @method('PUT')

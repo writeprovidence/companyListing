@@ -104,17 +104,19 @@ class AdminController extends Controller
     public function updateCompany(Request $request, $companySlug)
     {
           $rules = [
+            'name' => 'required | string',
+            'website' => 'required | url',
             'email' => 'required | email',
-            'phone' => 'required | numeric',
+            'phone' => 'required',
             'city' => 'string',
             'state' => 'string',
             'zip' => 'numeric',
             'description' => 'required | string | max:500'
         ];
-
         $this->validate($request, $rules);
 
         $company = Company::whereSlug($companySlug)->first();
+
 
         if(! $company->update($request->except('_token'))){
             $request->session()->flash('error', 'Cannot update company at the moment!');
