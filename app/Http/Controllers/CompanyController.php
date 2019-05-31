@@ -175,7 +175,13 @@ class CompanyController extends Controller
     public function redirectToWebsite($companySlug)
     {
         $company = Company::whereSlug($companySlug)->first();
-        $company->increment('clicks_sent');
+        if(Auth::user()){
+            if($company->id != Auth::user()->company->id){
+                $company->increment('clicks_sent');
+            }
+        }else{
+            $company->increment('clicks_sent');
+        }
 
         return redirect($company->website);
     }
