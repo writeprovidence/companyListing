@@ -63,17 +63,7 @@
                             <textarea id="review" name="review"> {{ $review->review }}</textarea>
                         </div>
 
-                       <div class="form-row">
-                            <label for="full_name">Full Name:</label>
-                                <input id="full_name" type="text" class="form-control {{ $errors->has('full_name') ? ' is-invalid' : '' }}" name="full_name"
-                                    value="{{ $review->full_name }}" placeholder="Full Name *" required>
-
-                            @if ($errors->has('full_name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('full_name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
+                      
 
 						<div class="form-row">
 							<div>
@@ -218,6 +208,73 @@
 								</div>
 							</div>
 						</div>
+
+                        <div class="form-row">
+                            <label for="service">Which service did you use with Easehost.pk?</label>
+                            @if ($errors->has('service'))
+                            <p class="alert-danger">{{ $errors->first('service') }}</p>
+                            @endif
+                            <select id="service" name="service">
+                                <option value="NULL">- Choose service type -</option>
+                                <option value="option">option 1</option>
+                                <option value="option">option 2</option>
+                                <option value="option">option 3</option>
+                            </select>
+                        </div>
+
+                        <div class="two-col">
+                            <div class="col">
+                                <div class="form-row">
+                                    <label for="full-name">Full Name:</label>
+                                    @if ($errors->has('full_name'))
+                                    <p class="alert-danger">{{ $errors->first('full_name') }}</p>
+                                    @endif
+                                    <input id="full_name" type="text" class="form-control {{ $errors->has('full_name') ? ' is-invalid' : '' }}"
+                                        name="full_name" value="{{ $review->full_name }}" placeholder="Full Name *">
+                                </div>
+                        
+                                <div class="form-row">
+                                    <label for="full-name">Email:</label>
+                                    @if ($errors->has('email'))
+                                    <p class="alert-danger">{{ $errors->first('email') }}</p>
+                                    @endif
+                                    <input id="email" type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                        name="email" value="{{ $review->email }}" placeholder="Email *">
+                                </div>
+                        
+                                <div class="form-row">
+                                    <label for="socia-profiles">Link to ONE of your social profiles
+                                        {{-- <a class="tooltip-link has-tooltip" title="lorem ipsum dolar" ><i
+                                                                        class="fa fa-question-circle"></i></a> --}}
+                                    </label>
+                                    @if ($errors->has('social_profile'))
+                                    <p class="alert-danger">{{ $errors->first('social_profile') }}</p>
+                                    @endif
+                                    <input id="socia-profiles" type="text"
+                                        class="form-control {{ $errors->has('social_profile') ? ' is-invalid' : '' }}" name="social_profile"
+                                        value="{{ old('social_profile') ?? $review->social_profile }}" placeholder="Social Profile">
+                                </div>
+                                <div class="form-row">
+                                    <label for="site">The site I host with Easyhost.pk</label>
+                                    @if ($errors->has('site'))
+                                    <p class="alert-danger">{{ $errors->first('site') }}</p>
+                                    @endif
+                                    <input id="site" type="text" class="form-control {{ $errors->has('site') ? ' is-invalid' : '' }}"
+                                        name="site" value="{{ old('site') ?? $review->site}}" placeholder="Hosted Website">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-row">
+                                    <label for="previous-hosting">Previous Hosting</label>
+                                    @if ($errors->has('previous_hosting'))
+                                    <p class="alert-danger">{{ $errors->first('previous_hosting') }}</p>
+                                    @endif
+                                    <input id="site" type="text"
+                                        class="form-control {{ $errors->has('previous_hosting') ? ' is-invalid' : '' }}" name="previous_hosting"
+                                        value="{{ old('previous_hosting') ?? $review->previous_hosting}}" placeholder="Previous Hosting">
+                                </div>
+                            </div>
+                        </div>
 
 						<div class="submit-wrap">
 							<button class="btn" type="submit">Submit Review</button>

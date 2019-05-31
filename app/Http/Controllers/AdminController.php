@@ -180,7 +180,6 @@ class AdminController extends Controller
             "full_name" => 'required | string',
         ];
         $this->validate($request, $rules);
-        return $request;
         $data = $request->except('_token');
 
         $review->update($data);
