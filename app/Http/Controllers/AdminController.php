@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Review;
 use App\Models\LoginLog;
 use App\Models\Company;
