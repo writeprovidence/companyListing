@@ -39,7 +39,7 @@
                         </header>
                         
                         <div class="entry-company">
-                            <a class="btn"href="{{route('admin.password.reset')}}"><i class="fa fa-thumbs-up"></i> Reset Password</a>
+                            <a class="btn text-white" href="{{route('admin.password.reset')}}"><i class="fa fa-thumbs-up"></i> Reset Password</a>
                         </div>
                     </div>
                 </li>

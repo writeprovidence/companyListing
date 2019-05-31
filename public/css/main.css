@@ -1083,6 +1083,11 @@ img
     box-shadow: 0 0 15px rgba(255, 46, 37, .5);
 }
 
+.text-white:hover
+{
+    color: #fff;
+}
+
 .btn.outline
 {
     background: #73c5f7;
