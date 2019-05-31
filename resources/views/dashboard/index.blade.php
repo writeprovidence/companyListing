@@ -74,12 +74,21 @@
                         </ul>
                         <div class="two-columns">
                             <div class="col">
-                                <h4>Add Badge To Your Site</h4>
+                                <h4>Add Tagline To Your Site</h4>
                                 <p>Let your customers known that you are verified company!</p>
                                 <form action="{{route('tagline.add')}}" method="POST" class="dashboard-form">
                                     @csrf
                                     <div class="form-row">
                                         <input id="name" type="text" name="tag_line" value="{{old('tag_line') ?? Auth::user()->company->tag_line}}">
+                                    </div>
+                                    <div>
+                                        @if ($errors->has('tag_line'))
+                                        <p class="alert-danger">{{ $errors->first('tag_line') }}</p>
+                                        @endif
+                                    </div>
+                                    <br>
+                                    <div class="bottom-row">
+                                        <button class="btn" type="submit">Add Tagline</button>
                                     </div>
                                 </form>
                             </div>

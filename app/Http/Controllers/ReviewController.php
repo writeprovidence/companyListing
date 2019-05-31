@@ -18,8 +18,8 @@ class ReviewController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview']]);
-        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview']]);
+        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews']]);
+        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews']]);
         $this->middleware('checkReview', ['only' => ['addReview']]);
         $this->middleware('userOnly', ['only' => ['addReview', 'store']]);
     }
@@ -42,6 +42,12 @@ class ReviewController extends Controller
         $data['two_star_reviews'] = Review::whereScore(2)->count();
         $data['one_star_reviews'] = Review::whereScore(1)->count();
         $data['reviews'] = Review::orderBy('created_at', 'desc')->paginate(5);
+
+        if(! Auth::user()->hasCompany()){
+            $request->session()->flash('info', 'You do not have any company yet!');
+            return redirect()->back();
+        }
+
         if($data['reviews']->count() == 0){
             $request->session()->flash('info', 'You do not have any reviews yet!');
             return redirect()->back();

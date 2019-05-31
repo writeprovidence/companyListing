@@ -15,8 +15,8 @@ class CompanyController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['only' => ['store','edit', 'update']]);
-        $this->middleware('verified', ['only' => ['store','edit', 'update','add']]);
+        $this->middleware('auth', ['only' => ['show','store','edit', 'update']]);
+        $this->middleware('verified', ['only' => ['show','store','edit', 'update','add']]);
         $this->middleware('approvedCompany', ['only' => ['companyProfile']]);
     }
 
