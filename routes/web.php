@@ -33,7 +33,7 @@ Route::get('dashboard/go/{companySlug}', 'CompanyController@redirectToWebsite')-
 Route::get('dashboard/review', 'ReviewController@myReviews')->name('reviews');
 Route::get('dashboard/domains', 'DomainController@index')->name('domains');
 Route::post('dashboard/domains', 'DomainController@store')->name('store.domains');
-Route::post('dashboard/domains/update', 'DomainController@update')->name('update.domains');
+Route::post('dashboard/domains/{domain}/update', 'DomainController@update')->name('update.domains');
 Route::get('dashboard/products/add', 'ProductController@add')->name('add.products');
 Route::post('dashboard/products', 'ProductController@store')->name('store.products');
 Route::get('dashboard/products', 'ProductController@index')->name('edit.products');
@@ -77,6 +77,7 @@ Route::get('companies/{companySlug}/approve', 'AdminController@approveCompany')-
 Route::get('companies/{companySlug}/reject', 'AdminController@rejectCompany')->name('reject.company');
 Route::get('companies/{companySlug}/edit', 'AdminController@editCompany')->name('admin.editcompany');
 Route::post('companies/{companySlug}/edit', 'AdminController@updateCompany')->name('admin.updatecompany');
+Route::post('domains/{domain}/update', 'AdminController@updateDomain')->name('admin.updatedomain');
 
 // Admin review routes
 Route::get('admin/dashboard/reviews', 'AdminController@reviews')->name('admin.reviews');

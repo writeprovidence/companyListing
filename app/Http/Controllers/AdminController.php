@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use App\Models\Review;
 use App\Models\Company;
+use App\Models\Domain;
 use App\Models\LoginLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -205,4 +206,17 @@ class AdminController extends Controller
     //     return view('dashboard.admin.loginLogs', $data);
     // }
 
+    public function updateDomain(Request $request, Domain $domain)
+    {
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $data = $request->except('_token');
+
+        $domain->update($data);
+
+        $request->session()->flash('success', 'Updated Domain successfully!');
+        return redirect()->back();
+
+    }
 }

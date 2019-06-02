@@ -29,7 +29,7 @@
                             @if ($errors->has('product_1_summary'))
                             <p class="alert-danger">{{ $errors->first('product_1_summary') }}</p>
                             @endif
-                            <textarea id="product_1_summary" name="product_1_summary"> {{ old('product_1_summary')}}</textarea>
+                            <textarea id="product_1_summary" name="product_1_summary" style="min-height:60px"> {{ old('product_1_summary')}}</textarea>
                         </div>
                         <br><br>
 
@@ -49,7 +49,7 @@
                             @if ($errors->has('product_2_summary'))
                             <p class="alert-danger">{{ $errors->first('product_2_summary') }}</p>
                             @endif
-                            <textarea id="product_2_summary" name="product_2_summary"> {{ old('product_2_summary')}}</textarea>
+                            <textarea id="product_2_summary" name="product_2_summary" style="min-height:60px"> {{ old('product_2_summary')}}</textarea>
                         </div>
                         <br><br>
 
@@ -69,7 +69,7 @@
                             @if ($errors->has('product_3_summary'))
                             <p class="alert-danger">{{ $errors->first('product_3_summary') }}</p>
                             @endif
-                            <textarea id="product_3_summary" name="product_3_summary"> {{ old('product_3_summary')}}</textarea>
+                            <textarea id="product_3_summary" name="product_3_summary" style="min-height:60px"> {{ old('product_3_summary')}}</textarea>
                         </div>
 
                         <br><br>
@@ -89,7 +89,7 @@
                             @if ($errors->has('product_4_summary'))
                             <p class="alert-danger">{{ $errors->first('product_4_summary') }}</p>
                             @endif
-                            <textarea id="product_4_summary" name="product_4_summary"> {{ old('product_4_summary')}}</textarea>
+                            <textarea id="product_4_summary" name="product_4_summary" style="min-height:60px"> {{ old('product_4_summary')}}</textarea>
                         </div>
 
                         <br><br>
@@ -109,7 +109,7 @@
                             @if ($errors->has('product_5_summary'))
                             <p class="alert-danger">{{ $errors->first('product_5_summary') }}</p>
                             @endif
-                            <textarea id="product_5_summary" name="product_5_summary"> {{ old('product_5_summary')}}</textarea>
+                            <textarea id="product_5_summary" name="product_5_summary" style="min-height:60px"> {{ old('product_5_summary')}}</textarea>
                         </div>
 
                         <hr>

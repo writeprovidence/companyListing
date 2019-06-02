@@ -172,6 +172,31 @@
                             <button class="btn" type="submit">Save</button>
                         </div>
                     </form>
+
+                    <br><br>
+                    @if($company->domains()->count() > 0)
+                    <h4>Domain List</h4>
+                    <ul>
+                        @foreach($company->domains as $key => $domain)
+                        <li>
+                            <form action="{{route('admin.updatedomain', $domain->id)}}" method="POST" class="dashboard-form domain">
+                                @csrf
+                                <div class="form-row append-after">
+                                    <label for="name">Domain {{$key+1}}:</label>
+                                    <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"   name="name" value="{{$domain->name}}">
+
+                                    @if ($errors->has('name'))
+                                    <p class="alert-danger">{{ $errors->first('name') }}</p>
+                                    @endif
+                                    <button class="btn" type="submit">Save</button>
+                                </div>
+
+                            </form>
+                        </li>
+                        <br>
+                        @endforeach
+                    </ul>
+                    @endif
                 </div>
             </div>
         </div>

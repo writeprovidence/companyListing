@@ -56,17 +56,17 @@ class DomainController extends Controller
 
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Domain $domain)
     {
         $this->validate($request, [
-            'name_1' => 'required'
+            'name' => 'required'
         ]);
         $data = $request->except('_token');
 
-        Domain::whereCompanyId(Auth::user()->company->id)->first()->update($data);
+        $domain->update($data);
 
         $request->session()->flash('success', 'Updated Domain successfully!');
-        return redirect()->route('dashboard');
+        return redirect()->back();
 
     }
 }

@@ -9,6 +9,11 @@
                 @include('includes.aside')
 
                 <div class="dashboard-body">
+                    @if(session('success'))
+                    <p class="alert-success">
+                        {{session('success')}}
+                    </p>
+                    @endif
                     <form action="{{route('update.company')}}" method="POST" class="dashboard-form">
                         @csrf
                         <h3>Company Information</h3>
@@ -170,6 +175,32 @@
                             <button class="btn" type="submit">Save</button>
                         </div>
                     </form>
+
+                    <br><br>
+                    @if(Auth::user()->company->domains()->count() > 0)
+                    <h4>Edit Domains</h4>
+                    <ul>
+                        @foreach(Auth::user()->company->domains as $key => $domain)
+                        <li>
+                            <form action="{{route('update.domains', $domain->id)}}" method="POST" class="dashboard-form domain">
+                                @csrf
+                                <div class="form-row append-after">
+                                    <label for="name">Domain {{$key+1}}:</label>
+                                    <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                        name="name" value="{{$domain->name}}">
+
+                                    @if ($errors->has('name'))
+                                    <p class="alert-danger">{{ $errors->first('name') }}</p>
+                                    @endif
+                                    <button class="btn" type="submit">Save</button>
+                                </div>
+
+                            </form>
+                        </li>
+                        <br>
+                        @endforeach
+                    </ul>
+                    @endif
                 </div>
             </div>
         </div>

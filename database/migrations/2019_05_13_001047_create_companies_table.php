@@ -24,7 +24,7 @@ class CreateCompaniesTable extends Migration
             $table->string('link_to_go');
             $table->string('rating')->default(0);
             $table->text('description');
-            $table->text('avatar');
+            $table->text('avatar')->nullable();
             $table->string('zip')->nullable();
             $table->string('tag_line')->nullable();
             $table->string('state')->nullable();
