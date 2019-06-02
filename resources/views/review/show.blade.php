@@ -6,7 +6,7 @@
 
 			<section class="details-section">
 				<div class="container">
-                    <ul class="social-buttons">
+                    {{-- <ul class="social-buttons">
                         <li>
                             <a class="facebook" href="#">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -19,18 +19,18 @@
                                 <span>{{$review->full_name}} on twitter</span>
                             </a>
                         </li>
-                    </ul>
+                    </ul> --}}
                     <ul class="review-list">
                         <li>
                             <div class="review-card">
                                 <div class="entry-header">
                                     <span>Review by</span>
-                                    <strong>{{$review->full_name}}</strong>
-                                    <div class="score">Overall Score: 9.2</div>
+                                    <strong>{{$review->full_name}} </strong>
+                                    <div class="score">Overall Score: {{$review->score}}</div>
                                 </div>
                                 <div class="entry-body">
                                     <div class="date-wrap">
-                                        <time datetime="2019-12-04">{{$review->created_at->diffForHumans()}}</time>
+                                        <time datetime="2019-12-04">{{$review->created_at->diffForHUmans()}}</time>
                                     </div>
                                     <div class="text">
                                         <h3>{{$review->title}}</h3>
@@ -82,7 +82,7 @@
                                     </ul>
                                 </div>
                                 <div class="entry-response">
-                                    <h6>Response</h6>
+                                    <h6>{{$review->company->name}}'s Response</h6>
                                     <p>
                                         {{$review->response}}
                                     </p>
@@ -94,19 +94,22 @@
                                             <div class="popup">
                                                 <ul>
                                                     <li>
-                                                        <button class="share-btn copy" type="button">
+                                                        <button class="share-btn copy" type="button"
+                                                            aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                             <i class="fa fa-link" aria-hidden="true"></i>
                                                             <span class="copy-text">Copy Link</span>
                                                         </button>
                                                     </li>
                                                     <li>
-                                                        <button class="share-btn twitter" type="button">
+                                                        <button class="share-btn twitter" type="button"
+                                                            aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                             <i class="fa fa-twitter" aria-hidden="true"></i>
                                                             <span>Twitter</span>
                                                         </button>
                                                     </li>
                                                     <li>
-                                                        <button class="share-btn facebook" type="button">
+                                                        <button class="share-btn facebook" type="submit"
+                                                            aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                             <i class="fa fa-facebook" aria-hidden="true"></i>
                                                             <span>Facebook</span>
                                                         </button>
@@ -117,8 +120,10 @@
                                     </div>
                                     <div>
                                         <span class="entry-text">Is this review helpful to you?</span>
-                                        <a class="rewiew-btn feedback" data-value="yes" data-id="{{$company->slug}}" href="#"><i class="fa fa-thumbs-up"></i> Yes</a>
-                                        <a class="rewiew-btn feedback" data-value="no" data-id="{{$company->slug}}" href="#"><i class="fa fa-thumbs-down"></i> No</a>
+                                        <a class="rewiew-btn feedback" data-value="yes" data-id="{{$review->company->slug}}" href="#"><i
+                                                class="fa fa-thumbs-up"></i> Yes</a>
+                                        <a class="rewiew-btn feedback" data-value="no" data-id="{{$review->company->slug}}" href="#"><i
+                                                class="fa fa-thumbs-down"></i> No</a>
                                     </div>
                                 </div>
                             </div>

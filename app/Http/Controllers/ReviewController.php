@@ -24,12 +24,15 @@ class ReviewController extends Controller
         $this->middleware('userOnly', ['only' => ['addReview', 'store']]);
     }
 
-    public function index( $value = 'desc', $whereArray = [['is_verified', '=',  0]])
+    public function index( $value = 'desc', $whereArray = [['is_verified', '=',  1]])
     {
-        $data['reviews'] = Review::where($whereArray)->orderBy('created_at', $value)->paginate(10);
+        $data['reviews'] = Review::where($whereArray)->whereIsPublic(1)->orderBy('created_at', $value)->paginate(10);
         if($data['reviews']->count() == 0){
             $this->request->session()->flash('info', 'No reviews yet!');
-            return redirect()->back();
+            if(! Auth::user()){
+                return redirect()->route('index');
+            }
+            return redirect()->route('dashboard');
         }
         return view('review.index', $data);
     }

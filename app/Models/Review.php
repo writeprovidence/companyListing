@@ -30,6 +30,7 @@ class Review extends Model
     {
         return $this->feature ? true : false;
     }
+
     public function isApproved()
     {
         return $this->is_public ? true : false;

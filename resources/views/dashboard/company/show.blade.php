@@ -97,19 +97,22 @@
                                                         <div class="popup">
                                                             <ul>
                                                                 <li>
-                                                                    <button class="share-btn " type="button">
+                                                                    <button class="share-btn copy" type="button"
+                                                                        aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                                         <i class="fa fa-link" aria-hidden="true"></i>
-                                                                        <span>Copy Link</span>
+                                                                        <span class="copy-text">Copy Link</span>
                                                                     </button>
                                                                 </li>
                                                                 <li>
-                                                                    <button class="share-btn twitter" type="button">
+                                                                    <button class="share-btn twitter" type="button"
+                                                                        aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                                         <i class="fa fa-twitter" aria-hidden="true"></i>
                                                                         <span>Twitter</span>
                                                                     </button>
                                                                 </li>
                                                                 <li>
-                                                                    <button class="share-btn facebook" type="button">
+                                                                    <button class="share-btn facebook" type="submit"
+                                                                        aria-link="{{route('show.review', [$review->company->slug, $review->slug])}}">
                                                                         <i class="fa fa-facebook" aria-hidden="true"></i>
                                                                         <span>Facebook</span>
                                                                     </button>
@@ -118,10 +121,12 @@
                                                         </div>
                                                     </a>
                                                 </div>
-                                                <div>
+                                               <div>
                                                     <span class="entry-text">Is this review helpful to you?</span>
-                                                    <a class="rewiew-btn" data-id="{{$company->id}}" data-value="yes" href="#"><i class="fa fa-thumbs-up"></i> yes</a>
-                                                    <a class="rewiew-btn" data-id="{{$company->id}}" data-value="no" href="#"><i class="fa fa-thumbs-down"></i> no</a>
+                                                    <a class="rewiew-btn feedback" data-value="yes" data-id="{{$review->company->slug}}" href="#"><i
+                                                            class="fa fa-thumbs-up"></i> Yes</a>
+                                                    <a class="rewiew-btn feedback" data-value="no" data-id="{{$review->company->slug}}" href="#"><i
+                                                            class="fa fa-thumbs-down"></i> No</a>
                                                 </div>
                                             </div>
                                         </div>

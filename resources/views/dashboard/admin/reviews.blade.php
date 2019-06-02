@@ -34,6 +34,10 @@
                                     <div class="review-card">
                                         <div class="entry-header">
                                             <h3>{{$review->full_name}}'s Review
+                                                @if(! $review->isVerified())
+                                                          <a class="btn-feature">Unverified</a>
+                                                @endif
+
                                                 @if($review->isApproved())
                                                     @if($review->isFeatured())
                                                         <a href="{{route('unfeature.review', $review->slug)}}" class="btn-feature">UnFeature</a>

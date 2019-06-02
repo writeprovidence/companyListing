@@ -28,7 +28,10 @@ class CompanyController extends Controller
             $data['companies'] = Company::whereIsPublic(1)->orderBy('country','asc')->orderBy($column, $value)->paginate(25);
             if($data['companies']->count() == 0){
                 $this->request->session()->flash('info', 'No companies yet!');
-                return redirect()->back();
+                if(! Auth::user()){
+                    return redirect()->route('index');
+                        }
+            return redirect()->route('dashboard');
             }
             return view('company.index', $data);
         }

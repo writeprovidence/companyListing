@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\LuncheonMailable;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -109,4 +110,11 @@ Route::post('user/resetpassword', 'PasswordController@resetUserPassword')->name(
 
 Route::get('user/{user}/edit', 'UserController@editByAdmin')->name('admin.edit.user');
 Route::put('user/{user}/edit', 'UserController@updateByAdmin')->name('admin.update.user');
+
+Route::view('email', 'emails.sponsor');
+Route::get('send', function(){
+    $email = 'ishukpong418@gmail.com';
+    Mail::to($email)->send(new LuncheonMailable);
+    return 'done';
+});
 

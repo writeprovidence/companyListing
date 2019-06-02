@@ -79,7 +79,7 @@
         @if(session('success'))
         <p class="alert-success">
             Your review has been Submitted!<br> In order to publicly list your review, please confirm verification link
-            sent you to your full_name inbox.
+            sent you to your email inbox.
         </p>
         @endif
         <div class="container">
