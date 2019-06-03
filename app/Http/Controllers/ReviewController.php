@@ -6,10 +6,12 @@ use Auth;
 use Validator;
 use App\Models\Company;
 use App\Models\Review;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerifyReviewMailable;
+use App\Mail\AdminReviewAlertMailable;
 
 class ReviewController extends Controller
 {
@@ -106,6 +108,7 @@ class ReviewController extends Controller
 
         $this->updateCompanyRating($company->id);
         $this->sendReviewVerificationEmail($request->email, $review->id);
+        $this->sendAdminReviewAlertEmail($review);
 
         $request->session()->flash('success', 'You review has been succesful!');
         return redirect()->back();
@@ -123,6 +126,14 @@ class ReviewController extends Controller
     protected function sendReviewVerificationEmail($email, $reviewId)
     {
         Mail::to($email)->send(new VerifyReviewMailable($reviewId));
+    }
+
+    protected function sendAdminReviewAlertEmail($review)
+    {
+        $adminUsers = User::whereRole('admin')->get();
+        foreach($adminUsers as $user){
+            Mail::to($user->email)->send(new AdminReviewAlertMailable($review));
+        }
     }
 
 

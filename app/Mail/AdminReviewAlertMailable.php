@@ -7,19 +7,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerifyReviewMailable extends Mailable
+class AdminReviewAlertMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public  $review_id;
+    public $review;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($review_id)
+    public function __construct($review)
     {
-        $this->review_id = $review_id;
+        $this->review = $review;
     }
 
     /**
@@ -29,6 +29,6 @@ class VerifyReviewMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.review');
+        return $this->view('emails.adminreview');
     }
 }

@@ -105,7 +105,7 @@ Route::get('search/reviews', 'SearchController@reviews')->name('reviews.search')
 Route::get('search/users', 'SearchController@users')->name('user.search');
 
 
-// Reset Password C:\Users\
+// Reset Password
 Route::get('user/resetpassword', 'PasswordController@showUserResetForm')->name('edit.password.user');
 Route::post('user/resetpassword', 'PasswordController@resetUserPassword')->name('admin.resetpassword');
 
