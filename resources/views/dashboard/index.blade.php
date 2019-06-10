@@ -94,7 +94,7 @@
                                                 fill="#e2d7d7" />
                                         </svg>
                                     </div>
-                                    <span class="value">{{Auth::user()->company->rating * 10}}</span>
+                                    <span class="value">{{Auth::user()->company->rating}}</span>
                                 </div>
                             </li>
                            <li>
