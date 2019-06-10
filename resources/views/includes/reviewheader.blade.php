@@ -55,7 +55,7 @@
                                                     <path d="M2560 198.995L2383.11 173.291L2304 13L2224.89 173.291L2048 198.995L2176 323.764L2145.78 499.94L2304 416.761L2462.22 499.94L2432 323.764L2560 198.995V198.995Z" fill="black"></path>
                                                 </clipPath>
                                                 <g clip-path="url('#r1')">
-                                                    <rect fill="#fbaf40" class="r1" x="0" y="0" width="{{$company->percentagerating * 10}}%" height="100%"></rect>
+                                                    <rect fill="#fbaf40" class="r1" x="0" y="0" width="{{$company->percentagerating}}%" height="100%"></rect>
                                                 </g>
                                             </svg>
                                             <svg class="star-empty" width="2560" height="512" viewBox="0 0 2560 512" fill="none" xmlns="http://www.w3.org/2000/svg">
