@@ -72,7 +72,7 @@
                                                     fill="black" />
                                             </clipPath>
                                             <g clip-path="url('#r1')">
-                                                <rect fill="#fbaf40" class="r1" x="0" y="0" width="{{Auth::user()->company->rating * 10}}%" height="100%" />
+                                                <rect fill="#fbaf40" class="r1" x="0" y="0" width="{{Auth::user()->company->percentagerating}}%" height="100%" />
                                             </g>
                                         </svg>
                                         <svg class="star-empty" width="2560" height="512" viewBox="0 0 2560 512" fill="none"
