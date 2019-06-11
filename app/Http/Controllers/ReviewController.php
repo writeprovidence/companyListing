@@ -46,7 +46,6 @@ class ReviewController extends Controller
         $data['three_star_reviews'] = Review::whereCompanyId(Auth::user()->company->id)->whereScore(3)->count();
         $data['two_star_reviews'] = Review::whereCompanyId(Auth::user()->company->id)->whereScore(2)->count();
         $data['one_star_reviews'] = Review::whereCompanyId(Auth::user()->company->id)->whereScore(1)->count();
-        $data['zero_star_reviews'] = Review::whereCompanyId(Auth::user()->company->id)->whereScore(0)->count();
         $data['reviews'] = Review::whereCompanyId(Auth::user()->company->id)->orderBy('created_at', 'desc')->paginate(5);
 
         if(! Auth::user()->hasCompany()){

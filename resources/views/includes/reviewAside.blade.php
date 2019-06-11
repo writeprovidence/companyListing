@@ -33,12 +33,6 @@
                     <span>{{$one_star_reviews}} reviews</span>
                 </a>
             </li>
-            <li>
-                <a>
-                    <span>0 Star</span>
-                    <span>{{$zero_star_reviews}} reviews</span>
-                </a>
-            </li>
         </ul>
     </div>
 </aside>
