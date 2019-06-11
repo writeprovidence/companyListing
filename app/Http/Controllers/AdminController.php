@@ -144,7 +144,8 @@ class AdminController extends Controller
     {
         $review = Review::whereSlug($reviewSlug)->first();
         $review->update([
-            'is_public' => 1
+            'is_public' => 1,
+            'is_verified' => 1
         ]);
         $this->sendReviewApprovalEmail($review->email);
 

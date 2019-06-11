@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Review;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class NavigationController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard.index');
+         $data['reviews_count'] = Review::whereIsVerified(1)->whereIsPublic(1)->whereCompanyId(Auth::user()->company->id)->orderBy('created_at', 'desc')->count();
+        return view('dashboard.index', $data);
     }
 }

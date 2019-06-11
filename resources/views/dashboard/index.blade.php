@@ -99,7 +99,7 @@
                             </li>
                            <li>
                                 <span class="heading">Reviews</span>
-                                <span class="value">{{Auth::user()->company->reviews()->count()}}</span>
+                                <span class="value">{{$reviews_count}}</span>
                             </li>
                             <li>
                                 <span class="heading">Location</span>
