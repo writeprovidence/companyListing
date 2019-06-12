@@ -69,7 +69,7 @@ class ReviewController extends Controller
     public function show($companySlug, $reviewSlug)
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
-        $data['review'] = Review::whereSlug($reviewSlug)->whereCompanyId($data['company']->id)->first();
+        $data['review'] = Review::whereSlug($reviewSlug)->whereCompanyId($data['company']->id)->whereIsVerified(1)->whereIsPublic(1)->first();
         return view('review.show', $data);
     }
 
@@ -154,7 +154,10 @@ class ReviewController extends Controller
     public function filterReview($companySlug, $orderValue = 'desc')
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
-        $data['reviews'] = Review::whereCompanyId($data['company']->id)->orderBy('created_at', $orderValue)->paginate(5);
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->whereIsVerified(1)
+                            ->whereIsPublic(1)->orderBy('created_at', $orderValue)
+                            ->paginate(5);
+
 
         if($data['reviews']->count() == 0){
             $this->request->session()->flash('info', 'No reviews for Company yet!');

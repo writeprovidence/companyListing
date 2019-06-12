@@ -170,7 +170,9 @@ class CompanyController extends Controller
     {
         $data['company'] = Company::whereSlug($companySlug)->first();
         $data['company']->increment('page_views');
-        $data['reviews'] = Review::whereCompanyId($data['company']->id)->orderBy('created_at', $orderValue)->paginate(6);
+        $data['reviews'] = Review::whereCompanyId($data['company']->id)->whereIsVerified(1)
+                            ->whereIsPublic(1)->orderBy('created_at', $orderValue)
+                            ->paginate(5);
 
         return view('dashboard.company.show', $data);
     }
