@@ -20,8 +20,8 @@ class ReviewController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews']]);
-        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews']]);
+        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews', 'checkIfFilterByStar', 'orderBy']]);
+        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews','checkIfFilterByStar', 'orderBy']]);
         $this->middleware('checkReview', ['only' => ['addReview']]);
         $this->middleware('userOnly', ['only' => ['addReview', 'store']]);
     }
@@ -77,6 +77,7 @@ class ReviewController extends Controller
     {
         return Review::whereCompanyId($companyId)->increment('likes');
     }
+
     public function downvote($companyId)
     {
         return Review::whereCompanyId($companyId)->increment('dislikes');
@@ -115,7 +116,8 @@ class ReviewController extends Controller
 
     }
 
-    protected function buildUpData($requestObject, $companyId){
+    protected function buildUpData($requestObject, $companyId)
+    {
         $data = $requestObject->except('_token');
         $data['company_id'] = $companyId;
         $data['logged_user_id'] = Auth::id();
@@ -153,7 +155,13 @@ class ReviewController extends Controller
 
     public function filterReview($companySlug, $orderValue = 'desc')
     {
-        $data['company'] = Company::whereSlug($companySlug)->first();
+        $data['company'] = Company::whereSlug($companySlug)->with(
+                                array('reviews' => function($query)
+                                    {
+                                        $query->whereIsVerified(1);
+                                        $query->whereIsPublic(1);
+                                    })
+                            )->first();
         $data['reviews'] = Review::whereCompanyId($data['company']->id)->whereIsVerified(1)
                             ->whereIsPublic(1)->orderBy('created_at', $orderValue)
                             ->paginate(5);
@@ -205,33 +213,38 @@ class ReviewController extends Controller
 
         switch(count($dataH)){
             case 6:
-                $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
-                                    ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
-                                    ->orWhere($dataH[4][0], $dataH[4][1])->orWhere($dataH[5][0], $dataH[5][1])->paginate(25);
+                $data['reviews'] = Review::whereIsVerified(1)->whereIsPublic(1)->where($dataH[0][0], $dataH[0][1])
+                                    ->orWhere($dataH[1][0], $dataH[1][1])->orWhere($dataH[2][0], $dataH[2][1])
+                                    ->orWhere($dataH[3][0], $dataH[3][1])->orWhere($dataH[4][0], $dataH[4][1])
+                                    ->orWhere($dataH[5][0], $dataH[5][1])->paginate(25);
                 break;
             case 5:
-                $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
-                                        ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
-                                        ->orWhere($dataH[4][0], $dataH[4][1])->paginate(25);
+                $data['reviews'] =  Review::whereIsVerified(1)->whereIsPublic(1)->where($dataH[0][0], $dataH[0][1])
+                                    ->orWhere($dataH[1][0], $dataH[1][1])->orWhere($dataH[2][0], $dataH[2][1])
+                                    ->orWhere($dataH[3][0], $dataH[3][1])->orWhere($dataH[4][0], $dataH[4][1])
+                                    ->paginate(25);
             break;
             case 4:
-            $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
-                                ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])->paginate(25);
+            $data['reviews'] =  Review::whereIsPublic(1)->whereIsVerified(1)->whereIsVerified(1)->whereIsPublic(1)
+                                ->where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
+                                ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
+                                ->paginate(25);
             break;
             case 3:
-             $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
-                                ->orWhere($dataH[2][0], $dataH[2][1])->paginate(25);
+             $data['reviews'] = Review::whereIsPublic(1)->whereIsVerified(1)->where($dataH[0][0], $dataH[0][1])
+                                ->orWhere($dataH[1][0], $dataH[1][1])->orWhere($dataH[2][0], $dataH[2][1])
+                                ->whereIsVerified(1)->whereIsPublic(1)->paginate(25);
             break;
             case 2:
             $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
                                 ->paginate(25);
             break;
             case 1:
-            $data['reviews'] = Review::where($dataH[0][0], $dataH[0][1])
+            $data['reviews'] = Review::whereIsPublic(1)->whereIsVerified(1)->where($dataH[0][0], $dataH[0][1])
                                 ->paginate(25);
             break;
             default:
-            $data['reviews'] = Review::orderBy('created_at', 'desc')
+            $data['reviews'] = Review::whereIsPublic(1)->whereIsVerified(1)->orderBy('created_at', 'desc')
                                 ->paginate(25);
             break;
         }
@@ -239,7 +252,8 @@ class ReviewController extends Controller
         return view('review.index', $data);
     }
 
-     public function checkIfFilterByStar(Request $request){
+    public function checkIfFilterByStar(Request $request)
+    {
         return $request->has('stars');
     }
 
@@ -248,7 +262,8 @@ class ReviewController extends Controller
         return $this->filterReview($companySlug, $this->request->order);
     }
 
-    public function updateCompanyRating($companyId){
+    public function updateCompanyRating($companyId)
+    {
         $company = Company::whereId($companyId)->first();
         $company->update([
             'rating' => $company->recalculateRating()

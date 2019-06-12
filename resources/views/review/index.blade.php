@@ -108,7 +108,7 @@
                                                     </li>
                                                     <li>
                                                         <span class="heading">Total Reviews</span>
-                                                        <span class="value">{{$review->company->reviews()->count()}}</span>
+                                                        <span class="value">{{$review->company->approvedreviewscount}}</span>
                                                     </li>
                                                 </ul>
                                             </div>

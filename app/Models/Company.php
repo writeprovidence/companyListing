@@ -35,7 +35,14 @@ class Company extends Model
         return $this->hasMany('App\Models\Review');
     }
 
-    public function setRatingAttribute(){
+    public function getApprovedReviewsCountAttribute()
+    {
+        $reviewCount = $this->reviews()->whereIsVerified(1)->whereIsPublic(1)->count();
+        return $reviewCount;
+    }
+
+    public function setRatingAttribute()
+    {
         $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
         if(count($reviewScores) != 0){
             $this->attributes['rating']  = floor(array_sum($reviewScores) / count($reviewScores));
@@ -44,7 +51,8 @@ class Company extends Model
         $this->attributes['rating'] =  0;
     }
 
-    public function recalculateRating(){
+    public function recalculateRating()
+    {
         $reviewScores = \App\Models\Review::whereCompanyId($this->id)->pluck('score')->all();
         if(! count($reviewScores)){
             $this->attributes['rating'] =  0;
@@ -53,7 +61,8 @@ class Company extends Model
         return floor(array_sum($reviewScores) / count($reviewScores));
     }
 
-    public function getReliabilityAttribute(){
+    public function getReliabilityAttribute()
+    {
         $reliabilityScores = \App\Models\Review::whereCompanyId($this->id)->pluck('reliability')->all();
         if(! count($reliabilityScores)){
             return 0;
@@ -61,7 +70,8 @@ class Company extends Model
         return floor(array_sum($reliabilityScores) / count($reliabilityScores));
     }
 
-    public function getPricingAttribute(){
+    public function getPricingAttribute()
+    {
         $pricingScores = \App\Models\Review::whereCompanyId($this->id)->pluck('pricing')->all();
         if(! count($pricingScores)){
             return 0;
@@ -69,12 +79,14 @@ class Company extends Model
         return floor(array_sum($pricingScores) / count($pricingScores));
     }
 
-    public function getPercentageRatingAttribute(){
+    public function getPercentageRatingAttribute()
+    {
        return $this->rating * 10;
     }
 
 
-    public function getUserFriendlyAttribute(){
+    public function getUserFriendlyAttribute()
+    {
         $userFriendlyScores = \App\Models\Review::whereCompanyId($this->id)->pluck('user_friendly')->all();
         if(! count($userFriendlyScores)){
             return 0;
@@ -82,7 +94,8 @@ class Company extends Model
         return floor(array_sum($userFriendlyScores) / count($userFriendlyScores));
     }
 
-    public function getSupportAttribute(){
+    public function getSupportAttribute()
+    {
         $supportScores = \App\Models\Review::whereCompanyId($this->id)->pluck('support')->all();
         if(! count($supportScores)){
             return 0;
@@ -90,7 +103,8 @@ class Company extends Model
         return floor(array_sum($supportScores) / count($supportScores));
     }
 
-    public function getFeaturesAttribute(){
+    public function getFeaturesAttribute()
+    {
         $featureScores = \App\Models\Review::whereCompanyId($this->id)->pluck('features')->all();
         if(! count($featureScores)){
             return 0;

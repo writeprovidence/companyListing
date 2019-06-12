@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <span class="heading">Reviews</span>
-                    <span class="value">{{$company->reviews()->count()}}</span>
+                    <span class="value">{{$company->reviews->count()}}</span>
                 </li>
                 <li>
                     <span class="heading">Location</span>

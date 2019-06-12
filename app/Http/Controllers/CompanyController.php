@@ -25,27 +25,30 @@ class CompanyController extends Controller
 
         if($country){
             // $this->loadCompaniesByCountry()
-            $data['companies'] = Company::whereIsPublic(1)->orderBy('country','asc')->orderBy($column, $value)->paginate(25);
+            $data['companies'] = Company::whereIsPublic(1)->with(
+                array('reviews' => function($query)
+                {
+                    $query->whereIsVerified(1);
+                    $query->whereIsPublic(1);
+                })
+            )->orderBy('country','asc')->orderBy($column, $value)->paginate(25);
             if($data['companies']->count() == 0){
                 $this->request->session()->flash('info', 'No companies yet!');
                 if(! Auth::user()){
                     return redirect()->route('index');
-                        }
-            return redirect()->route('dashboard');
+                }
+                return redirect()->route('dashboard');
             }
             return view('company.index', $data);
         }
 
-        if($country){
-            $data['companies'] = Company::whereIsPublic(1)->orderBy('country','asc')->orderBy($column, $value)->paginate(25);
-            if($data['companies']->count() == 0){
-                $this->request->session()->flash('info', 'No companies yet!');
-                return redirect()->back();
-            }
-            return view('company.index', $data);
-        }
-
-        $data['companies'] = Company::whereIsPublic(1)->orderBy($column, $value)->paginate(25);
+        $data['companies'] = Company::whereIsPublic(1)->with(
+            array('reviews' => function($query)
+            {
+                $query->whereIsVerified(1);
+                $query->whereIsPublic(1);
+            })
+        )->orderBy($column, $value)->paginate(25);
         if($data['companies']->count() == 0){
             $this->request->session()->flash('info', 'No companies yet!');
             return redirect()->back();
@@ -168,7 +171,13 @@ class CompanyController extends Controller
 
     public function companyProfile($companySlug, $orderValue = 'desc')
     {
-        $data['company'] = Company::whereSlug($companySlug)->first();
+        $data['company'] = Company::whereSlug($companySlug)->with(
+                                array('reviews' => function($query)
+                                    {
+                                        $query->whereIsVerified(1);
+                                        $query->whereIsPublic(1);
+                                    })
+                            )->first();
         $data['company']->increment('page_views');
         $data['reviews'] = Review::whereCompanyId($data['company']->id)->whereIsVerified(1)
                             ->whereIsPublic(1)->orderBy('created_at', $orderValue)
@@ -203,12 +212,19 @@ class CompanyController extends Controller
         }
 
 
-        $data['companies'] = Company::whereRating(explode(',', $this->request->stars))->paginate(25);
+        $data['companies'] = Company::whereRating(explode(',', $this->request->stars))->with(
+                                array('reviews' => function($query)
+                                {
+                                    $query->whereIsVerified(1);
+                                    $query->whereIsPublic(1);
+                                })
+                            )->paginate(25);
 
         return view('company.index', $data);
     }
 
-    public function checkIfFilterByStar(Request $request){
+    public function checkIfFilterByStar(Request $request)
+    {
         return $request->has('stars');
     }
 
@@ -229,32 +245,71 @@ class CompanyController extends Controller
             case 6:
                 $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
                                     ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
-                                    ->orWhere($dataH[4][0], $dataH[4][1])->orWhere($dataH[5][0], $dataH[5][1])->paginate(25);
+                                    ->orWhere($dataH[4][0], $dataH[4][1])->orWhere($dataH[5][0], $dataH[5][1])->with(
+                                        array('reviews' => function($query)
+                                        {
+                                            $query->whereIsVerified(1);
+                                            $query->whereIsPublic(1);
+                                        })
+                                    )->paginate(25);
                 break;
             case 5:
                 $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
                                         ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])
-                                        ->orWhere($dataH[4][0], $dataH[4][1])->paginate(25);
+                                        ->orWhere($dataH[4][0], $dataH[4][1])->with(
+                                            array('reviews' => function($query)
+                                            {
+                                                $query->whereIsVerified(1);
+                                                $query->whereIsPublic(1);
+                                            })
+                                        )->paginate(25);
             break;
             case 4:
             $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
-                                ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])->paginate(25);
+                                ->orWhere($dataH[2][0], $dataH[2][1])->orWhere($dataH[3][0], $dataH[3][1])->with(
+                                    array('reviews' => function($query)
+                                    {
+                                        $query->whereIsVerified(1);
+                                        $query->whereIsPublic(1);
+                                    })
+                                )->paginate(25);
             break;
             case 3:
              $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
-                                ->orWhere($dataH[2][0], $dataH[2][1])->paginate(25);
+                                ->orWhere($dataH[2][0], $dataH[2][1])->with(
+                                    array('reviews' => function($query)
+                                    {
+                                        $query->whereIsVerified(1);
+                                        $query->whereIsPublic(1);
+                                    })
+                                )->paginate(25);
             break;
             case 2:
-            $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])
-                                ->paginate(25);
+            $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->orWhere($dataH[1][0], $dataH[1][1])->with(
+                                    array('reviews' => function($query)
+                                    {
+                                        $query->whereIsVerified(1);
+                                        $query->whereIsPublic(1);
+                                    })
+                                )->paginate(25);
             break;
             case 1:
-            $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])
-                                ->paginate(25);
+            $data['companies'] = Company::where($dataH[0][0], $dataH[0][1])->with(
+                                    array('reviews' => function($query)
+                                    {
+                                        $query->whereIsVerified(1);
+                                        $query->whereIsPublic(1);
+                                    })
+                                )->paginate(25);
             break;
             default:
-            $data['companies'] = Company::orderBy('created_at', 'desc')
-                                ->paginate(25);
+            $data['companies'] = Company::orderBy('created_at', 'desc')->with(
+                                    array('reviews' => function($query)
+                                    {
+                                        $query->whereIsVerified(1);
+                                        $query->whereIsPublic(1);
+                                    })
+                                )->paginate(25);
             break;
         }
 
@@ -263,7 +318,13 @@ class CompanyController extends Controller
 
     public function country($country, $column = 'created_at', $value = 'desc')
     {
-        $data['companies'] = Company::whereIsPublic(1)->orderBy($column, $value)->paginate(25);
+        $data['companies'] = Company::whereIsPublic(1)->with(
+            array('reviews' => function($query)
+                {
+                    $query->whereIsVerified(1);
+                    $query->whereIsPublic(1);
+                })
+        )->orderBy($column, $value)->paginate(25);
         if($data['companies']->count() == 0){
             $this->request->session()->flash('info', 'No companies yet!');
             return redirect()->back();
