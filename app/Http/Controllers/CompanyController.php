@@ -109,11 +109,28 @@ class CompanyController extends Controller
             'company_id' => $company->id
         ]);
 
+        $this->sendNewCompanyAlertEmail($request->email);
+        $this->sendAdminNewCompanyAlertEmail($review);
+
         $message = 'Your company information has been saved and will require admin approval before it is made available to the public!';
 
         $request->session()->flash('success', $message);
         return redirect()->route('dashboard');
     }
+
+      protected function sendNewCompanyAlertEmail($email)
+    {
+        Mail::to($email)->send(new NewCompanyMailable);
+    }
+
+    protected function sendAdminNewCompanyAlertEmail($company)
+    {
+        $adminUsers = User::whereRole('admin')->get();
+        foreach($adminUsers as $user){
+            Mail::to($user->email)->send(new AdminReviewAlertMailable($company));
+        }
+    }
+
 
     protected function buildUpData($requestObject){
         $data = $requestObject->except('_token');
