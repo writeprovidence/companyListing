@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\User;
 use App\Models\Company;
 use App\Models\Product;
 use App\Models\AlexaLog;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AdminNewCompanyMailable;
+use App\Mail\NewCompanyMailable;
 
 class CompanyController extends Controller
 {
@@ -90,14 +94,13 @@ class CompanyController extends Controller
 
         $this->validate($request, $rules);
 
-        if(! $company = Company::create($this->buildUpData($request))){
+        if(! $company = Company::create($data = $this->buildUpData($request))){
             $request->session()->flash('error', 'Cannot create company at the moment!');
             return redirect()->back()->withInput();
         }
-
         if($request->hasFile('avatar')){
             $request->avatar->storeAs('companies',
-                str_slug($request->name) . '.' . time() . '.' . $request->file('avatar')->getClientOriginalExtension()
+                $data['avatar']
             );
         }
 
@@ -109,8 +112,8 @@ class CompanyController extends Controller
             'company_id' => $company->id
         ]);
 
-        $this->sendNewCompanyAlertEmail($request->email);
-        $this->sendAdminNewCompanyAlertEmail($review);
+        $this->sendNewCompanyAlertEmail(Auth::user()->email);
+        $this->sendAdminNewCompanyAlertEmail($company);
 
         $message = 'Your company information has been saved and will require admin approval before it is made available to the public!';
 
@@ -120,14 +123,14 @@ class CompanyController extends Controller
 
       protected function sendNewCompanyAlertEmail($email)
     {
-        Mail::to($email)->send(new NewCompanyMailable);
+        Mail::to($email)->send(new NewCompanyMailable());
     }
 
     protected function sendAdminNewCompanyAlertEmail($company)
     {
         $adminUsers = User::whereRole('admin')->get();
         foreach($adminUsers as $user){
-            Mail::to($user->email)->send(new AdminReviewAlertMailable($company));
+            Mail::to($user->email)->send(new AdminNewCompanyMailable($company));
         }
     }
 
@@ -169,6 +172,14 @@ class CompanyController extends Controller
         $company = Auth::user()->company;
         $data = $request->except('_token');
         $data['description'] = strip_tags($data['description']);
+
+         if($request->hasFile('avatar')){
+             $request->avatar->storeAs('companies',
+                $imageName = str_slug($request->name) . '.' . time() . '.' . $request->file('avatar')->getClientOriginalExtension()
+            );
+            unset($data['avatar']);
+            $data['avatar'] = $imageName;
+        }
 
         if(! $company->update($data)){
             $request->session()->flash('error', 'Cannot update company at the moment!');

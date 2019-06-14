@@ -42,7 +42,21 @@ class DomainController extends Controller
         ]);
         $data = $request->except('_token');
         $domainsCollection = collect($data['name']);
+        // $existingDomainNames = collect([ Domain::whereCompanyId(Auth::user()->company->id)->pluck('name')->toArray() ]);
+
+
+
         $domainsCollection->each(function($domain){
+
+            // $matched = $existingDomainNames->first(function($existingDomain) use ($domain){
+            //     return $existingDomain == $domain ? true : false;
+            // });
+
+            // // return $matched;
+            // if($matched != NULL){
+            //     return;
+            // }
+
             if($domain != NULL){
                 Domain::create([
                     'company_id' => Auth::user()->company->id,

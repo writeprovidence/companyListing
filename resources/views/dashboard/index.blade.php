@@ -25,26 +25,40 @@
                             </form>
 
                         </div>
-                                <div class="siteinfo-line">
-                                    <div class="sitemeta">
-                                        <h1>{{Auth::user()->company->name}}</h1>
-                                        <a href="{{route('redirect.company' , Auth::user()->company->slug)}}" target="_blank">{{Auth::user()->company->website}}</a>
-                                    </div>
-                                    <div class="btn-wrap">
-
-                                        @if(Auth::user()->company()->count())
-                                            @if(Auth::user()->company->companyApproved())
-                                                <a class="btn btn-green" href="{{route('profile.company',Auth::user()->company->slug)}}">View Company Page</a>
-                                            @else
-                                             <a class="btn btn-green" href="#">View Company Page</a>
-                                            @endif
-                                        @else
-                                            <a class="btn btn-green" href="{{route('add.company')}}">Add Company</a>
-                                        @endif
-
-                                    </div>
+                        @if(Auth::user()->company->companyApproved())
+                            <div class="siteinfo-line">
+                                <div class="sitemeta">
+                                    <h1>{{Auth::user()->company->name}}</h1>
+                                    <a href="{{route('redirect.company' , Auth::user()->company->slug)}}" target="_blank">{{Auth::user()->company->website}}</a>
                                 </div>
+                                <div class="btn-wrap">
+
+                                    @if(Auth::user()->company()->count())
+                                        @if(Auth::user()->company->companyApproved())
+                                            <a class="btn btn-green" href="{{route('profile.company',Auth::user()->company->slug)}}">View Company Page</a>
+                                        @else
+                                            <a class="btn btn-green" href="#">View Company Page</a>
+                                        @endif
+                                    @else
+                                        <a class="btn btn-green" href="{{route('add.company')}}">Add Company</a>
+                                    @endif
+
+                                </div>
+                            </div>
+
+                        @endif
+
+                        @if(! Auth::user()->hasCompany())
+                            <div class="siteinfo-line">
+                             <h1>No Company Yet!</h1>
+                                <div class="btn-wrap">
+                                        <a class="btn btn-green" href="{{route('add.company')}}">Add Company</a>
+                                </div>
+                            </div>
+
+                        @endif
                     </header>
+                    @if(Auth::user()->company->companyApproved())
                     <div class="dashmain-body">
 
                         <ul class="data-review-list">
@@ -136,6 +150,9 @@
                             </div>
                         </div>
                     </div>
+                    @elseif(Auth::user()->hasCompany())
+                    <h1>Company not approved yet!</h1>
+                    @endif
                 </div>
             </div>
         </div>

@@ -152,6 +152,10 @@
                             <p class="alert-danger">{{ $errors->first('zip') }}</p>
                             @endif
                         </div>
+                        <div class="form-row">
+                            <label for="avatar">Avatars:</label>
+                            <input id="avatar" type="file" class=" {{ $errors->has('avatar') ? ' is-invalid' : '' }} " name="avatar">
+                        </div>
 
                         <div class="form-row">
                             <label for="country">Country:</label>
