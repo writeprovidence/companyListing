@@ -173,7 +173,6 @@ class CompanyController extends Controller
         $company = Auth::user()->company;
         $data = $request->except('_token');
         $data['description'] = strip_tags($data['description']);
-return $data;
          if($request->hasFile('avatar')){
              $request->avatar->storeAs('companies',
                 $imageName = str_slug($request->name) . '.' . time() . '.' . $request->file('avatar')->getClientOriginalExtension()
