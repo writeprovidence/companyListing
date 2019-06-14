@@ -14,7 +14,7 @@
                         {{session('success')}}
                     </p>
                     @endif
-                    <form action="{{route('update.company')}}" method="POST" class="dashboard-form">
+                    <form action="{{route('update.company')}}" method="POST" class="dashboard-form" enctype="multipart/form-data">
                         @csrf
                         <h3>Company Information</h3>
 
