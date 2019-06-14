@@ -81,7 +81,6 @@ class CompanyController extends Controller
             'email' => 'required | email',
             'phone' => 'required | numeric',
             'address_line1' => 'string',
-            'address_line2' => 'string',
             'city' => 'string',
             'country' => 'required | string',
             'state' => 'string',
@@ -340,9 +339,6 @@ class CompanyController extends Controller
 
     public function addTagLine()
     {
-        $this->validate($this->request, [
-            'tag_line' => 'required | string | max:25',
-        ]);
 
         if(Auth::user()->company()->update(['tag_line' => $this->request->tag_line])){
             $this->request->session()->flash('success', 'Added Tag Line Successfully!');

@@ -58,7 +58,7 @@
                             <label for="facebook">Facebook:</label>
                             <input id="facebook" type="url"
                                 class="form-control {{ $errors->has('facebook') ? ' is-invalid' : '' }}" name="facebook"
-                                value="{{ Auth::user()->company->facebook }}" placeholder="Facebook *">
+                                value="{{ Auth::user()->company->facebook }}" placeholder="Facebook">
                         </div>
                         <div class="shift-error">
                             @if ($errors->has('facebook'))
@@ -70,7 +70,7 @@
                             <label for="twitter">Twitter:</label>
                             <input id="twitter" type="url"
                                 class="form-control {{ $errors->has('twitter') ? ' is-invalid' : '' }}" name="twitter"
-                                value="{{ Auth::user()->company->twitter }}" placeholder="Twitter *">
+                                value="{{ Auth::user()->company->twitter }}" placeholder="Twitter">
                         </div>
                         <div class="shift-error">
                             @if ($errors->has('twitter'))
@@ -82,7 +82,7 @@
                             <label for="linkedin">Linkedin:</label>
                             <input id="linkedin" type="url"
                                 class="form-control {{ $errors->has('linkedin') ? ' is-invalid' : '' }}" name="linkedin"
-                                value="{{ Auth::user()->company->linkedin }}" placeholder="Linkedin *" required>
+                                value="{{ Auth::user()->company->linkedin }}" placeholder="Linkedin">
                         </div>
                         <div class="shift-error">
                             @if ($errors->has('linkedin'))
