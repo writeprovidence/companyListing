@@ -56,7 +56,7 @@ return [
         // ],
         'public' => [
             'driver' => 'local',
-            'root'   => dirname(dirname(public_path())) . '/public_html/images',
+            'root'   => dirname(dirname(dirname(public_path()))) . '/public_html/images',
             'url' => env('APP_URL').'/images',
             'visibility' => 'public',
         ],
