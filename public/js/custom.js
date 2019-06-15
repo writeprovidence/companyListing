@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     //Setting up functions
     $.ajaxSetup({
@@ -7,31 +7,40 @@ $(document).ready(function () {
         }
     });
 
-    $('.feedback').click(function(e){
+    $('.feedback').click(function(e) {
         e.preventDefault();
         $this = $(this);
+        companySlug = $this.attr('data-id');
         $this.parent().html('Thank You for your feedback');
+
+        if ($this.attr('data-value') == "yes") {
+            api_endpoint = 'dashboard/review/' + companySlug + '/upvote';
+            updateProjectStatus(api_endpoint);
+        } else {
+            api_endpoint = 'dashboard/review/' + companySlug + '/downvote';
+            updateProjectStatus(api_endpoint);
+        }
     })
 
     function updateProjectStatus(api_endpoint) {
         $.ajax({
             type: 'GET',
             url: api_endpoint,
-            success: function (data) {
-                //Do nothing
+            success: function(data) {
+                console.log(data);
             },
-            error: function (data) {
+            error: function(data) {
                 //Do nothing
             }
         });
     }
 
-    $('.rewiew-btn.reply-review').click(function(e){
+    $('.rewiew-btn.reply-review').click(function(e) {
         e.preventDefault();
-        $('.review-comment.comment-box').css({display:'block'});
+        $('.review-comment.comment-box').css({ display: 'block' });
     });
 
-    $('.country').change(function(e){
+    $('.country').change(function(e) {
         orderValue = $(this).val();
         var country = $("<input>")
             .attr("type", "hidden")
@@ -44,27 +53,27 @@ $(document).ready(function () {
         $('#order-result').submit();
     });
 
-    $('input[type=radio]').click(function(){
+    $('input[type=radio]').click(function() {
         $('#average').html(calculateCulmulative('input[type=radio]:checked'));
     });
 
-    function calculateCulmulative(selector){
+    function calculateCulmulative(selector) {
         var starsCulmulativeValue = 0;
-        $(selector).each(function () {
+        $(selector).each(function() {
             starsCulmulativeValue += parseInt($(this).val(), 10);
         });
         starsCulmulativeValue = (starsCulmulativeValue * 2) / 5;
         return starsCulmulativeValue;
     }
 
-    $('#review-form').submit(function(e){
+    $('#review-form').submit(function(e) {
         var score = $("<input>")
             .attr("type", "hidden")
             .attr("name", "score").val(calculateCulmulative('input[type=radio]:checked'));
         $(this).append(score);
     });
 
-    $('input[type=checkbox]').click(function () {
+    $('input[type=checkbox]').click(function() {
         var stars = $("<input>")
             .attr("type", "hidden")
             .attr('class', 'stars-selector')
@@ -76,13 +85,13 @@ $(document).ready(function () {
 
     function getStarFilters(selector) {
         var starsCulmulativeValue = [];
-        $(selector).each(function (e) {
+        $(selector).each(function(e) {
             starsCulmulativeValue.push($(this).attr('value'));
         });
         return starsCulmulativeValue;
     }
 
-    $('.btn.add-field').click(function(e){
+    $('.btn.add-field').click(function(e) {
         e.preventDefault();
         $domain = $('.form-row.append-after');
         $newDomainContent = $domain.clone()

@@ -20,8 +20,8 @@ class ReviewController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews', 'checkIfFilterByStar', 'orderBy']]);
-        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews','checkIfFilterByStar', 'orderBy']]);
+        $this->middleware('auth', ['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews', 'checkIfFilterByStar', 'orderBy', 'upvote', 'downvote']]);
+        $this->middleware('verified',['except' => ['index','addReview', 'filterReview', 'show', 'store', 'verifyReview', 'myReviews','checkIfFilterByStar', 'orderBy', 'upvote', 'downvote']]);
         $this->middleware('checkReview', ['only' => ['addReview']]);
         $this->middleware('userOnly', ['only' => ['addReview', 'store']]);
     }
@@ -73,14 +73,16 @@ class ReviewController extends Controller
         return view('review.show', $data);
     }
 
-    public function upvote($companyId)
+    public function upvote($companySlug)
     {
-        return Review::whereCompanyId($companyId)->increment('likes');
+        $company = Company::whereSlug($companySlug)->first();
+        return Review::whereCompanyId($company->id)->increment('likes');
     }
 
-    public function downvote($companyId)
+    public function downvote($companySlug)
     {
-        return Review::whereCompanyId($companyId)->increment('dislikes');
+        $company = Company::whereSlug($companySlug)->first();
+        return Review::whereCompanyId($company->id)->increment('dislikes');
     }
 
     public function store(Request $request, $companySlug)
