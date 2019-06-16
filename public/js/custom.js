@@ -14,10 +14,10 @@ $(document).ready(function() {
         $this.parent().html('Thank You for your feedback');
 
         if ($this.attr('data-value') == "yes") {
-            api_endpoint = 'review/' + companySlug + '/upvote';
+            api_endpoint = 'http://wh.jawwadkalia.com/review/' + companySlug + '/upvote';
             updateProjectStatus(api_endpoint);
         } else {
-            api_endpoint = 'review/' + companySlug + '/downvote';
+            api_endpoint = 'http://wh.jawwadkalia.com/review/' + companySlug + '/downvote';
             updateProjectStatus(api_endpoint);
         }
     })
