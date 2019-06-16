@@ -14,7 +14,7 @@ $factory->define(App\Models\Company::class, function (Faker $faker) {
         'linkedin' => $faker->url,
         'twitter' => $faker->url,
         'avatar' => $faker->image('public/images/companies', 400, 400, null, false),
-        'link_to_go' => $faker->domainName,
+        'link_to_go' => $faker->url,
         'rating' => rand(3,10),
         'feature' => rand(0,1),
         'description' => $faker->paragraph,

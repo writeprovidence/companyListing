@@ -67,7 +67,7 @@ class AdminController extends Controller
         return view('dashboard.admin.companies', $data);
     }
 
-     public function orderCompanies(Request $request)
+    public function orderCompanies(Request $request)
     {
         return $this->companies($request->order);
     }
@@ -107,6 +107,7 @@ class AdminController extends Controller
           $rules = [
             'name' => 'required | string',
             'website' => 'required | url',
+            'link_to_go' => 'required | url',
             'email' => 'required | email',
             'phone' => 'required',
             'city' => 'string',

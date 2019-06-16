@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 
 class DomainController extends Controller
 {
+    protected $exceedDomainCount;
 
     public function __construct()
     {
+        $this->exceedDomainCount = false;
         $this->middleware(['auth']);
     }
 
@@ -37,37 +39,37 @@ class DomainController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required'
         ]);
         $data = $request->except('_token');
         $domainsCollection = collect($data['name']);
-        // $existingDomainNames = collect([ Domain::whereCompanyId(Auth::user()->company->id)->pluck('name')->toArray() ]);
-
-
 
         $domainsCollection->each(function($domain){
-
-            // $matched = $existingDomainNames->first(function($existingDomain) use ($domain){
-            //     return $existingDomain == $domain ? true : false;
-            // });
-
-            // // return $matched;
-            // if($matched != NULL){
-            //     return;
-            // }
-
-            if($domain != NULL){
-                Domain::create([
+            if($domain != NULL && $this->canAddAnotherDomain()){
+                return Domain::create([
                     'company_id' => Auth::user()->company->id,
                     'name' => $domain,
                 ]);
             }
+            $this->exceedDomainCount = true;
         });
+
+        if($this->exceedDomainCount){
+            $request->session()->flash('info', 'Some Domain(s) were not added to company!');
+        }
 
         $request->session()->flash('success', 'Added Domain(s) to company!');
         return redirect()->back();
 
+    }
+
+    protected function canAddAnotherDomain()
+    {
+        $domainCount = Domain::whereCompanyId(Auth::user()->company->id)->get()->count();
+
+        return $domainCount < Auth::user()->company->domains_count ? true : false;
     }
 
     public function update(Request $request, Domain $domain)

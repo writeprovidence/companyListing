@@ -76,6 +76,11 @@
                                                     </li>
 
                                                     <li>
+                                                        <span class="heading">Rating</span>
+                                                        <span class="value">{{$company->rating}}</span>
+                                                    </li>
+
+                                                    <li>
                                                         <span class="heading">Total Reviews</span>
                                                         <span class="value">{{$company->reviews()->count()}}</span>
                                                     </li>

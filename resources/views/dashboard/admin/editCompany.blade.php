@@ -32,6 +32,26 @@
                         </div>
 
                         <div class="form-row">
+                            <label for="link_to_go">Link To Go:</label>
+                            <input id="link_to_go" type="url" name="link_to_go" class="form-control" value="{{ $company->link_to_go }}">
+                        </div>
+                        <div class="shift-error">
+                            @if ($errors->has('link_to_go'))
+                            <p class="alert-danger">{{ $errors->first('link_to_go') }}</p>
+                            @endif
+                        </div>
+
+                        <div class="form-row">
+                            <label for="domains_count">Domains:</label>
+                            <input id="domains_count" type="url" name="domains_count" class="form-control" value="{{ $company->domains_count }}">
+                        </div>
+                        <div class="shift-error">
+                            @if ($errors->has('domains_count'))
+                            <p class="alert-danger">{{ $errors->first('domains_count') }}</p>
+                            @endif
+                        </div>
+
+                        <div class="form-row">
                             <label for="email">Email:</label>
                             <input id="email" type="email"
                                 class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"

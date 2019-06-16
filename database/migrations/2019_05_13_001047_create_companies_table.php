@@ -38,6 +38,7 @@ class CreateCompaniesTable extends Migration
             $table->boolean('is_public')->default(0);
             $table->boolean('feature')->default(0);
             $table->integer('clicks_sent')->default(0);
+            $table->integer('domains_count')->default(4);
             $table->integer('page_views')->default(0);
             $table->string('alexa_global_rank')->default(0);
             $table->string('alexa_top_country_id')->default(0);
