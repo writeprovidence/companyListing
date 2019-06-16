@@ -14,7 +14,7 @@
                         </header>
 
                         <div class="entry-company">
-                           <form action="{{route('admin.resetpassword')}}" method="POST" class="enter-form login-form">
+                            <form action="{{route('admin.resetpassword')}}" method="POST" class="enter-form login-form">
                                 @csrf
 
                                 <div class="form-group reset">

@@ -38,8 +38,8 @@
                                                     <p>{{$company->name}}</p>
                                                 </div>
                                                 <ul class="entry-links">
-                                                    <li><a href="{{route('profile.company', $company->slug)}}">Visit Site</a></li>
-                                                    <li><a href="{{route('reviews.company', $company->slug)}}">Read Reviews</a></li>
+                                                    <li><a href="{{route('redirect.company', $company->slug)}}">Visit Site</a></li>
+                                                    <li><a href="{{route('profile.company', $company->slug)}}">Read Reviews</a></li>
                                                 </ul>
                                             </div>
                                         </li>

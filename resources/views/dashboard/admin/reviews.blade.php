@@ -66,7 +66,7 @@
                                             <div>
                                                 <span class="label">Visit</span>
                                                 <strong class="company-link">
-                                                    <a href="{{route('show.review',[$review->company->slug, $review->slug])}}">{{$review->full_name}}'s Review</a> &nbsp; &nbsp;
+                                                    <a href="{{route('admin.showreview',[$review->company->slug, $review->slug])}}">{{$review->full_name}}'s Review</a> &nbsp; &nbsp;
                                                     <a href="{{route('admin.editreview',$review->slug)}}"><i class="fa fa-pencil"></i></a>
                                                 </strong>
                                             </div>

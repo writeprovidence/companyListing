@@ -1,6 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Mail;
-use App\Mail\LuncheonMailable;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +85,8 @@ Route::get('admin/reviews/{reviewSlug}/approve', 'AdminController@approveReview'
 Route::get('admin/reviews/{reviewSlug}/reject', 'AdminController@rejectReview')->name('reject.review');
 Route::get('admin/reviews/{reviewSlug}/edit', 'AdminController@editReview')->name('admin.editreview');
 Route::post('admin/reviews/{reviewSlug}/edit', 'AdminController@updateReview')->name('admin.updatereview');
+Route::get('admin/{companySlug}/{reviewSlug}', 'AdminController@showReview')->name('admin.showreview');
+
 
 // Logs route
 Route::get('admin/dashboard/loginlogs', 'AdminController@loginLogs')->name('admin.loginlogs');

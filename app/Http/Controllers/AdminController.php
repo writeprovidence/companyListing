@@ -195,6 +195,13 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function showReview($companySlug, $reviewSlug)
+    {
+        $data['company'] = Company::whereSlug($companySlug)->first();
+        $data['review'] = Review::whereSlug($reviewSlug)->whereCompanyId($data['company']->id)->first();
+        return view('review.show', $data);
+    }
+
     public function loginLogs()
     {
         $data['loginlogs'] = LoginLog::orderBy('created_at', 'desc')->paginate(15);

@@ -15,7 +15,7 @@ class PasswordController extends Controller
 
     public function showUserResetForm()
     {
-        return view('dashboard.admin.resetpassword');
+        return view('dashboard.password.resetpassword');
     }
 
     public function resetUserPassword(Request $request)
