@@ -53,8 +53,8 @@ Route::get('company/{companySlug}/{reviewSlug}', 'ReviewController@show')->name(
 Route::post('dashboard/review/{reviewSlug}/response', 'ReviewController@storeResponse')->name('store.reviewresponse');
 
 // Upvote and down vote API
-Route::get('dashboard/review/{companySlug}/upvote', 'ReviewController@upvote');
-Route::get('dashboard/review/{companySlug}/downvote', 'ReviewController@downvote');
+Route::get('review/{companySlug}/upvote', 'ReviewController@upvote');
+Route::get('review/{companySlug}/downvote', 'ReviewController@downvote');
 
 // Search
 Route::get('search', 'SearchController@search')->name('search');

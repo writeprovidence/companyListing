@@ -14,10 +14,10 @@ $(document).ready(function() {
         $this.parent().html('Thank You for your feedback');
 
         if ($this.attr('data-value') == "yes") {
-            api_endpoint = 'dashboard/review/' + companySlug + '/upvote';
+            api_endpoint = 'review/' + companySlug + '/upvote';
             updateProjectStatus(api_endpoint);
         } else {
-            api_endpoint = 'dashboard/review/' + companySlug + '/downvote';
+            api_endpoint = 'review/' + companySlug + '/downvote';
             updateProjectStatus(api_endpoint);
         }
     })
