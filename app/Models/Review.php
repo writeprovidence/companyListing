@@ -36,13 +36,5 @@ class Review extends Model
         return $this->is_public ? true : false;
     }
 
-    public function getResponseAttribute($value)
-    {
-        return $value ?? $this->defaultReponse();
-    }
 
-    public function defaultReponse()
-    {
-        return 'No response yet!';
-    }
 }
