@@ -8,13 +8,13 @@
 				<div class="container">
                     <ul class="social-buttons">
                         <li>
-                            <a class="facebook" href="{{$review->}}">
+                            <a class="facebook" href="{{$review->social_profile}}">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                                 <span>{{$review->full_name}} on facebook</span>
                             </a>
                         </li>
                         <li>
-                            <a class="twitter" href="#">
+                            <a class="twitter" href="{{$review->social_profile}}">
                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                 <span>{{$review->full_name}} on twitter</span>
                             </a>
