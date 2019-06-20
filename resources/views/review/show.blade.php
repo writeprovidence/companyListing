@@ -6,9 +6,9 @@
 
 			<section class="details-section">
 				<div class="container">
-                    {{-- <ul class="social-buttons">
+                    <ul class="social-buttons">
                         <li>
-                            <a class="facebook" href="#">
+                            <a class="facebook" href="{{$review->}}">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                                 <span>{{$review->full_name}} on facebook</span>
                             </a>
@@ -19,7 +19,7 @@
                                 <span>{{$review->full_name}} on twitter</span>
                             </a>
                         </li>
-                    </ul> --}}
+                    </ul>
                     <ul class="review-list">
                         <li>
                             <div class="review-card">
@@ -42,7 +42,7 @@
                                         <li>
                                             <span>Reliability</span>
                                             <span class="rating">
-                                                @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->reliability ? 'fa-star' : 'fa-star-o'}}"
+                                                @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->reliability ? 'fa-star' : 'fa-star-o'}}"
                                                     aria-hidden="true"></i>
                                                     @endfor
                                             </span>
@@ -50,7 +50,7 @@
                                         <li>
                                             <span>Pricing</span>
                                             <span class="rating">
-                                                @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->pricing ? 'fa-star' : 'fa-star-o'}}"
+                                                @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->pricing ? 'fa-star' : 'fa-star-o'}}"
                                                     aria-hidden="true"></i>
                                                     @endfor
                                             </span>
@@ -58,7 +58,7 @@
                                         <li>
                                             <span>User Friendly</span>
                                             <span class="rating">
-                                                @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->user_friendly ? 'fa-star' : 'fa-star-o'}}"
+                                                @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->user_friendly ? 'fa-star' : 'fa-star-o'}}"
                                                     aria-hidden="true"></i>
                                                     @endfor
                                             </span>
@@ -66,7 +66,7 @@
                                         <li>
                                             <span>Support</span>
                                             <span class="rating">
-                                                @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->support ? 'fa-star' : 'fa-star-o'}}"
+                                                @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->support ? 'fa-star' : 'fa-star-o'}}"
                                                     aria-hidden="true"></i>
                                                     @endfor
                                             </span>
@@ -74,7 +74,7 @@
                                         <li>
                                             <span>Features</span>
                                             <span class="rating">
-                                                @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->features ? 'fa-star' : 'fa-star-o'}}"
+                                                @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->features ? 'fa-star' : 'fa-star-o'}}"
                                                     aria-hidden="true">
                                                     </i>
                                                     @endfor
@@ -82,12 +82,14 @@
                                         </li>
                                     </ul>
                                 </div>
+                                @if($review->hasResponse())
                                 <div class="entry-response">
                                     <h6>{{$review->company->name}}'s Response</h6>
                                     <p>
                                         {{$review->response}}
                                     </p>
                                 </div>
+                                @endif
                                 <div class="entry-footer">
                                     <div class="share-popup popup-holder">
                                         <a class="open rewiew-btn grey-mod" href="#"><i class="fa fa-share-alt"></i>

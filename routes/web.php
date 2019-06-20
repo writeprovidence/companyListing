@@ -30,9 +30,9 @@ Route::get('company-profile/{companySlug}', 'CompanyController@companyProfile')-
 Route::post('company-profile/{companySlug}', 'CompanyController@orderCompanyProfileBy')->name('order.profile.company');
 Route::get('dashboard/go/{companySlug}', 'CompanyController@redirectToWebsite')->name('redirect.company');
 Route::get('dashboard/review', 'ReviewController@myReviews')->name('reviews');
-Route::get('dashboard/domains', 'DomainController@index')->name('domains');
-Route::post('dashboard/domains', 'DomainController@store')->name('store.domains');
-Route::post('dashboard/domains/{domain}/update', 'DomainController@update')->name('update.domains');
+Route::get('dashboard/nameservers', 'DomainController@index')->name('domains');
+Route::post('dashboard/nameservers', 'DomainController@store')->name('store.domains');
+Route::post('dashboard/nameservers/{domain}/update', 'DomainController@update')->name('update.domains');
 Route::get('dashboard/products/add', 'ProductController@add')->name('add.products');
 Route::post('dashboard/products', 'ProductController@store')->name('store.products');
 Route::get('dashboard/products', 'ProductController@index')->name('edit.products');
@@ -53,8 +53,8 @@ Route::get('company/{companySlug}/{reviewSlug}', 'ReviewController@show')->name(
 Route::post('dashboard/review/{reviewSlug}/response', 'ReviewController@storeResponse')->name('store.reviewresponse');
 
 // Upvote and down vote API
-Route::get('review/{companySlug}/upvote', 'ReviewController@upvote');
-Route::get('review/{companySlug}/downvote', 'ReviewController@downvote');
+Route::get('review/{companySlug}/{reviewSlug}/upvote', 'ReviewController@upvote');
+Route::get('review/{companySlug}/{reviewSlug}/downvote', 'ReviewController@downvote');
 
 // Search
 Route::get('search', 'SearchController@search')->name('search');

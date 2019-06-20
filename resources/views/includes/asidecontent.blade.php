@@ -64,7 +64,7 @@
             <div class="icon-wrap">
                 <i class="fa fa-filter" aria-hidden="true"></i>
             </div>
-            <span>Domains</span>
+            <span>Nameservers</span>
         </a>
     </li>
 

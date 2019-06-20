@@ -17,13 +17,13 @@
                     <form action="{{route('store.domains')}}" method="POST" class="dashboard-form domain">
                         @csrf
                         <div class="bottom-row">
-                            <h3>Domains</h3>
+                            <h3>Nameservers</h3>
 
-                            <button class="btn add-field" type="submit">Add Domain Field</button>
+                            <button class="btn add-field" type="submit">Add Nameserver Field</button>
                         </div>
 
                         <div class="form-row append-after">
-                            <label for="name">Domains:</label>
+                            <label for="name">Nameservers:</label>
                             <input id="name" type="text"
                                 class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name[]"
                                 placeholder="Domain Name *" >
@@ -35,7 +35,7 @@
                         <hr>
 
                         @if(Auth::user()->company->domains()->count() > 0)
-                        <h4>Domain List</h4>
+                        <h4>Nameserver List</h4>
                         <ol>
                             @foreach($domains as $domain)
                             <li>
@@ -46,7 +46,7 @@
                         @endif
 
                         <div class="bottom-row">
-                            <span>&deg; Add Domain info</span>
+                            <span>&deg; Add Nameservers info</span>
                             <button class="btn" type="submit">Save</button>
                         </div>
                     </form>

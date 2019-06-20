@@ -17,7 +17,7 @@ class NavigationController extends Controller
         $data['company_count'] = Company::whereIsPublic(1)->get()->count();
         $data['review_count'] = Review::whereIsVerified(1)->get()->count();
         $data['featured_companies'] = Company::whereIsPublic(1)->whereFeature(1)->orderBy('created_at', 'desc')->limit(4)->get();
-        $data['featured_reviews'] = Review::whereIsPublic(1)->whereFeature(1)->orderBy('created_at', 'desc')->limit(3)->get();
+        $data['featured_reviews'] = Review::whereIsPublic(1)->orderBy('created_at', 'desc')->limit(3)->get();
         return view('index', $data);
     }
 

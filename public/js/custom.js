@@ -11,13 +11,16 @@ $(document).ready(function() {
         e.preventDefault();
         $this = $(this);
         companySlug = $this.attr('data-id');
+        reviewSlug = $this.attr('data-review');
         $this.parent().html('Thank You for your feedback');
 
         if ($this.attr('data-value') == "yes") {
-            api_endpoint = 'http://wh.jawwadkalia.com/review/' + companySlug + '/upvote';
+            api_endpoint = 'http://wh.jawwadkalia.com/review/' + companySlug + '/' + reviewSlug + '/upvote';
+            // api_endpoint = 'http://localhost:9000/review/' + companySlug + '/' + reviewSlug + '/upvote';
             updateProjectStatus(api_endpoint);
         } else {
-            api_endpoint = 'http://wh.jawwadkalia.com/review/' + companySlug + '/downvote';
+            api_endpoint = 'http://wh.jawwadkalia.com/review/' + companySlug + '/' + reviewSlug + '/downvote';
+            // api_endpoint = 'http://localhost:9000/review/' + companySlug + '/' + reviewSlug + '/downvote';
             updateProjectStatus(api_endpoint);
         }
     })

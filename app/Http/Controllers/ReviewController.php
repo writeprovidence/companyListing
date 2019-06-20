@@ -73,16 +73,16 @@ class ReviewController extends Controller
         return view('review.show', $data);
     }
 
-    public function upvote($companySlug)
+    public function upvote($companySlug, $reviewSlug)
     {
         $company = Company::whereSlug($companySlug)->first();
-        return Review::whereCompanyId($company->id)->increment('likes');
+        return Review::whereCompanyId($company->id)->whereSlug($reviewSlug)->increment('likes');
     }
 
-    public function downvote($companySlug)
+    public function downvote($companySlug, $reviewSlug)
     {
         $company = Company::whereSlug($companySlug)->first();
-        return Review::whereCompanyId($company->id)->increment('dislikes');
+        return Review::whereCompanyId($company->id)->whereSlug($reviewSlug)->increment('dislikes');
     }
 
     public function store(Request $request, $companySlug)
@@ -108,7 +108,6 @@ class ReviewController extends Controller
         $review->update([
             'slug' => 'review-'.$review->id
         ]);
-
         $this->updateCompanyRating($company->id);
         $this->sendReviewVerificationEmail($request->email, $review->id);
         $this->sendAdminReviewAlertEmail($review);

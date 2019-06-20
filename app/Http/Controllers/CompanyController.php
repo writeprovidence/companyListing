@@ -228,7 +228,7 @@ class CompanyController extends Controller
             $company->increment('clicks_sent');
         }
 
-        return redirect($company->link_to_go);
+        return redirect($company->website);
     }
     public function orderBy()
     {

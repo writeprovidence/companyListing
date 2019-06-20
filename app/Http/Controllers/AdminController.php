@@ -107,7 +107,7 @@ class AdminController extends Controller
           $rules = [
             'name' => 'required | string',
             'website' => 'required | url',
-            'link_to_go' => 'required | url',
+            'slug' => 'required | unique:companies',
             'email' => 'required | email',
             'phone' => 'required',
             'city' => 'string',

@@ -38,13 +38,13 @@
                                                           <a class="btn-feature">Unverified</a>
                                                 @endif
 
-                                                @if($review->isApproved())
+                                                {{-- @if($review->isApproved())
                                                     @if($review->isFeatured())
                                                         <a href="{{route('unfeature.review', $review->slug)}}" class="btn-feature">UnFeature</a>
                                                     @else
                                                           <a href="{{route('feature.review', $review->slug)}}" class="btn-feature">Feature</a>
                                                     @endif
-                                                @endif
+                                                @endif --}}
                                             </h3>
 
                                             @if($review->isApproved())

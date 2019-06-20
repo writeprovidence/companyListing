@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 use App\Models\Company;
 class ApprovedCompanyMiddleware
 {
@@ -21,6 +22,9 @@ class ApprovedCompanyMiddleware
         }
 
         if(! $company->companyApproved()){
+            if(Auth::user()->role == 'admin'){
+                request()->session()->flash('error', 'Company Not Approved Yet!');
+            }
             return redirect()->back();
         }
 

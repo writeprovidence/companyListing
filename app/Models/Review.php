@@ -36,5 +36,10 @@ class Review extends Model
         return $this->is_public ? true : false;
     }
 
+    public function hasResponse()
+    {
+        return $this->response ? true : false;
+    }
+
 
 }

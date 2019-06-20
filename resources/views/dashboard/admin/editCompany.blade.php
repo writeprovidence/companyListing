@@ -13,7 +13,7 @@
 
                         <div class="form-row">
                             <label for="name">Company name:</label>
-                            <input id="name" type="text" class="form-control" name="name" value="{{ $company->name }}">
+                            <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $company->name }}">
                         </div>
                         <div class="shift-error">
                             @if ($errors->has('name'))
@@ -23,7 +23,7 @@
 
                         <div class="form-row">
                             <label for="website">Site:</label>
-                            <input id="website" type="url" name="website" class="form-control" value="{{ $company->website }}">
+                            <input id="website" type="url" name="website" class="form-control {{ $errors->has('website') ? ' is-invalid' : '' }}" value="{{ $company->website }}">
                         </div>
                         <div class="shift-error">
                             @if ($errors->has('website'))
@@ -32,18 +32,18 @@
                         </div>
 
                         <div class="form-row">
-                            <label for="link_to_go">Link To Go:</label>
-                            <input id="link_to_go" type="url" name="link_to_go" class="form-control" value="{{ $company->link_to_go }}">
+                            <label for="slug">Link To Go:</label>
+                            <input id="slug" type="text" name="slug" class="form-control {{ $errors->has('slug') ? ' is-invalid' : '' }}" value="{{ $company->slug }}">
                         </div>
                         <div class="shift-error">
-                            @if ($errors->has('link_to_go'))
-                            <p class="alert-danger">{{ $errors->first('link_to_go') }}</p>
+                            @if ($errors->has('slug'))
+                            <p class="alert-danger">{{ $errors->first('slug') }}</p>
                             @endif
                         </div>
 
                         <div class="form-row">
                             <label for="domains_count">Domains:</label>
-                            <input id="domains_count" type="url" name="domains_count" class="form-control" value="{{ $company->domains_count }}">
+                            <input id="domains_count" type="number" name="domains_count" class="form-control {{ $errors->has('domain_count') ? ' is-invalid' : '' }}" value="{{ $company->domains_count }}">
                         </div>
                         <div class="shift-error">
                             @if ($errors->has('domains_count'))
@@ -195,14 +195,14 @@
 
                     <br><br>
                     @if($company->domains()->count() > 0)
-                    <h4>Domain List</h4>
+                    <h4>NameServer List</h4>
                     <ul>
                         @foreach($company->domains as $key => $domain)
                         <li>
                             <form action="{{route('admin.updatedomain', $domain->id)}}" method="POST" class="dashboard-form domain">
                                 @csrf
                                 <div class="form-row append-after">
-                                    <label for="name">Domain {{$key+1}}:</label>
+                                    <label for="name">NameServer {{$key+1}}:</label>
                                     <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"   name="name" value="{{$domain->name}}">
 
                                     @if ($errors->has('name'))

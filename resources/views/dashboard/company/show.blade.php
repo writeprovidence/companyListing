@@ -45,7 +45,7 @@
                                                     <li>
                                                         <span>Reliability</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i < 5; $i++)
+                                                            @for($i = 1; $i < 6; $i++)
                                                                 <i class="fa {{$i <= $review->reliability ? 'fa-star' : 'fa-star-o'}}" aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -53,7 +53,7 @@
                                                     <li>
                                                         <span>Pricing</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->pricing ? 'fa-star' : 'fa-star-o'}}"
+                                                            @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->pricing ? 'fa-star' : 'fa-star-o'}}"
                                                                 aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -61,7 +61,7 @@
                                                     <li>
                                                         <span>User Friendly</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->user_friendly ? 'fa-star' : 'fa-star-o'}}"
+                                                            @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->user_friendly ? 'fa-star' : 'fa-star-o'}}"
                                                                 aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -69,7 +69,7 @@
                                                     <li>
                                                         <span>Support</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->support ? 'fa-star' : 'fa-star-o'}}"
+                                                            @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->support ? 'fa-star' : 'fa-star-o'}}"
                                                                 aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -77,19 +77,21 @@
                                                     <li>
                                                         <span>Features</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->features ? 'fa-star' : 'fa-star-o'}}" aria-hidden="true">
+                                                            @for($i = 1; $i < 6; $i++) <i class="fa {{$i <= $review->features ? 'fa-star' : 'fa-star-o'}}" aria-hidden="true">
                                                                 </i>
                                                                 @endfor
                                                         </span>
                                                     </li>
                                                 </ul>
                                             </div>
+                                            @if($review->hasResponse())
                                             <div class="entry-response">
                                                 <h6>{{$review->company->name}}'s Response</h6>
                                                 <p>
                                                     {{$review->response}}
                                                 </p>
                                             </div>
+                                            @endif
                                             <div class="entry-footer">
                                                 <div class="share-popup popup-holder">
                                                     <a class="open rewiew-btn grey-mod" href="#"><i class="fa fa-share-alt"></i>
@@ -123,9 +125,9 @@
                                                 </div>
                                                <div>
                                                     <span class="entry-text">Is this review helpful to you?</span>
-                                                    <a class="rewiew-btn feedback" data-value="yes" data-id="{{$review->company->slug}}" href="#"><i
+                                                    <a class="rewiew-btn feedback" data-value="yes" data-id="{{$review->company->slug}}" data-review="{{$review->slug}}" href="#"><i
                                                             class="fa fa-thumbs-up"></i> Yes</a>
-                                                    <a class="rewiew-btn feedback" data-value="no" data-id="{{$review->company->slug}}" href="#"><i
+                                                    <a class="rewiew-btn feedback" data-value="no" data-id="{{$review->company->slug}}" data-review="{{$review->slug}}" href="#"><i
                                                             class="fa fa-thumbs-down"></i> No</a>
                                                 </div>
                                             </div>
@@ -158,7 +160,7 @@
 										</div>
 										<div>
 											<dt>Website:</dt>
-											<dd><i class="fa fa-link" aria-hidden="true"></i> <a href="{{$company->website}}">{{$company->website}}</a></dd>
+											<dd><i class="fa fa-link" aria-hidden="true"></i> <a href="{{route('redirect.company', $company->slug)}}" target="_blank">{{$company->website}}</a></dd>
 										</div>
 									</dl>
 								</div>
