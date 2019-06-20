@@ -29,6 +29,6 @@ class AdminNewCompanyMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.AdminCompanyAlert');
+        return $this->view('emails.adminCompanyAlert');
     }
 }
