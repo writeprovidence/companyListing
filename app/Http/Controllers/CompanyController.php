@@ -197,7 +197,6 @@ class CompanyController extends Controller
 
     public function companyProfile($companySlug, $orderValue = 'desc')
     {
-        return $companySlug;
         $data['company'] = Company::whereSlug($companySlug)->with(
                                 array('reviews' => function($query)
                                     {
