@@ -121,7 +121,7 @@ class CompanyController extends Controller
         return redirect()->route('dashboard');
     }
 
-      protected function sendNewCompanyAlertEmail($email)
+    protected function sendNewCompanyAlertEmail($email)
     {
         Mail::to($email)->send(new NewCompanyMailable());
     }
@@ -133,7 +133,6 @@ class CompanyController extends Controller
             Mail::to($user->email)->send(new AdminNewCompanyMailable($company));
         }
     }
-
 
     protected function buildUpData($requestObject)
     {
@@ -198,6 +197,7 @@ class CompanyController extends Controller
 
     public function companyProfile($companySlug, $orderValue = 'desc')
     {
+        return $companySlug;
         $data['company'] = Company::whereSlug($companySlug)->with(
                                 array('reviews' => function($query)
                                     {

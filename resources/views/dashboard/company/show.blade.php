@@ -45,7 +45,7 @@
                                                     <li>
                                                         <span>Reliability</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i <= 5; $i++)
+                                                            @for($i = 0; $i < 5; $i++)
                                                                 <i class="fa {{$i <= $review->reliability ? 'fa-star' : 'fa-star-o'}}" aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -53,7 +53,7 @@
                                                     <li>
                                                         <span>Pricing</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i <= 5; $i++) <i class="fa {{$i <= $review->pricing ? 'fa-star' : 'fa-star-o'}}"
+                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->pricing ? 'fa-star' : 'fa-star-o'}}"
                                                                 aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -61,7 +61,7 @@
                                                     <li>
                                                         <span>User Friendly</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i <= 5; $i++) <i class="fa {{$i <= $review->user_friendly ? 'fa-star' : 'fa-star-o'}}"
+                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->user_friendly ? 'fa-star' : 'fa-star-o'}}"
                                                                 aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -69,7 +69,7 @@
                                                     <li>
                                                         <span>Support</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i <= 5; $i++) <i class="fa {{$i <= $review->support ? 'fa-star' : 'fa-star-o'}}"
+                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->support ? 'fa-star' : 'fa-star-o'}}"
                                                                 aria-hidden="true"></i>
                                                                 @endfor
                                                         </span>
@@ -77,7 +77,7 @@
                                                     <li>
                                                         <span>Features</span>
                                                         <span class="rating">
-                                                            @for($i = 0; $i <= 5; $i++) <i class="fa {{$i <= $review->features ? 'fa-star' : 'fa-star-o'}}" aria-hidden="true">
+                                                            @for($i = 0; $i < 5; $i++) <i class="fa {{$i <= $review->features ? 'fa-star' : 'fa-star-o'}}" aria-hidden="true">
                                                                 </i>
                                                                 @endfor
                                                         </span>
