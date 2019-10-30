@@ -1,0 +1,2 @@
+# farmsponsor
+Farm-sponsor is an agri-tech company that leverages on technology to create an inclusive platform where everyone can be involved in agriculture. we empower local farmers with funds from individuals and skills to produce at capacity . Each farm cycle runs for 12 weeks and upon completion, sponsors gain an ROI of up to 15% on their sponsorship over the farming season. Farm-sponsor has your investment covered with a robust insurance policy. Our farms are comprehensively insured by leadway Assurance plc. 
